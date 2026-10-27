@@ -1,0 +1,2076 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Masudul Haque</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Masudul Haque, Senior UI/UX Designer. I turn messy business problems into simple flows across fintech, logistics and AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one 1120px column, a canvas-like hero where the name sits in a live "selection", then an index of work, impact, a career timeline, and contact. */
+:root {
+  --bg: #f5f6f4;
+  --surface: #ffffff;
+  --fg: #141613;
+  --muted: #62675f;
+  --line: #dfe2dc;
+  --accent: #f25a1d;      /* Masud's Notion orange, used sparingly */
+  --select: #2f6bff;      /* Figma-style selection blue */
+  --select-ink: #ffffff;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --s1: .75rem; --s2: 1rem; --s3: 1.5rem; --s4: 2.5rem; --s5: 4rem; --s6: 6.5rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f110f; --surface: #171a17; --fg: #ecefe9; --muted: #9aa096; --line: #2a2e29;
+    --accent: #ff7a45; --select: #5b8cff; --select-ink: #0f110f; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f110f; --surface: #171a17; --fg: #ecefe9; --muted: #9aa096; --line: #2a2e29;
+  --accent: #ff7a45; --select: #5b8cff; --select-ink: #0f110f; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+::selection { background: var(--select); color: var(--select-ink); }
+:focus-visible { outline: 2px solid var(--select); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.label {
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+}
+h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; margin: 0; letter-spacing: -.02em; }
+p { margin: 0; }
+
+/* Nav */
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); padding-block: .9rem; }
+.mark { font-family: var(--display); font-weight: 700; font-size: 1.05rem; text-decoration: none; letter-spacing: -.02em; }
+.mark span { color: var(--accent); }
+.nav ul { display: flex; gap: clamp(.9rem, 3vw, 2rem); list-style: none; margin: 0; padding: 0; font-size: .9rem; }
+.nav ul a { text-decoration: none; color: var(--muted); transition: color .15s; }
+.nav ul a:hover { color: var(--fg); }
+
+/* Hero */
+.hero { padding-block: clamp(3.5rem, 9vw, 7rem) var(--s5); }
+.hero-grid { display: grid; grid-template-columns: 1fr auto; gap: var(--s4); align-items: end; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin-bottom: calc(var(--s4) + .25rem); }
+.status { display: inline-flex; align-items: center; gap: .5rem; }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #2fbf71; box-shadow: 0 0 0 3px color-mix(in srgb, #2fbf71 25%, transparent); }
+.hero h1 { font-size: clamp(2.6rem, 7.4vw, 6rem); line-height: 1; letter-spacing: -.035em; font-weight: 500; }
+
+.sel { position: relative; display: inline-block; padding: 0 .08em; }
+.sel::before {
+  content: ""; position: absolute; inset: -.04em -.06em -.02em;
+  border: 1.5px solid var(--select); pointer-events: none;
+  animation: draw .9s cubic-bezier(.2,.7,.2,1) .25s both;
+}
+.sel .h { position: absolute; width: 9px; height: 9px; background: var(--surface); border: 1.5px solid var(--select); animation: pop .3s ease 1s both; }
+.sel .h.tl { left: calc(-.06em - 4px); top: calc(-.04em - 4px); }
+.sel .h.tr { right: calc(-.06em - 4px); top: calc(-.04em - 4px); }
+.sel .h.bl { left: calc(-.06em - 4px); bottom: calc(-.02em - 4px); }
+.sel .h.br { right: calc(-.06em - 4px); bottom: calc(-.02em - 4px); }
+.sel .tag {
+  position: absolute; left: -.06em; bottom: calc(100% + .45rem);
+  font-family: var(--mono); font-size: .7rem; line-height: 1; letter-spacing: .02em; font-weight: 500;
+  background: var(--select); color: var(--select-ink); padding: .32rem .45rem; border-radius: 3px; white-space: nowrap;
+  animation: pop .3s ease 1.1s both;
+}
+@keyframes draw { from { clip-path: inset(0 100% 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+
+.hero-lede { max-width: 38rem; margin-top: calc(var(--s4) + .5rem); font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--muted); line-height: 1.55; }
+.hero-lede strong { color: var(--fg); font-weight: 500; }
+.hero-lede a { text-decoration-color: var(--accent); text-underline-offset: 3px; }
+
+.portrait { width: clamp(130px, 17vw, 200px); aspect-ratio: 1; max-width: 100%; position: relative; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; filter: grayscale(.15); }
+.portrait::after {
+  content: "@masud"; position: absolute; right: -4px; bottom: 8%;
+  font-family: var(--mono); font-size: .7rem; background: var(--accent); color: #fff; padding: .28rem .5rem; border-radius: 99px 99px 99px 2px;
+}
+
+.cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--s4); }
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem; padding: .8rem 1.2rem; border-radius: 99px;
+  font-size: .92rem; font-weight: 500; text-decoration: none; border: 1px solid var(--line); transition: transform .15s, background .15s, border-color .15s;
+}
+.btn:hover { transform: translateY(-1px); border-color: var(--fg); }
+.btn.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+/* Figures */
+.figures { border-block: 1px solid var(--line); }
+.figures .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.fig { padding-block: var(--s3); padding-right: var(--s2); border-right: 1px solid var(--line); }
+.fig + .fig { padding-left: var(--s3); }
+.fig:last-child { border-right: 0; }
+.fig b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: -.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.fig span { font-size: .88rem; color: var(--muted); }
+
+/* Sections */
+section.block { padding-block: var(--s6) 0; }
+.sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s2); flex-wrap: wrap; margin-bottom: var(--s4); }
+.sec-head h2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+.sec-head p { max-width: 30rem; color: var(--muted); }
+
+/* Work index */
+.work { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--fg); }
+.work li { border-bottom: 1px solid var(--line); }
+.work a {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: var(--s3); align-items: start;
+  padding-block: 1.6rem; text-decoration: none; position: relative;
+}
+.work h3 { font-size: clamp(1.3rem, 2.4vw, 1.75rem); line-height: 1.2; transition: color .2s, transform .3s cubic-bezier(.2,.7,.2,1); }
+.work .client { margin-top: .35rem; }
+.work .desc { color: var(--muted); font-size: .95rem; min-width: 0; }
+.work .desc em { font-style: normal; color: var(--fg); font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+.chip { font-family: var(--mono); font-size: .7rem; padding: .22rem .55rem; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); }
+.arrow { font-family: var(--mono); font-size: .85rem; color: var(--muted); white-space: nowrap; transition: color .2s, transform .2s; }
+.work a:hover h3 { color: var(--accent); transform: translateX(6px); }
+.work a:hover .arrow { color: var(--fg); transform: translate(2px, -2px); }
+
+/* Impact */
+.impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.imp { background: var(--bg); padding: var(--s3); display: flex; flex-direction: column; gap: .6rem; min-width: 0; }
+.imp .k { font-family: var(--display); font-size: 2.2rem; line-height: 1; letter-spacing: -.03em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.imp h3 { font-size: 1.12rem; letter-spacing: -.01em; font-family: var(--body); font-weight: 600; }
+.imp p { color: var(--muted); font-size: .93rem; }
+
+/* Experience */
+.exp { display: grid; gap: 0; border-top: 1px solid var(--fg); }
+.job { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: var(--s4); padding-block: var(--s4); border-bottom: 1px solid var(--line); }
+.job .co h3 { font-size: 1.4rem; }
+.job .co a { text-decoration: none; }
+.job .co a:hover { color: var(--accent); }
+.job .co p { color: var(--muted); font-size: .9rem; margin-top: .35rem; }
+.roles { display: grid; gap: var(--s3); }
+.role-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .25rem 1rem; align-items: baseline; }
+.role-head h4 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+.role ul { margin: .7rem 0 0; padding: 0; list-style: none; display: grid; gap: .5rem; }
+.role li { position: relative; padding-left: 1.2rem; color: var(--muted); font-size: .95rem; max-width: 62ch; }
+.role li::before { content: ""; position: absolute; left: 0; top: .72em; width: .55rem; height: 1px; background: var(--muted); }
+.role li b { color: var(--fg); font-weight: 500; }
+
+/* Craft */
+.craft { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s4); }
+.craft h3 { font-family: var(--body); font-size: .95rem; font-weight: 600; margin-bottom: var(--s2); letter-spacing: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+.tag-l { font-size: .9rem; padding: .38rem .8rem; border-radius: 99px; background: var(--surface); border: 1px solid var(--line); }
+
+.creds { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s4); margin-top: var(--s5); }
+.creds ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.creds li { display: flex; justify-content: space-between; gap: 1rem; padding-block: .9rem; border-bottom: 1px solid var(--line); font-size: .95rem; }
+.creds li span:last-child { color: var(--muted); font-family: var(--mono); font-size: .78rem; white-space: nowrap; padding-top: .15rem; }
+.creds h3 { font-family: var(--body); font-size: .95rem; font-weight: 600; margin-bottom: var(--s2); letter-spacing: 0; }
+
+/* Archive */
+.archive { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--s4); border-top: 1px solid var(--line); }
+.archive a { display: flex; justify-content: space-between; gap: 1rem; padding-block: .85rem; border-bottom: 1px solid var(--line); text-decoration: none; font-size: .95rem; min-width: 0; }
+.archive a span:last-child { font-family: var(--mono); font-size: .72rem; color: var(--muted); white-space: nowrap; padding-top: .2rem; }
+.archive a:hover span:first-child { color: var(--accent); }
+
+/* Contact */
+.contact { margin-top: var(--s6); background: var(--fg); color: var(--bg); }
+.contact .wrap { padding-block: var(--s6) var(--s4); }
+.contact .label { color: color-mix(in srgb, var(--bg) 60%, var(--fg)); }
+.contact h2 { font-size: clamp(2.4rem, 7vw, 5.2rem); line-height: 1; letter-spacing: -.045em; margin-top: var(--s2); }
+.contact h2 .dot { color: var(--accent); }
+.lines { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s3); margin-top: var(--s5); }
+.line { border-top: 1px solid color-mix(in srgb, var(--bg) 25%, var(--fg)); padding-top: var(--s2); display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-width: 0; }
+.line .v { font-family: var(--display); font-size: clamp(1.1rem, 2.2vw, 1.6rem); letter-spacing: -.02em; user-select: all; overflow-wrap: anywhere; }
+.copy {
+  font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em;
+  background: transparent; color: inherit; border: 1px solid color-mix(in srgb, var(--bg) 35%, var(--fg)); border-radius: 99px; padding: .45rem .8rem; cursor: pointer; white-space: nowrap;
+}
+.copy:hover { background: var(--bg); color: var(--fg); }
+.socials { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: var(--s4); }
+.socials a { text-decoration: none; font-size: .9rem; padding: .55rem 1rem; border-radius: 99px; border: 1px solid color-mix(in srgb, var(--bg) 35%, var(--fg)); transition: background .15s, color .15s; }
+.socials a:hover { background: var(--bg); color: var(--fg); }
+.foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: var(--s5); padding-top: var(--s3); border-top: 1px solid color-mix(in srgb, var(--bg) 20%, var(--fg)); font-size: .82rem; color: color-mix(in srgb, var(--bg) 60%, var(--fg)); }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .portrait { order: -1; }
+  .figures .wrap { grid-template-columns: repeat(2, 1fr); }
+  .fig:nth-child(2) { border-right: 0; }
+  .fig:nth-child(3) { padding-left: 0; }
+  .fig:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .work a { grid-template-columns: minmax(0, 1fr) auto; }
+  .work .desc { grid-column: 1 / -1; grid-row: 2; }
+  .impact, .craft, .archive { grid-template-columns: 1fr 1fr; }
+  .job { grid-template-columns: 1fr; gap: var(--s3); }
+}
+@media (max-width: 560px) {
+  .nav ul li:nth-child(n+3):not(:nth-child(4)) { display: none; }
+  .impact, .craft, .archive, .creds, .lines { grid-template-columns: 1fr; }
+  .fig + .fig { padding-left: 0; }
+  .fig:nth-child(odd) { padding-right: var(--s2); }
+  .fig:nth-child(even) { padding-left: var(--s2); }
+  .sel .tag { font-size: .6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* Project gallery: mirrors the Notion board, cover first */
+.projects { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4) var(--s3); }
+.projects a { display: flex; flex-direction: column; gap: .7rem; text-decoration: none; height: 100%; }
+.pc-img { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); }
+.pc-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.pc-img::after { content: ""; position: absolute; inset: 0; border: 1.5px solid var(--select); border-radius: inherit; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.pc-meta { display: flex; justify-content: space-between; align-items: center; margin-top: .3rem; }
+.pc-go { font-family: var(--mono); color: var(--muted); transition: color .2s, transform .2s; }
+.projects h3 { font-size: 1.22rem; line-height: 1.25; letter-spacing: -.015em; transition: color .2s; }
+.projects .chips { margin-top: auto; padding-top: .2rem; }
+.projects a:hover .pc-img img { transform: scale(1.03); }
+.projects a:hover .pc-img::after, .projects a:focus-visible .pc-img::after { opacity: 1; }
+.projects a:hover h3 { color: var(--accent); }
+.projects a:hover .pc-go { color: var(--fg); transform: translate(2px, -2px); }
+
+/* Case study pages */
+.case { padding-block: var(--s4) 0; }
+.back { display: inline-flex; font-family: var(--mono); font-size: .8rem; color: var(--muted); text-decoration: none; padding-block: .4rem; }
+.back:hover { color: var(--fg); }
+.c-head { padding-block: var(--s4) var(--s4); max-width: 54rem; }
+.c-head h1 { font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -.03em; margin-top: var(--s2); }
+.c-lede { margin-top: var(--s3); font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--muted); max-width: 44rem; }
+.c-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s2); margin: var(--s4) 0 0; padding-top: var(--s3); border-top: 1px solid var(--line); }
+.c-facts dd { margin: .3rem 0 0; font-size: .95rem; }
+.c-cover { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+.c-cover img, .c-body img { width: 100%; height: auto; display: block; }
+.c-body { max-width: 46rem; margin: var(--s5) auto 0; font-size: 1.04rem; line-height: 1.7; }
+.c-body > * + * { margin-top: 1.1rem; }
+.c-body h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.15; margin-top: var(--s5); }
+.c-body h3 { font-size: 1.3rem; line-height: 1.3; margin-top: var(--s4); letter-spacing: -.01em; }
+.c-body h4 { font-family: var(--body); font-size: 1.05rem; font-weight: 600; margin: var(--s3) 0 0; }
+.c-body h3.sol, .c-body h2.sol { font-family: var(--mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: #1f9d5c; margin-top: var(--s3); font-weight: 500; }
+.c-body > h2:first-child, .c-body > h3:first-child { margin-top: 0; }
+.c-body p, .c-body li { color: color-mix(in srgb, var(--fg) 82%, var(--bg)); }
+.c-body b { color: var(--fg); font-weight: 600; }
+.c-body a { text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.c-body ol, .c-body ul { padding-left: 1.3rem; }
+.c-body li + li { margin-top: .45rem; }
+.c-body li > ol, .c-body li > ul { margin-top: .45rem; }
+.c-body hr { border: 0; border-top: 1px solid var(--line); margin-block: var(--s5); }
+.c-body blockquote { margin-inline: 0; padding: .9rem 1.2rem; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 8px 8px 0; }
+.c-body figure { margin: var(--s4) calc(50% - min(50vw - 20px, 34rem)); border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+.c-body figcaption { font-family: var(--mono); font-size: .75rem; color: var(--muted); padding: .7rem 1rem; border-top: 1px solid var(--line); }
+.c-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); grid-auto-flow: column; gap: var(--s2); margin-inline: calc(50% - min(50vw - 20px, 34rem)); }
+.c-row figure { margin: 0; }
+.c-row img { height: 100%; object-fit: cover; }
+.c-gallery { max-width: none; display: grid; gap: var(--s3); }
+.c-gallery > * + * { margin-top: 0; }
+.c-gallery figure { margin: 0; }
+.c-next { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); margin-top: var(--s6); border-top: 1px solid var(--fg); }
+.c-next a { display: grid; gap: .35rem; padding-block: var(--s3); text-decoration: none; }
+.c-next a + a { text-align: right; }
+.c-next b { font-family: var(--display); font-weight: 500; font-size: clamp(1.1rem, 2.4vw, 1.6rem); letter-spacing: -.02em; transition: color .2s; }
+.c-next a:hover b { color: var(--accent); }
+body.on-case main { display: none; }
+@media (max-width: 860px) {
+  .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .c-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .projects { grid-template-columns: 1fr; }
+  .c-row { grid-auto-flow: row; grid-template-columns: 1fr; }
+  .c-next { grid-template-columns: 1fr; gap: 0; }
+  .c-next a + a { text-align: left; border-top: 1px solid var(--line); }
+}
+
+/* Motion layer: entrance, scroll reveals, a live collaborator cursor, marquee and interactive cards */
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--accent); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
+.hero .wrap { position: relative; }
+.hero-meta, .hero h1, .hero-lede, .cta { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+.hero h1 { animation-delay: .08s; }
+.hero-lede { animation-delay: .22s; }
+.cta { animation-delay: .34s; }
+.portrait { animation: popIn .9s cubic-bezier(.2,.8,.2,1.2) .15s both; }
+.portrait img { animation: float 6s ease-in-out 1.2s infinite; }
+.portrait::before { content: ""; position: absolute; inset: -10px; border-radius: 50%; border: 1.5px dashed color-mix(in srgb, var(--accent) 55%, transparent); animation: spin 24s linear infinite; }
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes popIn { from { opacity: 0; transform: scale(.82) rotate(-6deg); } to { opacity: 1; transform: none; } }
+@keyframes float { 50% { transform: translateY(-6px); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.fcursor { position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none; display: flex; align-items: flex-start; gap: 2px; animation: cursorPath 16s cubic-bezier(.45,0,.25,1) 1.4s infinite both; }
+.fcursor svg { width: 18px; height: 18px; filter: drop-shadow(0 1px 1px rgb(0 0 0 / .2)); }
+.fcursor span { margin-top: 14px; font-family: var(--mono); font-size: .68rem; font-weight: 500; color: #fff; background: var(--accent); padding: .22rem .45rem; border-radius: 2px 99px 99px 99px; white-space: nowrap; }
+@keyframes cursorPath {
+  0%   { transform: translate(78%, 30%); opacity: 0; }
+  4%   { opacity: 1; }
+  18%  { transform: translate(34%, 46%); }
+  22%  { transform: translate(34%, 46%) scale(.86); }
+  25%  { transform: translate(34%, 46%); }
+  45%  { transform: translate(60%, 70%); }
+  62%  { transform: translate(14%, 88%); }
+  66%  { transform: translate(14%, 88%) scale(.86); }
+  69%  { transform: translate(14%, 88%); }
+  88%  { transform: translate(70%, 20%); opacity: 1; }
+  96%, 100% { transform: translate(78%, 30%); opacity: 0; }
+}
+.fcursor-track { position: absolute; inset: 0; pointer-events: none; }
+.fcursor-track .fcursor { width: 100%; height: 100%; transform-origin: 0 0; }
+.fcursor-track .fcursor > * { flex: none; }
+
+.marquee { overflow: hidden; border-bottom: 1px solid var(--line); padding-block: .95rem; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: slide 38s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee span { font-family: var(--display); font-size: clamp(1.05rem, 2vw, 1.35rem); letter-spacing: -.01em; white-space: nowrap; padding-inline: 1.1rem; display: inline-flex; align-items: center; gap: 2.2rem; }
+.marquee span::after { content: "✦"; color: var(--accent); font-size: .8em; }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+.js .rv { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+.js .rv.in { opacity: 1; transform: none; }
+
+.pc-img { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .35s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+.projects a:hover .pc-img { transition-duration: .08s; }
+.pc-pill { position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none; font-family: var(--mono); font-size: .72rem; font-weight: 500; background: var(--select); color: var(--select-ink); padding: .4rem .65rem; border-radius: 99px; white-space: nowrap; opacity: 0; transform: translate(var(--mx, 0), var(--my, 0)) translate(-50%, -140%) scale(.7); transition: opacity .2s, transform .12s ease-out; }
+.projects a:hover .pc-pill { opacity: 1; transform: translate(var(--mx, 0), var(--my, 0)) translate(-50%, -140%) scale(1); }
+
+.btn { will-change: transform; }
+.btn.primary { position: relative; overflow: hidden; }
+.btn.primary::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / .28) 50%, transparent 70%); transform: translateX(-120%); animation: shine 4.5s ease-in-out 2s infinite; }
+@keyframes shine { 0%, 70% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+
+.imp .k { display: inline-block; transition: transform .3s cubic-bezier(.2,.8,.2,1.4); }
+.imp:hover .k { transform: translateY(-3px) scale(1.06); }
+.imp { transition: background .25s; }
+.imp:hover { background: var(--surface); }
+.tag-l { transition: transform .2s, border-color .2s, color .2s; }
+.tag-l:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
+.contact h2 .dot { display: inline-block; animation: blink 1.4s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.case:not([hidden]) .c-head, .case:not([hidden]) .c-cover { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+.case:not([hidden]) .c-cover { animation-delay: .12s; }
+
+@media (max-width: 860px) { .fcursor-track { display: none; } }
+
+/* Motion layer 2: a live Figma canvas behind the hero, custom cursor, size badges, word reveals, spotlights, click bursts */
+.hero { position: relative; overflow: hidden; }
+.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; -webkit-mask-image: radial-gradient(120% 90% at 60% 40%, #000 40%, transparent 85%); mask-image: radial-gradient(120% 90% at 60% 40%, #000 40%, transparent 85%); }
+.hero > .wrap { z-index: 1; }
+
+.cur, .cur-ring { position: fixed; left: 0; top: 0; z-index: 50; pointer-events: none; border-radius: 50%; opacity: 0; transition: opacity .25s; }
+.cur { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--accent); }
+.cur-ring { width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1.5px solid var(--select); transition: opacity .25s, width .25s cubic-bezier(.2,.7,.2,1), height .25s cubic-bezier(.2,.7,.2,1), margin .25s cubic-bezier(.2,.7,.2,1), background .25s, border-radius .25s; }
+.has-cur .cur, .has-cur .cur-ring { opacity: 1; }
+.cur-ring.link { width: 56px; height: 56px; margin: -28px 0 0 -28px; background: color-mix(in srgb, var(--select) 12%, transparent); }
+.cur-ring.card { width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 2px; background: var(--select); }
+.cur-ring.text { width: 3px; height: 30px; margin: -15px 0 0 -1.5px; border-radius: 2px; background: var(--accent); border-color: var(--accent); }
+.cur-ring.down { transform-origin: center; }
+
+.pc-size { position: absolute; left: 50%; bottom: 10px; z-index: 1; transform: translate(-50%, 6px); font-family: var(--mono); font-size: .66rem; font-weight: 500; color: var(--select-ink); background: var(--select); padding: .2rem .4rem; border-radius: 3px; opacity: 0; transition: opacity .2s, transform .25s cubic-bezier(.2,.7,.2,1); pointer-events: none; font-variant-numeric: tabular-nums; }
+.pc-img i.hd { position: absolute; z-index: 1; width: 8px; height: 8px; background: var(--surface); border: 1.5px solid var(--select); opacity: 0; transition: opacity .2s; pointer-events: none; }
+.pc-img i.hd:nth-of-type(1) { left: -4px; top: -4px; } .pc-img i.hd:nth-of-type(2) { right: -4px; top: -4px; }
+.pc-img i.hd:nth-of-type(3) { left: -4px; bottom: -4px; } .pc-img i.hd:nth-of-type(4) { right: -4px; bottom: -4px; }
+.projects a:hover .pc-size { opacity: 1; transform: translate(-50%, 0); }
+.projects a:hover .pc-img i.hd { opacity: 1; }
+.pc-img { overflow: visible; }
+.pc-img > img { border-radius: inherit; }
+.pc-clip { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
+
+.js .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
+.js .w > span { display: inline-block; transform: translateY(108%) rotate(4deg); transform-origin: 0 100%; transition: transform .9s cubic-bezier(.2,.75,.15,1); transition-delay: calc(var(--i) * 55ms); }
+.js .in .w > span, .js .w.go > span { transform: none; }
+
+.imp { position: relative; isolation: isolate; }
+.imp::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .3s; background: radial-gradient(260px circle at var(--x, 50%) var(--y, 50%), color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%); }
+.imp:hover::before { opacity: 1; }
+
+.sel { cursor: default; }
+.sel::before { transition: inset .35s cubic-bezier(.2,.8,.2,1.3); }
+.sel:hover::before { inset: -.12em -.14em -.08em; }
+.sel .h { transition: left .35s cubic-bezier(.2,.8,.2,1.3), right .35s cubic-bezier(.2,.8,.2,1.3), top .35s cubic-bezier(.2,.8,.2,1.3), bottom .35s cubic-bezier(.2,.8,.2,1.3); }
+.sel:hover .h.tl { left: calc(-.14em - 4px); top: calc(-.12em - 4px); }
+.sel:hover .h.tr { right: calc(-.14em - 4px); top: calc(-.12em - 4px); }
+.sel:hover .h.bl { left: calc(-.14em - 4px); bottom: calc(-.08em - 4px); }
+.sel:hover .h.br { right: calc(-.14em - 4px); bottom: calc(-.08em - 4px); }
+.sel .tag { transition: left .35s cubic-bezier(.2,.8,.2,1.3); }
+.sel:hover .tag { left: -.14em; }
+
+.burst { position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none; }
+.js .marquee-track { animation: none; }
+
+/* Contact v2: fast marquee band, spinning hello badge, live cards with a cursor-tracking border */
+.contact { position: relative; overflow: hidden; isolation: isolate; }
+.contact .wrap { padding-block: var(--s5) var(--s4); }
+.c-glow { position: absolute; z-index: -1; width: 60vmax; height: 60vmax; left: var(--gx, 70%); top: var(--gy, 30%); transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 30%, transparent), transparent 62%); filter: blur(20px); transition: left .5s cubic-bezier(.2,.7,.2,1), top .5s cubic-bezier(.2,.7,.2,1); pointer-events: none; animation: glow 7s ease-in-out infinite alternate; }
+@keyframes glow { to { scale: 1.25; opacity: .7; } }
+.cmarq { overflow: hidden; border-bottom: 1px solid color-mix(in srgb, var(--bg) 18%, var(--fg)); background: var(--accent); color: #fff; padding-block: .7rem; }
+.cmarq-track { display: flex; width: max-content; animation: slide 11s linear infinite; }
+.cmarq:hover .cmarq-track { animation-duration: 4s; }
+.cmarq span { font-family: var(--display); font-weight: 500; font-size: clamp(1.1rem, 2.4vw, 1.6rem); letter-spacing: -.01em; white-space: nowrap; display: inline-flex; align-items: center; gap: 1.4rem; padding-inline: .7rem; }
+.cmarq span::after { content: "✦"; font-size: .7em; animation: spin 2.4s linear infinite; display: inline-block; }
+.c-top { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s4); }
+.c-avail { display: inline-flex; align-items: center; gap: .55rem; }
+.c-avail i { width: 8px; height: 8px; border-radius: 50%; background: #2fbf71; position: relative; }
+.c-avail i::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #2fbf71; animation: ping 1.3s cubic-bezier(0,0,.2,1) infinite; }
+@keyframes ping { 75%, 100% { transform: scale(2.8); opacity: 0; } }
+.contact h2 { font-size: clamp(2.6rem, 8vw, 6.2rem); line-height: .98; }
+.hello { flex: none; position: relative; width: clamp(110px, 13vw, 150px); aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; text-decoration: none; color: inherit; background: color-mix(in srgb, var(--bg) 8%, var(--fg)); transition: background .25s, color .25s, transform .35s cubic-bezier(.2,.8,.2,1.4); }
+.hello svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 7s linear infinite; }
+.hello text { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; fill: currentColor; }
+.hello b { font-size: 1.8rem; font-weight: 400; transition: transform .35s cubic-bezier(.2,.8,.2,1.4); }
+.hello:hover { background: var(--accent); color: #fff; transform: scale(1.06); }
+.hello:hover svg { animation-duration: 2.2s; }
+.hello:hover b { transform: rotate(45deg) scale(1.2); }
+.cc-grid { display: grid; grid-template-columns: 1.25fr 1.25fr 1fr; gap: var(--s2); margin-top: var(--s5); }
+.cc { position: relative; display: flex; flex-direction: column; gap: .7rem; min-width: 0; padding: var(--s3); border-radius: 16px; background: color-mix(in srgb, var(--bg) 6%, var(--fg)); border: 1px solid color-mix(in srgb, var(--bg) 14%, var(--fg)); transition: transform .3s cubic-bezier(.2,.8,.2,1.3), border-color .3s; }
+.cc::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; background: radial-gradient(220px circle at var(--x, 50%) var(--y, 50%), var(--accent), transparent 70%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.cc:hover { transform: translateY(-4px); }
+.cc:hover::before { opacity: 1; }
+.cc.wa::before { background: radial-gradient(220px circle at var(--x, 50%) var(--y, 50%), #25d366, transparent 70%); }
+.cc .label { display: inline-flex; align-items: center; gap: .45rem; }
+.wa-i { width: 16px; height: 16px; }
+.cc-v { font-family: var(--display); font-size: clamp(1.15rem, 2vw, 1.55rem); letter-spacing: -.02em; text-decoration: none; overflow-wrap: anywhere; line-height: 1.2; }
+a.cc-v:hover { color: var(--accent); }
+.cc-act { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: auto; padding-top: .4rem; }
+.cc-go { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; text-decoration: none; padding: .45rem .8rem; border-radius: 99px; background: var(--bg); color: var(--fg); transition: background .2s, color .2s; }
+.cc-go:hover { background: var(--accent); color: #fff; }
+.wa-go:hover { background: #25d366; color: #073b1d; }
+.cc-time { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--mono); font-size: .78rem; color: color-mix(in srgb, var(--bg) 60%, var(--fg)); font-variant-numeric: tabular-nums; }
+.cc-time i { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid currentColor; position: relative; }
+.cc-time i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 1.5px; height: 4px; background: currentColor; transform-origin: 50% 0; animation: spin 2s linear infinite; translate: -50% 0; }
+.contact .socials { margin-top: var(--s3); gap: .5rem; }
+.contact .socials a { display: inline-flex; align-items: center; gap: .55rem; overflow: hidden; }
+.contact .socials a i { font-style: normal; display: inline-block; transition: transform .25s cubic-bezier(.2,.8,.2,1.4); }
+.contact .socials a:hover i { transform: rotate(45deg) scale(1.2); }
+.contact .socials a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.totop { text-decoration: none; }
+.totop:hover { color: var(--bg); }
+.js .contact .rv { transition-duration: .45s; }
+.js .contact .w > span { transition-duration: .5s; transition-delay: calc(var(--i) * 35ms); }
+@media (max-width: 860px) {
+  .cc-grid { grid-template-columns: 1fr 1fr; }
+  .cc-grid .cc:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .c-top { flex-direction: column; align-items: flex-start; }
+  .cc-grid { grid-template-columns: 1fr; }
+  .foot { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top">masud<span>.</span>ux</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#craft">Craft</a></li>
+      <li><a href="assets/Masudul-Haque-Resume.pdf" data-resume target="_blank" rel="noopener">Résumé</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="fcursor-track" aria-hidden="true"><div class="fcursor"><svg viewBox="0 0 18 18"><path d="M2 1.5 15.5 7.2 9.3 9.3 7.2 15.5Z" fill="var(--accent)" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/></svg><span>Masud</span></div></div>
+      <div class="hero-grid">
+        <div>
+          <div class="hero-meta">
+            <span class="label status">Sr. UI/UX Designer at Intelligent Machines</span>
+            <span class="label">Dhaka, Bangladesh</span>
+          </div>
+          <h1>Hi, I'm <span class="sel">Masudul<i class="h tl"></i><i class="h tr"></i><i class="h bl"></i><i class="h br"></i><span class="tag">Name · Hug × Hug</span></span><br>Haque.</h1>
+        </div>
+        <div class="portrait"><img src="assets/masudul.jpg" alt="Portrait of Masudul Haque" width="640" height="640"></div>
+      </div>
+      <p class="hero-lede">I turn messy business problems into <strong>simple flows</strong> across fintech, logistics and AI. Six years of product design, most recently scaling <a href="https://trucklagbe.com/en/home/" target="_blank" rel="noopener">Truck Lagbe</a> for 40K+ daily users. Now a Senior UI/UX Designer at <a href="https://intelmachines.ai" target="_blank" rel="noopener">Intelligent Machines</a>, designing for <strong><a href="https://www.bkash.com/en" target="_blank" rel="noopener">bKash</a></strong>.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See selected work ↓</a>
+        <a class="btn" href="assets/Masudul-Haque-Resume.pdf" data-resume download="Masudul-Haque-Resume.pdf">Download résumé ↓</a>
+        <a class="btn" href="#contact">Let's chat</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="figures">
+    <div class="wrap">
+      <div class="fig"><b>6 yrs</b><span>Designing B2B, B2C and SaaS</span></div>
+      <div class="fig"><b>40K+</b><span>Daily users at Truck Lagbe</span></div>
+      <div class="fig"><b>20K+</b><span>Home-shifting requests</span></div>
+      <div class="fig"><b>৳1.2 Cr</b><span>Annual savings from promo control</span></div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Product strategy</span><span>UX research</span><span>Design systems</span><span>AI-driven design</span><span>Fintech</span><span>Logistics</span><span>B2B SaaS</span><span>Prototyping</span><span>Usability testing</span><span>Team leadership</span><span>Product strategy</span><span>UX research</span><span>Design systems</span><span>AI-driven design</span><span>Fintech</span><span>Logistics</span><span>B2B SaaS</span><span>Prototyping</span><span>Usability testing</span><span>Team leadership</span></div></div>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Projects</h2>
+        <p>Nine case studies, from product strategy to shipped screens. Open any project for the full story.</p>
+      </div>
+      <ul class="projects">
+        <li><a href="#p-whitelabel">
+          <div class="pc-img"><img src="assets/p/whitelabel/057d4905.jpg" width="1600" height="800" alt="Designing a White Label Competitor for Ride Sharing Platforms" loading="lazy" decoding="async"></div>
+          <div class="pc-meta"><span class="label">Techtsy · 2021</span><span class="pc-go" aria-hidden="true">↗</span></div>
+          <h3>Designing a White Label Competitor for Ride Sharing Platforms</h3>
+          <div class="chips"><span class="chip">Strategy</span><span class="chip">Web App Design</span><span class="chip">Website Design</span></div></a></li>
+        <li><a href="#p-website">
+          <div class="pc-img"><img src="assets/p/website/6ffacd8e.jpg" width="1600" height="910" alt="How I Revamp the Truck Lagbe Website" loading="lazy" decoding="async"></div>
+          <div class="pc-meta"><span class="label">Truck Lagbe · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
+          <h3>How I Revamp the Truck Lagbe Website</h3>
+          <div class="chips"><span class="chip">Product Design</span><span class="chip">Website Design</span></div></a></li>
+        <li><a href="#p-pitchdeck">
+          <div class="pc-img"><img src="assets/p/pitchdeck/5ea2729a.jpg" width="1600" height="900" alt="My Pitch Deck for Truck Lagbe’s Truck Hiring Web Platform" loading="lazy" decoding="async"></div>
+          <div class="pc-meta"><span class="label">Truck Lagbe · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
+          <h3>My Pitch Deck for Truck Lagbe’s Truck Hiring Web Platform</h3>
+          <div class="chips"><span class="chip">Product Design</span><span class="chip">Web App Design</span></div></a></li>
+        <li><a href="#p-bidding">
+          <div class="pc-img"><img src="assets/p/bidding/7f90be4e.jpg" width="1600" height="850" alt="A Bidding Strategy and Tiny Tweaks Transformed Truck Hiring Prices" loading="lazy" decoding="async"></div>
+          <div class="pc-meta"><span class="label">Truck Lagbe · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
+          <h3>A Bidding Strategy and Tiny Tweaks Transformed Truck Hiring Prices</h3>
+          <div class="chips"><span class="chip">Strategy</span></div></a></li>
+        <li><a href="#p-payment">
+          <div class="pc-img"><img src="assets/p/payment/3a070b94.jpg" width="1600" height="900" alt="Transforming Self-Payment Distribution: Sending Money with Just Three Taps" loading="lazy" decoding="async"></div>
+          <div class="pc-meta"><span class="label">Truck Lagbe · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
+          <h3>Transforming Self-Payment Distribution: Sending Money with Just Three Taps</h3>
+          <div class="chips"><span class="chip">Product Design</span><span class="chip">App Design</span></div></a></li>
+        <li><a href="#p-quotient">
+          <div class="pc-img"><img src="assets/p/quotient/6d57a141.jpg" width="1440" height="1080" alt="Stocks Trading Mobile App" loading="lazy" decoding="async"></div>
+          <div class="pc-meta"><span class="label">Quotient · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
+          <h3>Stocks Trading Mobile App</h3>
+          <div class="chips"><span class="chip">App Design</span><span class="chip">UI + UX</span></div></a></li>
+        <li><a href="#p-rca">
+          <div class="pc-img"><img src="assets/p/rca/ba8417c8.jpg" width="1600" height="900" alt="RCA UI Modernization Project" loading="lazy" decoding="async"></div>
+          <div class="pc-meta"><span class="label">Enterprise tooling · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
+          <h3>RCA UI Modernization Project</h3>
+          <div class="chips"><span class="chip">Product Design</span><span class="chip">Web App Design</span><span class="chip">Strategy</span></div></a></li>
+        <li><a href="#p-incident">
+          <div class="pc-img"><img src="assets/p/incident/830fb276.jpg" width="1600" height="1078" alt="AI-Driven Incident Automation B2B SaaS Platform" loading="lazy" decoding="async"></div>
+          <div class="pc-meta"><span class="label">Safurah · 2024</span><span class="pc-go" aria-hidden="true">↗</span></div>
+          <h3>AI-Driven Incident Automation B2B SaaS Platform</h3>
+          <div class="chips"><span class="chip">Web App Design</span><span class="chip">SaaS</span></div></a></li>
+        <li><a href="#p-doorprofit">
+          <div class="pc-img"><img src="assets/p/doorprofit/5506166b.jpg" width="1600" height="2512" alt="Revamp a Property Investment Website" loading="lazy" decoding="async"></div>
+          <div class="pc-meta"><span class="label">DoorProfit · 2024</span><span class="pc-go" aria-hidden="true">↗</span></div>
+          <h3>Revamp a Property Investment Website</h3>
+          <div class="chips"><span class="chip">UI + UX</span><span class="chip">Website Design</span></div></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="impact">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Shipped impact</h2>
+        <p>Product work that moved the business at Truck Lagbe. NDA projects aren't shown here.</p>
+      </div>
+      <div class="impact">
+        <div class="imp"><span class="k">B2B</span><h3>Vendor management SaaS</h3><p>An enterprise vendor management platform that created a new multi-million B2B revenue stream.</p></div>
+        <div class="imp"><span class="k">3,500+</span><h3>Used-truck marketplace</h3><p>A C2C buy and sell marketplace inside the app, drawing 3,500+ monthly visitors and boosting GTV.</p></div>
+        <div class="imp"><span class="k">4d → 1d</span><h3>Vendor payment cycle</h3><p>Simplified and automated vendor payments, cutting turnaround from four days to one.</p></div>
+        <div class="imp"><span class="k">৳1.2 Cr</span><h3>Promo control</h3><p>A promo-control solution that reduced promotional leakage, saving 1.20 crore BDT a year.</p></div>
+        <div class="imp"><span class="k">55%</span><h3>Challan workflow</h3><p>Redesigned and automated the challan flow, making processing 55% faster with less manual effort.</p></div>
+        <div class="imp"><span class="k">+16%</span><h3>CR model completion</h3><p>Fixed key drop-offs in the CR model experience, lifting platform completion by 16%.</p></div>
+        <div class="imp"><span class="k">72%</span><h3>Ratings &amp; feedback</h3><p>A rating and feedback experience that reached 72% user adoption.</p></div>
+        <div class="imp"><span class="k">500+</span><h3>BRTC trucks digitized</h3><p>A truck category and automated payment journey that brought public BRTC trucks online.</p></div>
+        <div class="imp"><span class="k">45h</span><h3>Design systems</h3><p>Built and maintained scalable design systems that save 45+ hours of design-to-dev work every week.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Experience</h2>
+        <p>Leading design from research to handoff, side by side with product, tech, growth and leadership.</p>
+      </div>
+      <div class="exp">
+        <article class="job">
+          <div class="co">
+            <h3><a href="https://intelmachines.ai" target="_blank" rel="noopener">Intelligent Machines</a></h3>
+            <p>Banani, Dhaka · On-site<br>Sep 2026 – Present</p>
+          </div>
+          <div class="roles">
+            <div class="role">
+              <div class="role-head"><h4>Senior UI/UX Designer</h4><span class="label">Sep 2026 – Present</span></div>
+              <ul>
+                <li>Working as an augmented design resource for <b><a href="https://www.bkash.com/en" target="_blank" rel="noopener">bKash Limited</a></b>, designing and shipping user-centered digital products.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="job">
+          <div class="co">
+            <h3><a href="https://trucklagbe.com/en/home/" target="_blank" rel="noopener">Truck Lagbe Ltd.</a></h3>
+            <p>Mohakhali DOHS, Dhaka<br>Jun 2022 – Sep 2026 · 4 yrs 4 mos</p>
+          </div>
+          <div class="roles">
+            <div class="role">
+              <div class="role-head"><h4>Senior Product Designer</h4><span class="label">Jan 2024 – Sep 2026</span></div>
+              <ul>
+                <li>Designed <b>Home Shifting</b>, Bangladesh's first fully digital home moving service, with 20,000+ requests after launch.</li>
+                <li>Launched an enterprise <b>vendor management SaaS</b>, opening a multi-million B2B revenue stream.</li>
+                <li>Cut the vendor payment cycle from <b>4 days to 1</b> and saved <b>1.20 crore BDT</b> a year through promo control.</li>
+                <li>Made challan processing 55% faster, lifted CR model completion by 16%, and digitized 500+ BRTC trucks.</li>
+                <li>Ran research with drivers, shippers and vendors, and partnered with the CEO, CTO and VPs on outcomes.</li>
+              </ul>
+            </div>
+            <div class="role">
+              <div class="role-head"><h4>Product Designer</h4><span class="label">Jun 2022 – Dec 2023</span></div>
+              <ul>
+                <li>Redesigned the website and truck-hiring journey: <b>+55% monthly traffic, +70% booking conversion</b>.</li>
+                <li>Built a payment disbursement system so truck owners can withdraw to MFS accounts.</li>
+                <li>Launched a used-truck marketplace (C2C) with <b>3,500+ monthly visitors</b>.</li>
+                <li>Built and maintained scalable <b>design systems</b>, saving 45+ hours of workflow time a week.</li>
+                <li>Named Employee of the Quarter twice, in Q3 2022 and Q1 2023.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="job">
+          <div class="co">
+            <h3>Safurah</h3>
+            <p>UI/UX design agency · US, remote<br>Oct 2022 – May 2026</p>
+          </div>
+          <div class="roles">
+            <div class="role">
+              <div class="role-head"><h4>Product Designer (Consultant)</h4><span class="label">3 yrs 8 mos</span></div>
+              <ul>
+                <li>Turned complex, AI-powered workflows into clear products for startups and B2B teams.</li>
+                <li><b>AI freight management:</b> a platform that simplifies global shipping for logistics teams.</li>
+                <li><b>Conversation intelligence:</b> AI and NLP call analysis that sales managers can track and act on.</li>
+                <li><b>Document automation:</b> classification, extraction, validation and human review in one clear flow.</li>
+                <li><b>AI incident management:</b> a B2B SaaS tool that automates API incident alerts and workflows.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="job">
+          <div class="co">
+            <h3>Platoon</h3>
+            <p>Design community · Remote<br>Jan 2023 – Mar 2023</p>
+          </div>
+          <div class="roles">
+            <div class="role">
+              <div class="role-head"><h4>Mentor</h4><span class="label">3 mos</span></div>
+              <ul>
+                <li>Ran classes and workshops on design systems and mentored <b>20+ designers</b> on workflows and product practice.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="job">
+          <div class="co">
+            <h3><a href="https://techtsy.com/" target="_blank" rel="noopener">Techtsy SDN. BHD</a></h3>
+            <p>Cyberjaya, Malaysia (remote)<br>Dec 2020 – May 2022</p>
+          </div>
+          <div class="roles">
+            <div class="role">
+              <div class="role-head"><h4>Sr. UI UX Designer</h4><span class="label">Sep 2021 – May 2022</span></div>
+              <ul>
+                <li>Led the UI/UX process and the graphics team.</li>
+                <li>Designed <b>25+ digital products</b> across iOS, Android, web apps, websites and admin platforms, contributing <b>$200K+</b> in project revenue.</li>
+              </ul>
+            </div>
+            <div class="role">
+              <div class="role-head"><h4>UI UX Designer</h4><span class="label">Dec 2020 – Sep 2021</span></div>
+              <ul>
+                <li>Prepared and presented proposals to internal teams and key stakeholders.</li>
+                <li>Designed <b>My Pasar Borong</b>, a Malaysian grocery marketplace that created 10,000+ jobs.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="job">
+          <div class="co">
+            <h3>Fiverr</h3>
+            <p>Freelance, remote<br>May 2020 – Nov 2020</p>
+          </div>
+          <div class="roles">
+            <div class="role">
+              <div class="role-head"><h4>User Experience Designer</h4><span class="label">7 months</span></div>
+              <ul>
+                <li>Completed multiple UX/UI projects with consistent 5-star ratings.</li>
+                <li>Earned the <b>Top Earner</b> badge in the LEDP project, ICT Division.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="craft">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Craft &amp; toolkit</h2>
+        <p>The methods and tools behind the work.</p>
+      </div>
+      <div class="craft">
+        <div><h3>Research</h3><div class="tags"><span class="tag-l">User research</span><span class="tag-l">User interviews</span><span class="tag-l">Usability testing</span><span class="tag-l">Competitive analysis</span><span class="tag-l">Heuristic evaluation</span><span class="tag-l">Personas</span></div></div>
+        <div><h3>Design</h3><div class="tags"><span class="tag-l">AI/ML product design</span><span class="tag-l">Systems thinking</span><span class="tag-l">Design systems</span><span class="tag-l">Prototyping</span><span class="tag-l">Documentation</span><span class="tag-l">Team leadership</span></div></div>
+        <div><h3>Tools</h3><div class="tags"><span class="tag-l">Figma</span><span class="tag-l">FigJam</span><span class="tag-l">Adobe XD</span><span class="tag-l">Illustrator</span><span class="tag-l">Photoshop</span><span class="tag-l">Notion</span><span class="tag-l">Jira</span><span class="tag-l">Trello</span><span class="tag-l">Slack</span><span class="tag-l">Claude &amp; Cowork</span><span class="tag-l">v0 by Vercel</span><span class="tag-l">Lovable</span><span class="tag-l">Codex</span><span class="tag-l">Perplexity</span></div></div>
+      </div>
+      <div class="creds">
+        <div>
+          <h3>Honors &amp; awards</h3>
+          <ul>
+            <li><span>Employee of the Quarter, Q1 2023 · Truck Lagbe</span><span>Apr 2023</span></li>
+            <li><span>Top Earner badge · ICT Division, Bangladesh</span><span>Jan 2023</span></li>
+            <li><span>Employee of the Quarter, Q3 2022 · Truck Lagbe</span><span>Nov 2022</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Education &amp; training</h3>
+          <ul>
+            <li><span>BSc, Computer Science &amp; Engineering · North South University</span><span>2016–20</span></li>
+            <li><span>Foundations of User Experience · Google, Coursera</span><span>2022</span></li>
+            <li><span>Start the UX Design Process · Google, Coursera</span><span>2022</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="archive">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>More from the archive</h2>
+        <p>Apps, websites and explorations from earlier years.</p>
+      </div>
+      <div class="archive">
+        <a href="https://www.behance.net/gallery/171585569/Website-Redesign-%28For-a-sofware-company%29" target="_blank" rel="noopener"><span>Software company website</span><span>Behance ↗</span></a>
+        <a href="https://www.behance.net/gallery/107223589/A-Complete-E-commerce-Website-UIUX-Solutions" target="_blank" rel="noopener"><span>E-commerce website UI/UX</span><span>Behance ↗</span></a>
+        <a href="https://www.behance.net/gallery/107135053/Clickcrab-E-commerce-App" target="_blank" rel="noopener"><span>Clickcrab e-commerce app</span><span>Behance ↗</span></a>
+        <a href="https://www.behance.net/gallery/108181351/Food-delivery-app-UI-UX" target="_blank" rel="noopener"><span>Food delivery app</span><span>Behance ↗</span></a>
+        <a href="https://www.behance.net/gallery/131649765/Web-landing-page-for-an-Arabic-perfume-website" target="_blank" rel="noopener"><span>Arabic perfume landing page</span><span>Behance ↗</span></a>
+        <a href="https://www.behance.net/gallery/143953675/Digital-Portfolio" target="_blank" rel="noopener"><span>Digital portfolio</span><span>Behance ↗</span></a>
+        <a href="https://dribbble.com/shots/23065717-Smart-Fintech-Banking-App" target="_blank" rel="noopener"><span>Smart fintech banking app</span><span>Dribbble ↗</span></a>
+        <a href="https://dribbble.com/shots/19306544-Vehicle-Auction-App" target="_blank" rel="noopener"><span>Vehicle auction app</span><span>Dribbble ↗</span></a>
+        <a href="https://dribbble.com/shots/18095452-Smart-Home-Control-App" target="_blank" rel="noopener"><span>Smart home control app</span><span>Dribbble ↗</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<article class="case" data-case="p-whitelabel" hidden aria-labelledby="t-whitelabel">
+  <div class="wrap">
+    <a class="back" href="#work">← All projects</a>
+    <header class="c-head">
+      <span class="label">Case study 01 / 09</span>
+      <h1 id="t-whitelabel">Designing a White Label Competitor for Ride Sharing Platforms</h1>
+      <p class="c-lede">A white-label SaaS rider app for local taxi companies in Malaysia, the UAE and the Gulf. Research with 19 riders and drivers, 23 design problems solved, and around $35,000 in sales that led to three more projects.</p>
+      <dl class="c-facts">
+        <div><dt class="label">Client</dt><dd>Techtsy</dd></div>
+        <div><dt class="label">Year</dt><dd>2021</dd></div>
+        <div><dt class="label">Services</dt><dd>Strategy, Web App Design, Website Design</dd></div>
+        <div><dt class="label">Visuals</dt><dd>32 images</dd></div>
+      </dl>
+    </header>
+    <figure class="c-cover"><img src="assets/p/whitelabel/057d4905.jpg" width="1600" height="800" alt="Designing a White Label Competitor for Ride Sharing Platforms" decoding="async" fetchpriority="high"></figure>
+    <div class="c-body">
+<h2>Overview</h2>
+<p>Uber coming into the market has made more people want to use apps for getting cabs whenever they need. Because lots of people like using one app on their phones for this. This app I made takes advantage of all the local taxi companies that people still use. I looked at what other similar apps are doing and put in important things to make users happy. The way the app looks and works is also really modern, which helps the business stay in front of other competing companies.</p>
+<figure><img src="assets/p/whitelabel/31351647.jpg" width="1600" height="796" alt="" loading="lazy" decoding="async"></figure>
+<h2>The Problem Statement — Why did I build this?</h2>
+<p>My manager from the company (<a href="http://techtsy.com/" target="_blank" rel="noopener"><b>techtsy.com</b></a>) approached me with a requirement to create a <b>White Label Saas Software</b> solution for a <b>car ride-sharing</b> platform. The target markets include Malaysia, the UAE, and several Gulf countries, where well-known ride-sharing services like Uber, Grab, and others have already established successful businesses.</p>
+<p>At the time, COVID-19 was a significant concern for everyone. As a result, I needed to incorporate safety features to ensure both riders and drivers remain protected. Additionally, a few special features were to be implemented alongside the main ride-booking system.</p>
+<p><b>Some highlight requirements:</b></p>
+<ol><li>
+Riders should be able to select special needs preferences, such as child seat accessibility, handicap accessibility, wheelchair accessibility, and more.
+</li><li>
+Riders and drivers can add money to their accounts or transfer money from their e-wallets to other users' accounts.
+</li><li>
+Users can pause the ride at any time, with mutual agreement from both the rider and the driver.
+</li><li>
+Riders can book a cab without having their own account (we named this feature "Hail Taxi"), or a rider can book for others.
+</li></ol>
+<h4><i>And many more features that help the business stay ahead of the competition. I will discuss these in the design section.</i></h4>
+<h2>My Role and Process</h2>
+<ol><li>
+<b>UX Researcher – </b>I have taken on the role of a UX Researcher, focusing on competitive analysis, conducting user interviews, and creating journey maps for an enhanced user experience.
+</li><li>
+<b>Product Designer – </b>In addition to my research responsibilities, I also serve as the Product Designer, working on sketching, interaction design and maintaining effective communication with the developers during the design and development process.
+</li></ol>
+<figure><img src="assets/p/whitelabel/40ba532c.jpg" width="1600" height="1789" alt="" loading="lazy" decoding="async"></figure>
+<h4>My task, therefore, is to design two apps (Rider and Driver) for ride-sharing that are powered by real-time data and availability.</h4>
+<p>The project had a total duration of 8 weeks for both Rider and Driver app, which was divided as follows:</p>
+<figure><img src="assets/p/whitelabel/5218239a.jpg" width="1600" height="858" alt="" loading="lazy" decoding="async"></figure>
+<h4>Platform</h4>
+<p>The design aims to enhance the user experience on both major mobile platforms:</p>
+<ul><li>
+Android
+</li><li>
+iOS
+</li></ul>
+<h2>User Research: Understanding the Target Users</h2>
+<p>Before diving into the design process, it is crucial to understand the ride-sharing industry and the target users. Several sessions are held with stakeholders, product managers, and project managers to gather information about their goals, the user demographics, target markets, and relevant business logic.</p>
+<p>The platform consists of two separate apps for two distinct user groups:</p>
+<ol><li>
+<b>Riders</b>: These users include urban commuters, intercity commuters, and rural commuters who require transportation services.
+</li><li>
+<b>Drivers</b>: Individuals who provide rides to riders using their personal vehicles.
+ <b>So I need to understand the user contexts, needs, and frustrations from the both user’s perspective. And must need to know the business.</b>
+ To create a better user experience, it is necessary to comprehend the context, needs, and frustrations of both user groups. Additionally, understanding the business side of the ride-sharing platform is vital for ensuring the design meets both user and company requirements.
+</li></ol>
+<h2>The user research phase involved the following steps:</h2>
+<h3>1. Stakeholder Interviews</h3>
+<p>Conducting interviews with stakeholders to learn about their goals, objectives, and expectations for the project.</p>
+<h3>2. User Interviews</h3>
+<h4>Goals</h4>
+<p>The primary goal of the user interviews was to engage in conversations with both riders and drivers to gain insights into their needs, frustrations, and preferences.</p>
+<p>A total of 19 user interviews were conducted, including 13 riders and 6 potential drivers. Instead of using predetermined question sets, the users were encouraged to share their experiences and discuss their pain points. The aim was to understand their everyday transportation challenges and preferences, as well as their expectations and concerns.</p>
+<h4>Interview Method</h4>
+<p>1-on-1 Conversations: The interviews are conducted as casual, one-on-one conversations in various target markets, including Malaysia, the United Arab Emirates, Pakistan, and Bangladesh. The interviewees are encouraged to speak openly about their experiences, with the assistance of my international co-workers.</p>
+<blockquote><b>Feedback from users was measured based on the number of users who mentioned specific issues or concerns.</b></blockquote>
+<h4>Findings from Rider Interviews</h4>
+<ol><li>
+<b>(7/13)</b> Private cabs are comfortable but expensive.
+</li><li>
+<b>(9/13)</b> Public transport is not comfortable in the city, and there is no guarantee of getting a seat.
+</li><li>
+<b>(2/13)</b> Ride services don't offer options for people with special needs, such as child seats, people with disabilities, or wheelchair users.
+</li><li>
+<b>(3/13)</b> There is a lack of facilities for in-app fund transfers (P2P E-wallet Transfers).
+</li><li>
+<b>(11/13)</b> Concerns about COVID-19 safety.
+</li></ol>
+<h4>Findings from Driver Interviews</h4>
+<ol><li>
+<b>(5/6)</b> Drivers don't feel at ease using the app.
+</li><li>
+<b>(2/6)</b> Riders don’t want to provide additional charges (e.g., toll charges).
+</li><li>
+<b>(4/6)</b> Riders often bargain about the service fee.
+ By conducting user interviews and analyzing the feedback, Igain valuable insights into the pain points and preferences of riders and drivers. This information serves as the foundation for developing design solutions that address these concerns and improve the overall user experience.
+</li></ol>
+<h3>3. Market Research</h3>
+<p>Analysing the target markets and ride-sharing industry trends to identify opportunities for differentiation and improvement.</p>
+<h4>Secondary research — Competitive analysis</h4>
+<p>I always research the business's competitors before getting started on a design problem. It helps in my ability to identify a market niche and to compare the weaknesses and strengths of my competition. I may also use their areas of strength and weakness to strengthen my. We don't need to recreate the wheel, in my opinion. which issues have already been better resolved. If there is no issue, we must adhere to them.</p>
+<figure><img src="assets/p/whitelabel/703cc732.jpg" width="1600" height="842" alt="" loading="lazy" decoding="async"></figure>
+<p>In this project, the competitive analysis focused on evaluating how other popular ride-sharing services addressed the issues identified during user interviews. The competitors analysed included:</p>
+<ul><li>
+Pathao (5M+ downloads, 87.9k+ reviews)
+</li><li>
+Grab (100M+ downloads, 9.95M+ reviews)
+</li><li>
+Careem (10M+ downloads, 1.25M+ reviews)
+</li><li>
+Uber (500M+ downloads, 10.6M+ reviews)
+ The analysis aimed to identify successful solutions already implemented by competitors and areas where they fell short. This information helped to inform the design decisions for the Rider and Driver app redesign, ensuring a more competitive and user-cantered product.
+</li></ul>
+<h3>Insights and Opportunities</h3>
+<p>Based on thorough market and user research, I've gained valuable insights that enable me to implement meaningful improvements. By adhering to an inclusive design process, I can address real-life challenges faced by users.</p>
+<ol><li>
+<b>Embracing Local Transport Agencies:</b><br>I've realized the importance of seamlessly incorporating local transport agencies into our platform, ensuring a smooth business integration.
+</li><li>
+<b>Catering to Diverse Needs:</b><br>My design philosophy extends to accommodating various budget types and special user needs. Design that caters to everyone.
+</li><li>
+<b>Adapting to User Behaviour:</b><br>Rather than attempting to alter user behaviour through the app, My focus was on adapting the app to align with user behaviour.
+</li></ol>
+<h2>Design — What was my solution?</h2>
+<p>Before jumping into design, I discussed the Google Map API-related query with the development team to see how far we could go with the map. We also deeply discussed how we could calculate the fare based on various criteria. For example,</p>
+<ul><li>
+Methods to compute road tolls and additional fees depending on the chosen route.
+</li><li>
+Establishing guidelines for shared services, where multiple passengers can use one vehicle, hire taxis, and so on
+ <b>These allowed me to design the solution while considering these approaches.</b>
+</li></ul>
+<h2>Basic user journey</h2>
+<figure><img src="assets/p/whitelabel/38ad3a5b.jpg" width="1600" height="1029" alt="" loading="lazy" decoding="async"></figure>
+<h2>Problems I have solved in my design →</h2>
+<figure><img src="assets/p/whitelabel/a687265e.jpg" width="1600" height="1000" alt="" loading="lazy" decoding="async"></figure>
+<hr>
+<h2>Problem #1: How do colours play a role in the design of the platform?</h2>
+<p>The first problem I want to share is that our stakeholders didn't have any preference colour for this app. So I have to select one which will be the best fit for this application.</p>
+<figure><img src="assets/p/whitelabel/1aa5f8d0.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p>I had a plan to use more vibrant colours, so people could easily remember and identify our brand by its colour. Initially, I took five colours: Pluto, Goldenrod, Black, Deepsea Kraken Blue, and Poetic Green. I discussed with the marketing team about these 5 colours. By considering the printing campaign material and other web material, we can come up with the final list of 2 colours: <b>Deepsea Kraken Blue</b> and <b>Black Colour</b>. But I want to avoid direct contradiction with our competitors, so I decided to drop the black and choose the <b>Deepsea Kraken Blue</b> as our main colour for PoolCabs.</p>
+<hr>
+<h2>Problem #2: How were the icons for Cab Services created?</h2>
+<p>An essential aspect of a Ride-sharing application’s user interface is the use of cab icons to represent various vehicle categories. These visual elements enable users to easily identify the type of cab services available, streamlining the decision-making process and enhancing overall user experience.</p>
+<figure><img src="assets/p/whitelabel/f13423e1.jpg" width="1600" height="776" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p>As a designer, I recognize the significance of acquiring high-quality car icons that accurately represent the diverse range of services offered. To achieve this, I source these icons from a reliable third-party service provider, ensuring that they meet the necessary design standards. Upon obtaining these icons, I carefully modify and tailor them to align with the specific requirements of the ride-sharing app.</p>
+<hr>
+<h2>Problem #3: How I find the onboarding illustrations?</h2>
+<p>During the design phase of onboarding users to the PoolCabs app, my main concern was to keep them engaged throughout the journey. To support our plans for launching the app in multiple countries, it was essential to incorporate features that allowed users to select from a variety of languages and currencies.</p>
+<figure><img src="assets/p/whitelabel/604d09da.jpg" width="1600" height="1742" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p>As a design solution for this journey, I extensively used eye-catching illustrations to enhance the overall experience. I collected various illustrations and customized them to align with the branding using Adobe Illustrator. <br><br>Additionally, I added the option for users to select their preferred <b>language </b>and <b>currency </b>during this journey. By default, the app will automatically select the currency and language based on the user's region. However, users have the flexibility to update and change these settings if desired.</p>
+<hr>
+<h2>Problem #4: How can a user log in or sign up?</h2>
+<p>I had received a requirement to allow users to create accounts or log in using both their mobile number and email address. In addition, the developer team had specified that certain necessary device permissions would be required. <br><br>Along with that, I proposed a login process that utilized OTP (One-Time Password) as a convenient and secure way to authenticate users. However, considering the target audience of a start-up company, implementing an OTP login system was an expensive solution. Therefore, alternative solutions need to be considered.</p>
+<h3>1. Signup</h3>
+<figure><img src="assets/p/whitelabel/2f4433ce.jpg" width="1600" height="923" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<ol><li>
+For signing up, users are required to provide the necessary information, and they must verify the signup process through a verification code in their preferred login method.
+</li><li>
+In the final step, users will need to grant specific device permissions to ensure they can fully access the app's features and functionalities.
+</li><li>
+Additionally, users have the option to sign up using their social media accounts such as Facebook and Google.
+</li></ol>
+<h3>1.Login</h3>
+<figure><img src="assets/p/whitelabel/389d6430.jpg" width="1600" height="1602" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<ol><li>
+Users can log in using either an email or a phone number.
+</li><li>
+Along with that, as a login credential, I had considered using OTP for user-friendliness. However, there is a cost associated with OTP. Since we are building this start-up company, we initially opted for a cost-effective solution by relying on passwords. But now if desired, users can update their password with OTP verification later on if they forget.
+</li><li>
+As part of my future plans, I intend to fully implement the OTP login process as the primary method.
+</li></ol>
+<hr>
+<h2>Problem #5: Making a Homepage for all</h2>
+<p>We required a home screen design for our PoolCabs app that would cater to everyone's needs. Our app already incorporates support for multiple languages and currencies. However, we wanted the cars available for hire through our app to be accessible to a diverse range of users, including those with special requirements such as disabilities or children.</p>
+<figure><img src="assets/p/whitelabel/733e368d.jpg" width="1600" height="1000" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p><b>During the design of the home page, inclusive design principles have been followed-</b></p>
+<ol><li>
+For this purpose, different types of user needs have been considered, and preference vehicle settings have been incorporated.
+</li><li>
+Real-time car availability in the surrounding area has been displayed to ensure that the user does not feel lost.
+</li><li>
+An option to save at least two frequently used locations has been provided so that the user can quickly complete car bookings.
+</li><li>
+The user can see their current pickup location from the top section of the homepage. If desired, they can set a different location as their pickup location.
+</li><li>
+The side quick access menu includes all the necessary options to greatly enhance the user's experience. It helps in providing a much better user experience.
+</li></ol>
+<hr>
+<h2>Problem #6: How a user search for and confirm the pickup and drop-off locations?</h2>
+<p>Ensuring a smooth destination setup is a crucial feature of a ride-sharing app. For returning users, the emphasis lies in enabling them to quickly set their location in order to save time and effort.</p>
+<figure><img src="assets/p/whitelabel/e4b8c32f.jpg" width="1600" height="1762" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p><b>I designed a solution to address the location setup issue, incorporating the following features:</b></p>
+<ol><li>
+<b>Set on Map:</b> Users can effortlessly set their destination location by searching or dragging the location on the map retrieved from Google Maps.
+</li><li>
+<b>Saved Addresses:</b> Users have the option to save frequently used locations such as home or office, labelled with tags, for quick access.
+</li><li>
+<b>Enter Destination Later:</b> Users can choose to set the location for their journey at a later time, within the context of the journey type. This feature proves beneficial when needing to adjust the destination due to traffic jams or other unforeseen circumstances.
+</li><li>
+<b>Recent Locations:</b> A list of recent journey and search locations is provided to users as suggestions. With just a single tap, users can select any of these locations to set as their destination.
+ This comprehensive solution aims to enhance the ease and efficiency of setting destination locations, catering to various scenarios and user preferences.
+</li></ol>
+<hr>
+<h2>Problem #7: How can a user schedule future bookings?</h2>
+<p>In our daily life, there are often instances where we require cabs at specific times. For instance, with scheduled meetups or a fixed commuting window from home to the office, having a scheduled booking system can prove to be a lifesaver.</p>
+<figure><img src="assets/p/whitelabel/b3e5228a.jpg" width="1600" height="1458" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p>To address the need for a scheduled cab booking system, I implemented the following system:</p>
+<ol><li>
+<b>Scheduling Mode and Date/Time Selection:</b>
+<ul><li>
+When a user selects their location, they will have the option to toggle between "Now" mode and "Scheduled" mode.
+</li><li>
+If the user decides to schedule the ride, they can choose a desired date and time for their cab to arrive.
+</li></ul>
+</li><li>
+<b>Saving Scheduled Requests:</b>
+<ul><li>
+The system will store the user's scheduled booking request along with the selected date and time.
+ <b>So How it Works:</b>
+</li></ul>
+</li><li>
+<b>User Interaction:</b>
+<ul><li>
+The user enters their location in the app.
+</li><li>
+They can then choose between the "Now" and "Scheduled" modes.
+</li><li>
+If they opt for "Scheduled," they select a date and time for their desired ride.
+</li></ul>
+</li><li>
+<b>Scheduling Process:</b>
+<ul><li>
+When the user schedules a ride, the system saves their request with the chosen date and time.
+</li></ul>
+</li><li>
+<b>Ride Dispatch:</b>
+<ul><li>
+When the scheduled time arrives and cabs are available nearby, the system generates a priority request for the user's ride.
+</li><li>
+The request is sent to the nearest cab driver or available cab in the area.
+</li></ul>
+</li><li>
+<b>Cab Arrival and Journey:</b>
+<ul><li>
+The assigned cab will reach the user's location at the scheduled time.
+</li></ul>
+</li></ol>
+<hr>
+<h2>Problem #8: How can a user book a car for someone else?</h2>
+<p>In situations where technological advancements pose difficulties, especially for older individuals like our grandparents, a helpful feature could be allowing someone else to book a cab for them. This way, they can enjoy the convenience of cab services without needing to use smartphones or apps.</p>
+<figure><img src="assets/p/whitelabel/8e6d646b.jpg" width="1600" height="1756" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<ul><li>
+<b>By default,</b> the user can book a cab for themselves. However, if they wish to book for someone else, they can tap the "For Me" drop-down option, which will allow them to book for another rider. For this option, the user can choose a phone number from their contacts and schedule the ride on their behalf.
+</li><li>
+Through this process, the cab driver will receive the phone number of the rider being booked for, rather than the app user's number. Simultaneously, <b>the rider being booked for will receive an SMS containing the driver's phone number and a tracking link.</b> This will enable them to complete the ride using the provided details. The app user will also have the ability to monitor these interactions and track the progress of the ride.
+</li></ul>
+<hr>
+<h2>Problem #9: How can a user select their preferred car and payment method in the app?</h2>
+<p>Classification matters everywhere. Every user has their own needs and preferences based on budget and comfort. Some use rides for personal tasks, while others need them for work. That's why having different types of cab options is important to suit these various needs.</p>
+<figure><img src="assets/p/whitelabel/762fc569.jpg" width="1600" height="1662" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<ol><li>
+<b>Cab Booking Options:</b> There are six types of cab options available for users to book based on their needs, budget, and comfort: <b>Basic, Normal, Premium, 6 Seater, Pool, and Rent Taxi</b>. These options have differences that we can see below.
+</li><li>
+<b>Profiles and Payments:</b> Users can switch between profiles for personal and business rides. Separate profiles help manage bills differently. They can also choose their preferred payment method. For business rides, users don't pay with their own money. The company covers the bill and settles it at the end of the month.
+</li><li>
+<b>Coupons:</b> Depending on the selected cab type, users can benefit from available promos. They can see a breakdown of the price for each cab option to make informed decisions.
+</li><li>
+<b>Safety Details: </b>Also, when COVID-19 was a concern, safety instructions were added at pickup points for everyone's safety.
+</li></ol>
+<hr>
+<h2>Problem #10: How can a user search for a driver and tag the driver?</h2>
+<p>After posting a trip, how can a user search for and tag a driver? The tagging process depends on various conditions. Communication with the tagged driver is also a crucial aspect of completing the journey successfully.</p>
+<figure><img src="assets/p/whitelabel/ebf0f583.jpg" width="1600" height="923" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<ol><li>
+<b>Driver Search:</b> Our research shows that the fastest way to find a cab in city areas is within <b>4 minutes</b> on online platforms. I've designed a <b>4-step</b> counter animation, each step representing 1 minute, so users can track progress and avoid boredom. The goal is to tag a driver within 1 minute if a cab is available. Otherwise, a prompt encourages retry after 4 minutes.
+</li><li>
+<b>Tagging Details:</b> After tagging, users get complete details about the driver and cab. Communication with the driver via call or message ensures smooth coordination.
+</li></ol>
+<hr>
+<h2>Problem #11: How do a user initiate a call to the tagged driver?</h2>
+<p>Communicating with the tagged driver is a crucial aspect of a ride-sharing platform, ensuring a seamless experience for both riders and drivers.</p>
+<figure><img src="assets/p/whitelabel/65ec12a8.jpg" width="1600" height="976" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p><b>Communication Options for Seamless Interaction:</b></p>
+<p>On our platform, effective communication between users and drivers is vital. I provide two main methods for this purpose:  calls and in-app messaging.</p>
+<ol><li>
+<b>Call Preference:</b> While both messaging and calls are available, users often favour calls for certain situations, especially when they are on the road and need to convey information promptly. To cater to this preference, I've introduced two calling options:
+</li></ol>
+<ul><li>
+<b>In-App Call:</b> Users can initiate calls directly from within the app. This keeps the communication streamlined and within the platform.
+</li><li>
+<b>Cellular Call:</b> For a smoother experience, I also provide the option for cellular calls. This ensures that users can communicate seamlessly, even when they are not using the app itself.
+</li></ul>
+<ol><li>
+<b>In-App Messaging:</b> Users and drivers can exchange messages directly within the app. This method is ideal for quick inquiries, sharing information, or discussing details.
+</li></ol>
+<hr>
+<h2>Problem #12: How can a user cancel a ride or initiate an emergency action?</h2>
+<p>Providing users with the option to exit from any situation at all times is a fundamental user need. Additionally, ensuring safety measures are in place becomes crucial, especially when interacting with others on the road, as unforeseen emergencies can arise.</p>
+<figure><img src="assets/p/whitelabel/0813c811.jpg" width="1600" height="923" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<ol><li>
+<b>Cancellation:</b> Before the ride starts, the rider can choose a reason and cancel the ride. After the ride begins, cancellation will still be possible, but it will require mutual confirmation from both the driver and the rider.
+</li><li>
+<b>Emergency:</b> During a ride, if needed, there's a red "Emergency" button available. Clicking on it will either make an immediate call to the police PCR for help or send an emergency SMS to a pre-set contact list. This ensures quick access to assistance when required.
+</li></ol>
+<hr>
+<h2>Problem #13: How can a user continue their ongoing trip journey?</h2>
+<p>For a smooth ride journey, users need to consider several aspects. These include how to validate or start the journey, and what types of interactions to expect throughout the process.</p>
+<figure><img src="assets/p/whitelabel/d1cc984e.jpg" width="1600" height="1764" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<ol><li>
+<b>Initiating the Journey:</b> When the driver approaches the user's location, the app notifies the user. Before the driver starts the trip, a unique 4-digit confirmation code is generated. The rider can find this code within their app. The rider provides this code to the driver to initiate the trip.
+</li><li>
+<b>Pause and Resume the Journey:</b> Once the journey begins, both users can see the journey time within their respective apps. If circumstances require a temporary halt, the rider can request a pause from the driver. Additionally, if the driver needs to refuel, they can pause the journey to prevent charges during that time. Our system considers waiting time in charge calculation, ensuring riders aren't negatively affected.
+</li></ol>
+<hr>
+<h2>Problem #14: How can a user take advantage of the fixed pricing for specific locations?</h2>
+<p>We have determined fixed prices for certain routes based on the balance between demand and supply. This approach considers the needs of users and is a result of thorough our market research.</p>
+<figure><img src="assets/p/whitelabel/df858033.jpg" width="1600" height="923" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p>Many local users have specific locations they frequently travel between, such as from a <b>rail station to an airport</b>, which require consistent trips. To accommodate this, I've implemented <b>a new pricing model that offers a fixed price for these specific routes. </b></p>
+<p>This way, users can benefit from a consistent cost when traveling between these important locations, without being affected by variable pricing based on demand and supply fluctuations.</p>
+<hr>
+<h2>Problem #15: How can a user make the payment to complete their trip?</h2>
+<p>After the trip concludes, the payment becomes a primary concern for both the rider and the driver. Understanding how the bill is calculated and why it is set at a particular amount is crucial for both parties to ensure transparency and a smooth user experience.</p>
+<figure><img src="assets/p/whitelabel/e665afc2.jpg" width="1600" height="788" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<ol><li>
+<b>Bill Breakdown:<br></b>Users can find a comprehensive breakdown of their trip bill on the app, showing how the total amount was calculated and what factors contributed to it.
+</li><li>
+<b>Tipping Option:<br></b>If a rider wishes to tip the driver for a satisfactory ride, they can do so through the app.
+</li><li>
+<b>Payment Methods:<br></b>When it comes to payment after completing a trip, we offer different methods to suit user’s preferences and needs:
+<ol><li>
+<b>Cash Payment: </b>If user choose the cash payment method before the trip, rider will hand the fare amount to the driver at the end of the journey. The driver will confirm the payment, concluding the trip.
+</li><li>
+<b>Online Payment: </b>Opting for online payment means rider have linked a debit or credit card to their account. The fare is automatically deducted from the card after the trip is completed, making the process hassle-free.
+ <b>Differentiating Personal and Business Trips:</b><br>It's important to note that for personal trips, rider pay the driver directly at the end of the ride, while for business trips, the bill is accumulated and settled by rider’s company at the end of the billing cycle.
+</li></ol>
+</li></ol>
+<hr>
+<h2>Problem #16: How does the system handle price hikes?</h2>
+<p>It's a common occurrence that rates might be higher than usual due to increased demand or additional charges for specific reasons. How does the platform inform users about such price hikes or extra charges?</p>
+<figure><img src="assets/p/whitelabel/2543ea31.jpg" width="1600" height="923" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<ol><li>
+<b>Higher Price Confirmation:</b><br>Whenever prices are elevated due to factors like high demand, the platform ensures transparency by seeking confirmation from riders before finalizing the booking. This ensures that riders are informed about the adjusted fare and can make a well-informed decision.
+</li><li>
+<b>Toll Route Acknowledgement:</b><br>If user’s chosen route includes tolls, the app informs riders and asks for acknowledgment before the trip starts. This way, riders are aware of any extra costs associated with toll routes. Also they can avoid that route if have alternative.
+</li><li>
+<b>Adding Extra Charge:</b><br>In cases where extra charges are necessary, such as due to route changes or extended waiting times, drivers are prompted to inform riders. They can request approval for the extra charge before proceeding, maintaining open communication and transparency throughout the journey.
+</li></ol>
+<hr>
+<h2>Problem #17: How can a user share a ride with multiple riders and split the fare?</h2>
+<p>When multiple riders travel together along the same route, the pool or ride-share option becomes a cost-effective and efficient feature.</p>
+<figure><img src="assets/p/whitelabel/8e922204.jpg" width="1600" height="1794" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p>This Pool service is designed to optimize ride-sharing and fare distribution, providing a convenient and cost-effective experience:</p>
+<p><b>1. Individual Seat Selection:</b><br>Drivers who offering the Pool service allow riders to choose the number of seats they require in the cab. If a rider needs only one seat, the app will assign them accordingly.</p>
+<p><b>2. Efficient Seat Allocation:</b><br>When riders with similar destinations share the same route, the service ensures that available seats are effectively utilized. This minimizes any empty seats and maximizes the efficiency of the ride.</p>
+<p><b>3. Fare Splitting:</b><br>Riders who share the cab will have their fares split evenly. As a result, the cost is distributed among all riders, offering a more affordable option compared to traditional rides.</p>
+<hr>
+<h2>Problem #18: How can a user rent a taxi for a specific duration?</h2>
+<p>The presence of various local transport agencies in the market has expanded the competition for cab services. If these agencies were to join this platform, it could significantly enhance the platform's success prospects. They can rent out their cars on a time basis. Our market research indicated that such an inclusion could lead to substantial growth.</p>
+<figure><img src="assets/p/whitelabel/85a8c0b7.jpg" width="1600" height="1692" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p><b>There are two rental options available for the Rent Taxi service:</b></p>
+<ol><li>
+<b>Cab Type:</b> Users can choose between three cab types - Primary, Economic, and Luxurious - based on their preferences.
+</li><li>
+<b>Duration-Based Rental:</b> Users can select the duration for which they need the rental service.
+ Furthermore, users have the flexibility to choose their preferred rental option based on comparative pricing provided by different transport agencies. This allows users to plan their trips according to their preferable time and budget, ensuring a personalized and convenient experience.
+</li></ol>
+<hr>
+<h2>Problem #19: How can a user access and adjust my account settings?</h2>
+<p>To personalize and update various features and system preferences, you'll need to access the central hub known as "Account & Settings.”</p>
+<figure><img src="assets/p/whitelabel/b381c7cc.jpg" width="1600" height="923" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p>Certainly, the<b> Account & Settings</b> section is the user's central hub for customizing and updating a variety of features and preferences. This includes options like managing user’s Wallet, configuring Notifications, reviewing their Trip history, accessing information about Drivers, and much more.</p>
+<hr>
+<h2>Problem #20: How does the E-Wallet function on the platform?</h2>
+<p>The E-Wallet feature enhances the ease of online payments for trips, ensuring a smoother experience. Moreover, after the trip concludes, the system seamlessly processes the driver's payment from the wallet.</p>
+<figure><img src="assets/p/whitelabel/fc0954ac.jpg" width="1600" height="1832" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p><b>The E-Wallet feature operates in two primary parts:</b></p>
+<ol><li>
+<b>Adding Funds:</b> Users can add money to their wallet, which they can then use to pay the trip fare to the driver once the journey is completed.
+</li><li>
+<b>Peer-to-Peer Transfer:</b> In case a rider wishes to share costs with another rider, they can conveniently transfer money from their wallet to the other rider's wallet. This ensures smooth transaction handling. Adding funds can be done through payment gateways, while Peer-to-Peer transfers are facilitated via mobile numbers or email addresses. All transaction histories are visible within the app, allowing users to track their financial activities.
+</li></ol>
+<hr>
+<h2>Problem #21: How can a user access and view their trip history on the platform?</h2>
+<p>Certainly, there should be a method for users to track and access their lifetime trip history, encompassing both completed trips and scheduled bookings, directly on the platform.</p>
+<figure><img src="assets/p/whitelabel/5868064c.jpg" width="1600" height="1821" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p><b>The page for tracking trip history is designed to facilitate user interaction with four distinct sections, accessed via a dropdown menu:</b></p>
+<ol><li>
+<b>Past:</b> This section displays a list of completed trips, allowing users to review their past journeys.
+</li><li>
+<b>In Process:</b> Ongoing trips are showcased here, keeping users informed about their current rides.
+</li><li>
+<b>Upcoming:</b> Scheduled trips are presented in this section, ensuring users have visibility into their upcoming travel plans.
+</li><li>
+<b>Business:</b> Users with a Business profile can access their trip history specifically related to their business-related journeys.
+ <b>The dropdown menu in the top is intelligently designed with default options that dynamically adapt to the context.</b> For example, if there's an ongoing trip, "In Process" will be pre-selected by default. Similarly, for scheduled trips, "Upcoming" will be automatically set as the default option. This intuitive approach enhances user experience and provides quick access to the desired trip history section.
+</li></ol>
+<hr>
+<h2>Problem #22: What is the Business Profile feature and how does it function on the platform?</h2>
+<p><b>For official or business-related tasks,</b> riders often need to book cabs multiple times. To manage this, riders have a distinct method for tracking these trips, along with a separate billing process.</p>
+<figure><img src="assets/p/whitelabel/fa6157db.jpg" width="1600" height="1458" alt="" loading="lazy" decoding="async"></figure>
+<h2 class="sol">Design Solution:</h2>
+<p><b>Here's how the Business Profile feature works:</b></p>
+<ol><li>
+When a user wants to book a cab for official purposes, they select the <b>Business Profile</b> option while booking.
+</li><li>
+To set up a business profile, the user needs to provide their company's information and have the company listed on the platform.
+</li><li>
+Once the business profile is set, the user can select their company while applying for the Business Profile.
+</li><li>
+After verification from the admin panel, the profile becomes active.
+</li><li>
+When booking rides through the Business Profile, the user doesn't need to pay individually. Similar to a credit card bill, the company pays for the rides collectively.
+</li><li>
+At the end of the month, an email bill is sent to the user, indicating the total cost. The company settles this bill through payment.
+ This feature streamlines the process for official rides, ensuring hassle-free transactions and convenient billing for both users and their respective companies.
+</li></ol>
+<hr>
+<h2>Problem #23: What are the others screens?</h2>
+<p>There are many related screens that show various functionalities. Take a look at some examples here.</p>
+<figure><img src="assets/p/whitelabel/306cbfcd.jpg" width="1600" height="1832" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/whitelabel/861c836b.jpg" width="1600" height="1647" alt="" loading="lazy" decoding="async"></figure>
+<hr>
+<h3>Design lesson</h3>
+<p>I had to go through multiple revisions when designing, and one lesson I learned from this was to <b>never take the wireframes lightly</b>. Due to the short deadline, I omitted the wireframes and immediately began designing. This caused a number of modifications where I may have accumulated some time. Nevertheless, it was a worthwhile lesson.</p>
+<h2>Impact of this design</h2>
+<ol><li>
+This white-label solution software generates significant revenue for our company by selling this, amounting to a substantial value of around $35,000.
+</li><li>
+The success of this project has paved the way for our company to secure 3 additional projects.
+</li></ol>
+<h3>As a Product Designer,</h3>
+<p><b>I think there's room for improving user experience in any product. I've also identified areas where design enhancements can be made.</b></p>
+<ol><li>
+<b>OTP Login<br></b>Instead of using a password for login, an OTP could have been utilized. After entering the mobile number, the user could proceed with login after OTP verification. <br><b>But, </b>implementing OTP for every login would incur costs that could conflict with our business strategy.
+</li><li>
+<b>Monitoring Tools<br></b>Implementing monitoring tools like <a href="https://mixpanel.com/" target="_blank" rel="noopener"><b>Mixpanel </b></a><b>, </b><a href="https://www.metabase.com/" target="_blank" rel="noopener"><b>Metabase </b></a>could have helped identify user pain points and future improvements. <br><b>But,</b> since our product is a white-label solution, we lacked sufficient control after app development to fully utilize monitoring tools.
+</li><li>
+<b>Direct User Feedback<br></b>Direct feedback from real users, such as from app stores, could have led to valuable insights for future improvements.<br><b>But,</b> due to the nature of our white-label solution and its customization, tracking back to the original source is not feasible.
+</li><li>
+<b>Same Radius Trip Start<br></b>Starting a trip by providing a 4-digit code to the driver to initiate the trip. However, creating a small radius for verification becomes possible when both users are within it.<br><b>But,</b> as we may not universally employ Google Maps across all regions and could opt for other maps, implementing the radius functionality might not be feasible.
+</li></ol>
+<h4>If you have any advice or feedback to share, please feel free to let me know.</h4>
+<p><b>This story covers the rider's part. I will be back with the driver's part soon!</b></p>
+<h2>Thank you for being with me!</h2>
+<p>This is my story for creating the <b>White Label SaaS Software </b>for ride-sharing service. A straightforward strategy with only the features that are essential. Hope you liked this story.</p>
+<p><b>Happy Designing 😊<br><br></b><a href="https://www.linkedin.com/in/masudulnsu/" target="_blank" rel="noopener"><b>Md Masudul Haque</b></a><b><br></b><i>Let’s connect!</i></p>
+    </div>
+    <nav class="c-next" aria-label="More projects">
+      <a href="#p-doorprofit"><span class="label">Previous</span><b>DoorProfit website revamp</b></a>
+      <a href="#p-website"><span class="label">Next</span><b>Truck Lagbe website revamp</b></a>
+    </nav>
+  </div>
+</article>
+<article class="case" data-case="p-website" hidden aria-labelledby="t-website">
+  <div class="wrap">
+    <a class="back" href="#work">← All projects</a>
+    <header class="c-head">
+      <span class="label">Case study 02 / 09</span>
+      <h1 id="t-website">How I Revamp the Truck Lagbe Website</h1>
+      <p class="c-lede">A ground-up redesign of Bangladesh's digital trucking platform with a truck-hiring flow built in. Monthly traffic grew by 55%.</p>
+      <dl class="c-facts">
+        <div><dt class="label">Client</dt><dd>Truck Lagbe</dd></div>
+        <div><dt class="label">Year</dt><dd>2023</dd></div>
+        <div><dt class="label">Services</dt><dd>Product Design, Website Design</dd></div>
+        <div><dt class="label">Visuals</dt><dd>19 images</dd></div>
+      </dl>
+    </header>
+    <figure class="c-cover"><img src="assets/p/website/6ffacd8e.jpg" width="1600" height="910" alt="How I Revamp the Truck Lagbe Website" decoding="async" fetchpriority="high"></figure>
+    <div class="c-body c-gallery">
+<figure><img src="assets/p/website/a0dab299.jpg" width="1600" height="696" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/df03eff4.jpg" width="1600" height="2505" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/8da81827.jpg" width="1600" height="1032" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/2946574d.jpg" width="1600" height="1512" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/5ebee3fe.jpg" width="1600" height="2361" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/d412bf85.jpg" width="1600" height="464" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/6862080b.jpg" width="1600" height="4425" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/31369d31.jpg" width="1600" height="1470" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/2c73aa9b.jpg" width="1600" height="1188" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/b11b1be9.jpg" width="1600" height="3626" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/1f1495bf.jpg" width="1600" height="1470" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/b5b64180.jpg" width="1600" height="3809" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/83124a08.jpg" width="1600" height="1188" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/c1c3fa26.jpg" width="1600" height="2871" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/a2c5085f.jpg" width="1600" height="4429" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/7f8f0037.jpg" width="1600" height="1577" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/263a4bf6.jpg" width="1600" height="1462" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/website/8f501dd9.jpg" width="1600" height="554" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+    <nav class="c-next" aria-label="More projects">
+      <a href="#p-whitelabel"><span class="label">Previous</span><b>PoolCabs, a white-label ride-sharing app</b></a>
+      <a href="#p-pitchdeck"><span class="label">Next</span><b>Truck hiring web platform pitch</b></a>
+    </nav>
+  </div>
+</article>
+<article class="case" data-case="p-pitchdeck" hidden aria-labelledby="t-pitchdeck">
+  <div class="wrap">
+    <a class="back" href="#work">← All projects</a>
+    <header class="c-head">
+      <span class="label">Case study 03 / 09</span>
+      <h1 id="t-pitchdeck">My Pitch Deck for Truck Lagbe’s Truck Hiring Web Platform</h1>
+      <p class="c-lede">The deck I used to pitch a self-serve truck-hiring web platform for shippers: the problem, the journey and the screens, slide by slide.</p>
+      <dl class="c-facts">
+        <div><dt class="label">Client</dt><dd>Truck Lagbe</dd></div>
+        <div><dt class="label">Year</dt><dd>2023</dd></div>
+        <div><dt class="label">Services</dt><dd>Product Design, Web App Design</dd></div>
+        <div><dt class="label">Visuals</dt><dd>45 images</dd></div>
+      </dl>
+    </header>
+    <figure class="c-cover"><img src="assets/p/pitchdeck/5ea2729a.jpg" width="1600" height="900" alt="My Pitch Deck for Truck Lagbe’s Truck Hiring Web Platform" decoding="async" fetchpriority="high"></figure>
+    <div class="c-body c-gallery">
+<figure><img src="assets/p/pitchdeck/4f4dceb6.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/6fa4dcb7.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/2d497bcb.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/676ee9cc.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/b4a99c66.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/31a74ae4.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/bc87e16a.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/6abc8f7b.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/dc5fedb7.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/fba853a5.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/73ef6774.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/08296bbe.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/8f0cdda3.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/8c6d8743.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/6859a222.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/5ae43ea5.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/13215bcb.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/4ec7d7c4.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/42d3c391.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/9bf46231.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/1d2cd6e4.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/aa2e851a.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/e7e9f201.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/13b3ed36.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/111c245a.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/4817bdf1.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/a070535d.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/8140992b.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/39dd05d8.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/8fd5ab99.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/0adc2157.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/2beaade1.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/a2f7a341.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/ac79c8f1.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/f2c471b9.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/6d258036.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/42095eaf.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/6f733eae.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/eb5be043.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/c8e4b7fa.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/fa9ce2c4.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/83456743.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/5383e890.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/pitchdeck/be170c68.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+    <nav class="c-next" aria-label="More projects">
+      <a href="#p-website"><span class="label">Previous</span><b>Truck Lagbe website revamp</b></a>
+      <a href="#p-bidding"><span class="label">Next</span><b>Bidding position and edit limits</b></a>
+    </nav>
+  </div>
+</article>
+<article class="case" data-case="p-bidding" hidden aria-labelledby="t-bidding">
+  <div class="wrap">
+    <a class="back" href="#work">← All projects</a>
+    <header class="c-head">
+      <span class="label">Case study 04 / 09</span>
+      <h1 id="t-bidding">A Bidding Strategy and Tiny Tweaks Transformed Truck Hiring Prices</h1>
+      <p class="c-lede">Showing truck owners where their bid ranks, without revealing amounts, and capping edits at five. Customer-care calls fell 47% and hiring requests rose 10%.</p>
+      <dl class="c-facts">
+        <div><dt class="label">Client</dt><dd>Truck Lagbe</dd></div>
+        <div><dt class="label">Year</dt><dd>2023</dd></div>
+        <div><dt class="label">Services</dt><dd>Strategy</dd></div>
+        <div><dt class="label">Visuals</dt><dd>3 images</dd></div>
+      </dl>
+    </header>
+    <figure class="c-cover"><img src="assets/p/bidding/7f90be4e.jpg" width="1600" height="850" alt="A Bidding Strategy and Tiny Tweaks Transformed Truck Hiring Prices" decoding="async" fetchpriority="high"></figure>
+    <div class="c-body">
+<h4>Introduction</h4>
+<p>Today, I'll share an interesting story about how a single bidding position transformed the entire truck market pricing structure. This story unfolds within the operations of <a href="https://trucklagbe.com/en/home/" target="_blank" rel="noopener">Truck Lagbe Ltd</a>., a company specializing in truck hiring facilitated through a unique bidding process.</p>
+<h4>The Bidding Process</h4>
+<p>In the <a href="https://trucklagbe.com/en/home/" target="_blank" rel="noopener">Truck Lagbe Ltd</a>. system, users needing a truck submit a request via an app, specifying their location. Meanwhile, truck owners place bids, setting their desired trip fares. Customers then select a bid that suits their preference, often opting for the lowest offer.</p>
+<h4>Challenges Encountered</h4>
+<p>However, this system presented two major challenges:</p>
+<ol><li>
+<b>Excessive Customer Care Calls</b>: Truck owners often call to request additional benefits. A primary concern for them is knowing how much to bid to secure a trip.
+</li><li>
+<b>Rising Truck Fares</b>: Customers complained about the continuous increase in truck fares, leading to a decrease in hiring requests on our platform.
+</li></ol>
+<h4>The Innovative Solution</h4>
+<p>After much deliberation, we agreed upon a transformative solution.</p>
+<p><b>Bidding Position</b></p>
+<p>I have decided to display the position of a truck owner's bid in comparison to others while keeping the actual bid amounts (in BDT) hidden. This allowed truck owners to see how their bids ranked without knowing the exact figures placed by others.</p>
+<figure><img src="assets/p/bidding/c3e88faa.jpg" width="1600" height="1003" alt="Bidding Position" loading="lazy" decoding="async"><figcaption>Bidding Position</figcaption></figure>
+<p><b>Bid Edit Restrictions</b></p>
+<p>Additionally, I have implemented a minor but crucial tweak: truck owners could edit their bid to improve their position, but only up to <b>five times</b>. This limitation prevented excessive system strain and stopped owners from minutely adjusting bids to <b>guess competitors' truck owner prices.</b></p>
+<figure><img src="assets/p/bidding/7817f145.jpg" width="1600" height="1003" alt="Bid Edit Restrictions" loading="lazy" decoding="async"><figcaption>Bid Edit Restrictions</figcaption></figure>
+<h4>Impactful Results</h4>
+<p>The outcomes of these seemingly minor adjustments were remarkable:</p>
+<ul><li>
+A significant 47% reduction in inbound calls to our customer care helpline.
+</li><li>
+Truck owners started lowering their bids to achieve a higher position in the bid list, standardizing market rates to a more reasonable level.
+</li><li>
+A 10% increase in customer requests for truck hiring on our platform.
+</li></ul>
+<h4>Conclusion</h4>
+<p>This case study demonstrates the power of strategic adjustments in digital platforms. By fine-tuning our bidding process, we not only enhanced operational efficiency but also fostered a more competitive and fair marketplace. It's a testament to how small changes can lead to significant impacts in the digital world of commerce.</p>
+    </div>
+    <nav class="c-next" aria-label="More projects">
+      <a href="#p-pitchdeck"><span class="label">Previous</span><b>Truck hiring web platform pitch</b></a>
+      <a href="#p-payment"><span class="label">Next</span><b>Owner app payment disbursement</b></a>
+    </nav>
+  </div>
+</article>
+<article class="case" data-case="p-payment" hidden aria-labelledby="t-payment">
+  <div class="wrap">
+    <a class="back" href="#work">← All projects</a>
+    <header class="c-head">
+      <span class="label">Case study 05 / 09</span>
+      <h1 id="t-payment">Transforming Self-Payment Distribution: Sending Money with Just Three Taps</h1>
+      <p class="c-lede">Truck owners can now withdraw their earnings to bKash or Nagad in three taps and under a minute, instead of waiting on a manual process. App engagement rose 45%.</p>
+      <dl class="c-facts">
+        <div><dt class="label">Client</dt><dd>Truck Lagbe</dd></div>
+        <div><dt class="label">Year</dt><dd>2023</dd></div>
+        <div><dt class="label">Services</dt><dd>Product Design, App Design</dd></div>
+        <div><dt class="label">Visuals</dt><dd>13 images</dd></div>
+      </dl>
+    </header>
+    <figure class="c-cover"><img src="assets/p/payment/3a070b94.jpg" width="1600" height="900" alt="Transforming Self-Payment Distribution: Sending Money with Just Three Taps" decoding="async" fetchpriority="high"></figure>
+    <div class="c-body">
+<h2>Overview</h2>
+<p>In the ever-evolving landscape of financial transactions, efficiency is paramount. The disbursement process for Suppliers (Owner App Users) and Admin Panel Users(Internal Panel) currently stands as a manual and time-consuming endeavor. Recognizing the need for a more streamlined approach, our Payment Disbursement project aims to empower Owner App Users and Admin Panel Users alike, revolutionizing the way payments are disbursed.</p>
+<h2>Problem Statement</h2>
+<p>The existing disbursement process for both Owner App Users and Admin Panel Users is marred by manual interventions, leading to inefficiencies and prolonged processing times. This not only hampers productivity but also introduces the potential for errors and delays in financial transactions.</p>
+<p>Suppliers experience a lack of transparency, making it challenging to track and reconcile disbursements promptly.</p>
+<p>This complexity in the disbursement process not only diminishes user satisfaction but also hampers the agility and autonomy of our suppliers in managing their financial transactions.</p>
+<p>Waiting on external entities for disbursement not only prolongs the processing time but also subjects our operations to the varying timelines and potential bottlenecks of these third-party services. The lack of control hampers our ability to provide timely disbursements, impacting user satisfaction and the overall reliability of our disbursement processes.</p>
+<h2>Goals</h2>
+<ol><li>
+Streamline the disbursement process by eliminating 3-4 manual steps, significantly reducing the time required for other relevant teams.
+</li><li>
+Minimize human intervention which will enhance the accuracy and reliability of financial transactions. This not only mitigates the risk of errors but also fosters a more secure and trustworthy disbursement system.
+</li><li>
+We aspire to empower our Owner App Users by providing them with a user-friendly, direct means of transferring funds. This strategic move aims to attract and retain users, positioning the Owner App as a go-to platform for efficient and convenient financial transactions.
+</li></ol>
+<h2>Tools Used</h2>
+<p>Figma, Notion, Trello, FigJam, Mixpanel</p>
+<h2>Discover Phase</h2>
+<p><b>Research:  </b></p>
+<p><i><b>Existing Process:</b></i></p>
+<figure><img src="assets/p/payment/95ef9641.jpg" width="1600" height="1335" alt="" loading="lazy" decoding="async"></figure>
+<p><i><b>High-Level Plan:</b></i></p>
+<figure><img src="assets/p/payment/a2104714.jpg" width="1600" height="1200" alt="" loading="lazy" decoding="async"></figure>
+<p><i><b>Pathao Driver App:</b></i></p>
+<p>Digital Credit → Withdraw Request → Enter Amount → Desired Method (Bkash/ Bank) → Successfully Disbursed</p>
+<h3>Communication with MFS Companies:</h3>
+<p>In our drive to streamline disbursement processes, we are actively pursuing strategic partnerships with leading Mobile Financial Services (MFS) companies. Our approach prioritizes open communication channels, customization for unique requirements, robust API integration, and a commitment to a user-centric experience.</p>
+<p>By ensuring continuous testing, and quality assurance, and embracing an agile development methodology, we aim to forge seamless collaborations. This approach not only adheres to industry standards but also exceeds user expectations, setting new benchmarks in the realm of payment disbursement.</p>
+<h3>Product Requirement:</h3>
+<ul><li>
+Wallet Disbursement: Owner App users should be able to disburse money from their Apni Paben wallet of TL Transport.
+</li><li>
+MFS Account Selection: Owner App users should be able to select any of their desired MFS accounts (such as Bkash or Nagad) for the disbursement process.
+</li><li>
+Money Transfer: Once an MFS account is selected, the money should be automatically deducted from the Owner App user's wallet and transferred to the selected MFS account.
+</li><li>
+Transaction History: Owner App users should be able to view their transaction history, including the date, time, amount, and MFS account details of the disbursed amount.
+</li><li>
+Users can securely store a portion of their funds within the Owner App, allowing them to manage and retain control over their remaining amounts safely.
+</li></ul>
+<h3>User Flow</h3>
+<figure><img src="assets/p/payment/4350546f.jpg" width="1600" height="2668" alt="" loading="lazy" decoding="async"></figure>
+<h2>Design Flow</h2>
+<h3>1. Pin set</h3>
+<figure><img src="assets/p/payment/059f137c.jpg" width="1600" height="832" alt="" loading="lazy" decoding="async"></figure>
+<p>Upon first opening the app, a user sets a 4-digit PIN, verified through a one-time password (OTP) sent via SMS on their account mobile number. Successful OTP validation confirms the PIN, granting app access. In case of OTP issues, options to retry or request a new OTP are available. The process ensures secure first-time user access.</p>
+<h3>2. Withdrawal first-time journey</h3>
+<figure><img src="assets/p/payment/b0525d9b.jpg" width="1600" height="1490" alt="" loading="lazy" decoding="async"></figure>
+<p>For the "Withdrawal First-Time Journey":</p>
+<p>In this flow, a user selects their preferred Mobile Financial Service (MFS) account for the first-time withdrawal process. They then input the withdrawal amount and the account number to which the funds will be transferred. The user has the option to save this account number for future transactions. After entering their PIN, the amount is transferred to the chosen MFS account. If the entered phone number isn't linked to the specified MFS account, the process will display an error, indicating the mismatch. This flow streamlines the withdrawal process for first-time users, ensuring convenience and security.</p>
+<h3>3. The Happy Path</h3>
+<figure><img src="assets/p/payment/bd76b715.jpg" width="1600" height="1490" alt="" loading="lazy" decoding="async"></figure>
+<p>For the "Withdrawal for Saved Numbers":</p>
+<p>This streamlined process begins when a user opts to withdraw funds using a previously saved account number. The user simply selects the saved account from the list, eliminating the need to re-enter account details. Next, the user inputs the desired withdrawal amount. The final step involves entering their PIN to authenticate and approve the transaction. This efficient flow facilitates quick and secure withdrawals for users who have saved their account details, enhancing the overall user experience.</p>
+<h3>3. Sending money to others</h3>
+<figure><img src="assets/p/payment/e4aa4710.jpg" width="1600" height="832" alt="" loading="lazy" decoding="async"></figure>
+<h3>4. Unexpected Error</h3>
+<figure><img src="assets/p/payment/19cc3035.jpg" width="1600" height="832" alt="" loading="lazy" decoding="async"></figure>
+<h3>Expected Errors:</h3>
+<ul><li>
+Restriction on Amount of Transaction per day
+</li><li>
+Restriction on Amount of Transaction at a time
+</li><li>
+Cannot exceed Owner Gets Balance
+</li><li>
+Cannot enter Wrong PIN 3 times
+</li><li>
+Multiple Device Error
+</li></ul>
+<h2>Development Phase</h2>
+<h4>1. Initial Requirement Brief:</h4>
+<ul><li>
+<b>Objective:</b> To comprehensively understand the project requirements and set the foundation for the development process.
+</li><li>
+<b>Activities:</b>
+<ul><li>
+Conducted a detailed analysis of the project goals and requirements.
+</li><li>
+Delivered a comprehensive Requirement Brief, outlining the key components for development.
+</li></ul>
+</li></ul>
+<h4>2. Asset Delivery:</h4>
+<ul><li>
+<b>Objective:</b> Ensure that all necessary assets for development, including the PRD (Product Requirements Document) and Design elements, are available to the development team.
+</li><li>
+<b>Activities:</b>
+<ul><li>
+Delivered the PRD encompassing Design File, Goal, Requirement Description, Success Metrics, Impact on other products, Error Cases, Mixpanel Integration Details, Security Measures, Operational SOP, Core Functionality Description, User Story/Acceptance Criteria, Flow Chart, and Decision Log.
+</li></ul>
+</li></ul>
+<h4>3. Tech Development Kick-off:</h4>
+<ul><li>
+<b>Objective:</b> Initiate the technical development process based on the delivered assets.
+</li><li>
+<b>Activities:</b>
+<ul><li>
+Developers commenced coding based on the PRD, following best practices and coding standards.
+</li></ul>
+</li></ul>
+<figure><img src="assets/p/payment/99cf5253.jpg" width="1600" height="936" alt="" loading="lazy" decoding="async"></figure>
+<h4>4. Third-Party Integration Meetings:</h4>
+<ul><li>
+<b>Objective:</b> Facilitate seamless integration with third-party services, specifically Bkash and Nagad, crucial components of the project.
+</li><li>
+<b>Activities:</b>
+<ul><li>
+Conducted multiple meetings with representatives from Bkash and Nagad to discuss integration details and ensure compatibility with their systems.
+</li><li>
+Addressed any potential challenges and established a clear communication channel for ongoing collaboration.
+</li></ul>
+</li></ul>
+<h4>5. Completion of Development:</h4>
+<ul><li>
+<b>Objective:</b> Reach the conclusion of the development phase with all core features implemented and tested.
+</li><li>
+<b>Activities:</b>
+<ul><li>
+Conducted thorough testing, to identify and resolve any issues.
+</li><li>
+Refined and polished the codebase to meet performance and security standards.
+</li></ul>
+</li></ul>
+<h4>6. Server Integration:</h4>
+<ul><li>
+<b>Objective:</b> Initiate the integration of the developed solution with the server infrastructure.
+</li><li>
+<b>Activities:</b>
+<ul><li>
+Ensured the smooth deployment of the developed solution onto the designated servers.
+</li><li>
+Monitored server performance and addressed any compatibility issues during the integration process.
+</li></ul>
+</li></ul>
+<h2>UAT</h2>
+<p>The Payment Disbursement project undergoes User Acceptance Testing (UAT), involving representatives from relevant teams. Supply Team receives training to engage directly with suppliers and Owner App Users. The CX Team is integrated for full-time user support. The Accounts Team collaborates on understanding the process, and post-UAT, decisions on accounting entries and control measures are implemented. This ensures a robust system, user satisfaction, and accountability in financial processes for a successful rollout.</p>
+<div class="c-row"><figure><img src="assets/p/payment/3f53c360.jpg" width="1600" height="1200" alt="" loading="lazy" decoding="async"></figure><figure><img src="assets/p/payment/d155ce02.jpg" width="683" height="911" alt="" loading="lazy" decoding="async"></figure><figure><img src="assets/p/payment/b479af21.jpg" width="1600" height="1197" alt="" loading="lazy" decoding="async"></figure></div>
+<h2>Success Metrics</h2>
+<ul><li>
+User Engagement Increased on the App: 45%
+</li><li>
+Percentage of user transactions involving App payment disbursement: 60%
+</li><li>
+Average time taken for a disbursement transaction to complete: 3 clicks, 40-50 seconds
+</li><li>
+Owner App Download Increased: 12%
+</li><li>
+Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
+</li></ul>
+    </div>
+    <nav class="c-next" aria-label="More projects">
+      <a href="#p-bidding"><span class="label">Previous</span><b>Bidding position and edit limits</b></a>
+      <a href="#p-quotient"><span class="label">Next</span><b>Stocks trading app</b></a>
+    </nav>
+  </div>
+</article>
+<article class="case" data-case="p-quotient" hidden aria-labelledby="t-quotient">
+  <div class="wrap">
+    <a class="back" href="#work">← All projects</a>
+    <header class="c-head">
+      <span class="label">Case study 06 / 09</span>
+      <h1 id="t-quotient">Stocks Trading Mobile App</h1>
+      <p class="c-lede">A mobile trading app that makes watchlists, charts and placing an order feel calm and clear for everyday investors.</p>
+      <dl class="c-facts">
+        <div><dt class="label">Client</dt><dd>Quotient</dd></div>
+        <div><dt class="label">Year</dt><dd>2023</dd></div>
+        <div><dt class="label">Services</dt><dd>App Design, UI + UX</dd></div>
+        <div><dt class="label">Visuals</dt><dd>19 images</dd></div>
+      </dl>
+    </header>
+    <figure class="c-cover"><img src="assets/p/quotient/6d57a141.jpg" width="1440" height="1080" alt="Stocks Trading Mobile App" decoding="async" fetchpriority="high"></figure>
+    <div class="c-body c-gallery">
+<figure><img src="assets/p/quotient/172cb0e4.jpg" width="1440" height="1707" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/bed12497.jpg" width="1440" height="1089" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/feb03fd7.jpg" width="1440" height="973" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/8a45194b.jpg" width="1440" height="997" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/ac72f72f.jpg" width="1440" height="1242" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/c306e42d.jpg" width="1440" height="1133" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/490fed34.jpg" width="1440" height="1004" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/428f79b7.jpg" width="1440" height="1116" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/defd439f.jpg" width="1440" height="911" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/a348ef2b.jpg" width="1440" height="1254" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/8d44a357.jpg" width="1440" height="2210" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/a02bda59.jpg" width="1440" height="2015" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/daa6c964.jpg" width="1440" height="951" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/ca9ac6c0.jpg" width="1440" height="1492" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/17a22c1f.jpg" width="1440" height="951" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/b2864fe7.jpg" width="1440" height="1109" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/f64ef3cd.jpg" width="1440" height="1689" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/quotient/99bd3fb3.jpg" width="1440" height="1316" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+    <nav class="c-next" aria-label="More projects">
+      <a href="#p-payment"><span class="label">Previous</span><b>Owner app payment disbursement</b></a>
+      <a href="#p-rca"><span class="label">Next</span><b>RCA UI modernization</b></a>
+    </nav>
+  </div>
+</article>
+<article class="case" data-case="p-rca" hidden aria-labelledby="t-rca">
+  <div class="wrap">
+    <a class="back" href="#work">← All projects</a>
+    <header class="c-head">
+      <span class="label">Case study 07 / 09</span>
+      <h1 id="t-rca">RCA UI Modernization Project</h1>
+      <p class="c-lede">Modernizing a root-cause-analysis interface into a clearer, faster tool for the teams who use it every day.</p>
+      <dl class="c-facts">
+        <div><dt class="label">Client</dt><dd>Enterprise tooling</dd></div>
+        <div><dt class="label">Year</dt><dd>2023</dd></div>
+        <div><dt class="label">Services</dt><dd>Product Design, Web App Design, Strategy</dd></div>
+        <div><dt class="label">Visuals</dt><dd>12 images</dd></div>
+      </dl>
+    </header>
+    <figure class="c-cover"><img src="assets/p/rca/ba8417c8.jpg" width="1600" height="900" alt="RCA UI Modernization Project" decoding="async" fetchpriority="high"></figure>
+    <div class="c-body c-gallery">
+<figure><img src="assets/p/rca/fa245ff1.jpg" width="1600" height="1015" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/bc3c1d91.jpg" width="1600" height="592" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/8b1a9108.jpg" width="1600" height="1002" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/a79bdefe.jpg" width="1600" height="1416" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/72a5e7fa.jpg" width="1600" height="1416" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/d6187a4a.jpg" width="1600" height="1072" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/dc7fd148.jpg" width="1600" height="3060" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/b1ff22dc.jpg" width="1600" height="2836" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/f42153b0.jpg" width="1600" height="1114" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/b70280d7.jpg" width="1600" height="1289" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/rca/24335671.jpg" width="1600" height="900" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+    <nav class="c-next" aria-label="More projects">
+      <a href="#p-quotient"><span class="label">Previous</span><b>Stocks trading app</b></a>
+      <a href="#p-incident"><span class="label">Next</span><b>AI incident automation</b></a>
+    </nav>
+  </div>
+</article>
+<article class="case" data-case="p-incident" hidden aria-labelledby="t-incident">
+  <div class="wrap">
+    <a class="back" href="#work">← All projects</a>
+    <header class="c-head">
+      <span class="label">Case study 08 / 09</span>
+      <h1 id="t-incident">AI-Driven Incident Automation B2B SaaS Platform</h1>
+      <p class="c-lede">A B2B tool that automates API incident management, so teams can set up real-time alerts and response workflows without the usual configuration pain.</p>
+      <dl class="c-facts">
+        <div><dt class="label">Client</dt><dd>Safurah</dd></div>
+        <div><dt class="label">Year</dt><dd>2024</dd></div>
+        <div><dt class="label">Services</dt><dd>Web App Design, SaaS</dd></div>
+        <div><dt class="label">Visuals</dt><dd>19 images</dd></div>
+      </dl>
+    </header>
+    <figure class="c-cover"><img src="assets/p/incident/830fb276.jpg" width="1600" height="1078" alt="AI-Driven Incident Automation B2B SaaS Platform" decoding="async" fetchpriority="high"></figure>
+    <div class="c-body c-gallery">
+<figure><img src="assets/p/incident/df9783df.jpg" width="1600" height="2836" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/fdec9d01.jpg" width="1600" height="2816" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/84f6dd5e.jpg" width="1600" height="1781" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/9e1f095a.jpg" width="1600" height="2195" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/b39f487b.jpg" width="1600" height="3081" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/f213cd7c.jpg" width="1600" height="1866" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/a3aebd7f.jpg" width="1600" height="864" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/4ef74dac.jpg" width="1600" height="2679" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/bcfe52ce.jpg" width="1600" height="1759" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/5afb769e.jpg" width="1600" height="2509" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/ca7df876.jpg" width="1600" height="1927" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/deae978e.jpg" width="1600" height="1431" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/1f3415c9.jpg" width="1600" height="1767" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/26443f64.jpg" width="1600" height="2755" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/b16f47a6.jpg" width="1600" height="1624" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/f63ab84c.jpg" width="1600" height="3149" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/eb21b423.jpg" width="1600" height="1222" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/incident/d359ceec.jpg" width="1" height="1" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+    <nav class="c-next" aria-label="More projects">
+      <a href="#p-rca"><span class="label">Previous</span><b>RCA UI modernization</b></a>
+      <a href="#p-doorprofit"><span class="label">Next</span><b>DoorProfit website revamp</b></a>
+    </nav>
+  </div>
+</article>
+<article class="case" data-case="p-doorprofit" hidden aria-labelledby="t-doorprofit">
+  <div class="wrap">
+    <a class="back" href="#work">← All projects</a>
+    <header class="c-head">
+      <span class="label">Case study 09 / 09</span>
+      <h1 id="t-doorprofit">Revamp a Property Investment Website</h1>
+      <p class="c-lede">A redesign of a property investment website that makes listings and returns easy to compare for first-time investors.</p>
+      <dl class="c-facts">
+        <div><dt class="label">Client</dt><dd>DoorProfit</dd></div>
+        <div><dt class="label">Year</dt><dd>2024</dd></div>
+        <div><dt class="label">Services</dt><dd>UI + UX, Website Design</dd></div>
+        <div><dt class="label">Visuals</dt><dd>11 images</dd></div>
+      </dl>
+    </header>
+    <figure class="c-cover"><img src="assets/p/doorprofit/5506166b.jpg" width="1600" height="2512" alt="Revamp a Property Investment Website" decoding="async" fetchpriority="high"></figure>
+    <div class="c-body c-gallery">
+<figure><img src="assets/p/doorprofit/01f650ad.jpg" width="1600" height="2112" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/doorprofit/a63cb6ac.jpg" width="1600" height="2040" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/doorprofit/5a9b96f6.jpg" width="1600" height="2233" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/doorprofit/c332ce3f.jpg" width="1600" height="2573" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/doorprofit/3becc0fa.jpg" width="1600" height="2524" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/doorprofit/d4c27b0b.jpg" width="1600" height="2828" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/doorprofit/8e7289a2.jpg" width="1600" height="2568" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/doorprofit/98a709a6.jpg" width="1440" height="2606" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/doorprofit/d1d476e7.jpg" width="1600" height="2598" alt="" loading="lazy" decoding="async"></figure>
+<figure><img src="assets/p/doorprofit/1a250564.jpg" width="1600" height="1510" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+    <nav class="c-next" aria-label="More projects">
+      <a href="#p-incident"><span class="label">Previous</span><b>AI incident automation</b></a>
+      <a href="#p-whitelabel"><span class="label">Next</span><b>PoolCabs, a white-label ride-sharing app</b></a>
+    </nav>
+  </div>
+</article>
+
+<footer class="contact" id="contact">
+  <div class="cmarq" aria-hidden="true"><div class="cmarq-track"><span>Let's talk</span><span>Build something people love</span><span>Say hello</span><span>Let's talk</span><span>Build something people love</span><span>Say hello</span><span>Let's talk</span><span>Build something people love</span><span>Say hello</span><span>Let's talk</span><span>Build something people love</span><span>Say hello</span></div></div>
+  <div class="wrap">
+    <div class="c-top">
+      <div>
+        <span class="label c-avail"><i></i>Get in touch</span>
+        <h2>Let's build something<br>people love<span class="dot">.</span></h2>
+      </div>
+      <a class="hello" href="mailto:masudul.ux@gmail.com" aria-label="Email Masudul">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="hello-c" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#hello-c">SAY HELLO · SAY HELLO · SAY HELLO · </textPath></text></svg>
+        <b>↗</b>
+      </a>
+    </div>
+    <div class="cc-grid">
+      <div class="cc">
+        <span class="label">Email</span>
+        <a class="cc-v" id="email" href="mailto:masudul.ux@gmail.com">masudul.ux@gmail.com</a>
+        <div class="cc-act"><button class="copy" type="button" id="copy-email" data-target="email">Copy</button><a class="cc-go" href="mailto:masudul.ux@gmail.com">Write ↗</a></div>
+      </div>
+      <div class="cc wa">
+        <span class="label"><svg class="wa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.2 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Z" fill="#25d366"/><path d="M9.1 7.3c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.9 4.5 4 2.2.9 2.7.7 3.2.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.7-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.9Z" fill="#fff"/></svg>Phone · WhatsApp</span>
+        <a class="cc-v" id="phone" href="https://wa.me/8801773122504" target="_blank" rel="noopener">+880 1773 122504</a>
+        <div class="cc-act"><button class="copy" type="button" id="copy-phone" data-target="phone">Copy</button><a class="cc-go wa-go" href="https://wa.me/8801773122504" target="_blank" rel="noopener">Chat on WhatsApp ↗</a></div>
+      </div>
+      <div class="cc">
+        <span class="label">Based in</span>
+        <span class="cc-v">Dhaka, Bangladesh</span>
+        <div class="cc-act"><span class="cc-time"><i></i><span id="dhaka-time">GMT+6</span> local time</span></div>
+      </div>
+    </div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/masudulnsu/" target="_blank" rel="noopener"><span>LinkedIn</span><i>↗</i></a>
+      <a href="https://www.behance.net/masudulhaque1" target="_blank" rel="noopener"><span>Behance</span><i>↗</i></a>
+      <a href="https://dribbble.com/masudulhaque" target="_blank" rel="noopener"><span>Dribbble</span><i>↗</i></a>
+      <a href="https://medium.com/@masudul.ux" target="_blank" rel="noopener"><span>Medium</span><i>↗</i></a>
+      <a href="assets/Masudul-Haque-Resume.pdf" data-resume download="Masudul-Haque-Resume.pdf"><span>Résumé (PDF)</span><i>↓</i></a>
+    </div>
+    <div class="foot"><span>© 2026 Md. Masudul Haque</span><a class="totop" href="#top">Back to top ↑</a><span>Designed in Figma, built by hand.</span></div>
+  </div>
+  <div class="c-glow" aria-hidden="true"></div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.target);
+    var text = el.textContent.trim();
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+
+// Hash router: #p-<slug> opens a case study, any other hash returns to the home page.
+(function () {
+  var cases = document.querySelectorAll('.case');
+  var last = null;
+  function route() {
+    var id = location.hash.slice(1);
+    var open = id.indexOf('p-') === 0 && document.querySelector('[data-case="' + id + '"]');
+    cases.forEach(function (c) { c.hidden = c !== open; });
+    document.body.classList.toggle('on-case', !!open);
+    if (open) {
+      document.title = open.querySelector('h1').textContent + ' · Masudul Haque';
+      window.scrollTo(0, 0);
+      requestAnimationFrame(function () { window.scrollTo(0, 0); });
+      last = id;
+    } else {
+      document.title = 'Masudul Haque';
+      var t = id ? document.getElementById(id) : null;
+      if (last && id === 'work') {
+        var card = document.querySelector('.projects a[href="#' + last + '"]');
+        (card || t).scrollIntoView({ block: card ? 'center' : 'start' });
+      } else if (t) t.scrollIntoView();
+      else if (last) window.scrollTo(0, 0);
+      last = null;
+    }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
+
+// Resume links: inside the Claude viewer, hand the PDF over through the downloads capability; elsewhere the plain link works.
+(function () {
+  var dl = null;
+  if (window.claude && claude.use) claude.use('downloads').then(function (d) { dl = d; }, function () {});
+  document.querySelectorAll('a[data-resume]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (!dl) return;
+      e.preventDefault();
+      fetch(a.getAttribute('href')).then(function (r) { return r.blob(); })
+        .then(function (b) { return dl.save({ filename: 'Masudul-Haque-Resume.pdf', data: b }); })
+        .catch(function () {});
+    });
+  });
+})();
+
+// Motion: scroll progress, reveals, count-ups, tilt cards, magnetic buttons. Skipped for reduced motion.
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bar = document.querySelector('.progress');
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - innerHeight;
+    if (bar) bar.style.setProperty('--p', h > 0 ? Math.min(1, scrollY / h) : 0);
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  if (reduce || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js');
+
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+  var groups = ['.sec-head', '.projects > li', '.imp', '.job', '.craft > div', '.creds > div', '.archive a', '.contact h2', '.c-avail', '.hello', '.cc', '.contact .socials a', '.c-body > figure', '.c-row', '.c-next'];
+  groups.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      var sib = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.style.setProperty('--d', (sib % 3) * 0.08 + 's');
+      el.classList.add('rv');
+      io.observe(el);
+    });
+  });
+
+  // Count-up for the hero figures, keeping prefixes like ৳ and suffixes like K+ or Cr.
+  var cio = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      cio.unobserve(e.target);
+      var el = e.target, m = el.dataset.v.match(/^(\D*)([\d.]+)(.*)$/);
+      if (!m) return;
+      var end = parseFloat(m[2]), dec = (m[2].split('.')[1] || '').length, t0 = performance.now();
+      (function tick(t) {
+        var k = Math.min(1, (t - t0) / 1400), v = end * (1 - Math.pow(1 - k, 3));
+        el.textContent = m[1] + v.toFixed(dec) + m[3];
+        if (k < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, { threshold: .6 });
+  document.querySelectorAll('.fig b').forEach(function (b) { b.dataset.v = b.textContent; cio.observe(b); });
+
+  if (!matchMedia('(hover: hover)').matches) return;
+  document.querySelectorAll('.projects a').forEach(function (a) {
+    var box = a.querySelector('.pc-img');
+    var pill = document.createElement('span');
+    pill.className = 'pc-pill'; pill.textContent = 'View case study';
+    box.appendChild(pill);
+    box.addEventListener('mousemove', function (e) {
+      var r = box.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      box.style.setProperty('--ry', (x - .5) * 8 + 'deg');
+      box.style.setProperty('--rx', (.5 - y) * 8 + 'deg');
+      box.style.setProperty('--mx', e.clientX - r.left + 'px');
+      box.style.setProperty('--my', e.clientY - r.top + 'px');
+    });
+    box.addEventListener('mouseleave', function () { box.style.setProperty('--rx', '0deg'); box.style.setProperty('--ry', '0deg'); });
+  });
+  document.querySelectorAll('.btn, .socials a').forEach(function (b) {
+    b.addEventListener('mousemove', function (e) {
+      var r = b.getBoundingClientRect();
+      b.style.transform = 'translate(' + (e.clientX - r.left - r.width / 2) * .18 + 'px,' + (e.clientY - r.top - r.height / 2) * .3 + 'px)';
+    });
+    b.addEventListener('mouseleave', function () { b.style.transform = ''; });
+  });
+})();
+
+// Motion layer 2. Everything here is decorative and skipped for reduced motion.
+(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var css = function (n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); };
+  var mouse = { x: -9999, y: -9999 };
+  addEventListener('pointermove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+
+  // 1. Hero: a Figma canvas dot grid that breathes on its own and swells around the pointer.
+  var hero = document.querySelector('.hero');
+  if (hero) {
+    var cv = document.createElement('canvas');
+    cv.className = 'hero-canvas'; cv.setAttribute('aria-hidden', 'true');
+    hero.insertBefore(cv, hero.firstChild);
+    var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = 1, dotC = '', selC = '', accC = '', visible = true;
+    var size = function () {
+      dpr = Math.min(2, devicePixelRatio || 1);
+      W = hero.clientWidth; H = hero.clientHeight;
+      cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      dotC = css('--line'); selC = css('--select'); accC = css('--accent');
+    };
+    size(); addEventListener('resize', size);
+    matchMedia('(prefers-color-scheme: dark)').addEventListener && matchMedia('(prefers-color-scheme: dark)').addEventListener('change', size);
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(hero);
+    var G = 28;
+    (function frame(t) {
+      requestAnimationFrame(frame);
+      if (!visible) return;
+      ctx.clearRect(0, 0, W, H);
+      var r = hero.getBoundingClientRect(), mx = mouse.x - r.left, my = mouse.y - r.top;
+      for (var y = G / 2; y < H; y += G) {
+        for (var x = G / 2; x < W; x += G) {
+          var dx = x - mx, dy = y - my, d = Math.sqrt(dx * dx + dy * dy);
+          var wave = Math.sin(x * .012 + y * .018 + t * .0012) * .5 + .5;
+          var near = Math.max(0, 1 - d / 170);
+          var push = near * near * 14, px = x + (d ? dx / d * push : 0), py = y + (d ? dy / d * push : 0);
+          var rad = 1 + wave * .6 + near * 2.6;
+          ctx.globalAlpha = .55 + wave * .3 + near * .45;
+          ctx.fillStyle = near > .05 ? (near > .55 ? accC : selC) : dotC;
+          ctx.beginPath(); ctx.arc(px, py, rad, 0, 6.283); ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1;
+    })(0);
+  }
+
+  // 2. Headings: split into words that rise out of a mask when their section reveals.
+  document.querySelectorAll('.sec-head h2, .contact h2, .c-head h1').forEach(function (h) {
+    var i = 0, nodes = Array.prototype.slice.call(h.childNodes);
+    nodes.forEach(function (n) {
+      if (n.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          var w = document.createElement('span'); w.className = 'w';
+          var s = document.createElement('span'); s.textContent = part; s.style.setProperty('--i', i++);
+          w.appendChild(s); frag.appendChild(w);
+        });
+        h.replaceChild(frag, n);
+      } else if (n.nodeType === 1 && n.tagName !== 'BR') {
+        var w = document.createElement('span'); w.className = 'w';
+        var s = document.createElement('span'); s.style.setProperty('--i', i++);
+        h.replaceChild(w, n); s.appendChild(n); w.appendChild(s);
+      }
+    });
+    if (h.matches('.c-head h1')) {
+      // Case titles replay each time a case page opens.
+      var play = function () { var ws = h.querySelectorAll('.w'); ws.forEach(function (w) { w.classList.remove('go'); }); requestAnimationFrame(function () { requestAnimationFrame(function () { ws.forEach(function (w) { w.classList.add('go'); }); }); }); };
+      new MutationObserver(function () { if (!h.closest('.case').hidden) play(); }).observe(h.closest('.case'), { attributes: true, attributeFilter: ['hidden'] });
+      if (!h.closest('.case').hidden) play();
+    }
+  });
+
+  // 3. Marquee that speeds up and leans with scroll velocity.
+  var track = document.querySelector('.marquee-track');
+  if (track) {
+    var x = 0, vel = 0, lastY = scrollY, half = 0;
+    var measure = function () { half = track.scrollWidth / 2; };
+    measure(); addEventListener('resize', measure);
+    (function loop() {
+      var dy = scrollY - lastY; lastY = scrollY;
+      vel += (dy - vel) * .12;
+      var hovering = track.parentNode.matches(':hover');
+      x -= hovering ? 0 : .45 + Math.abs(vel) * .35;
+      if (half && x <= -half) x += half;
+      track.style.transform = 'translate3d(' + x + 'px,0,0) skewX(' + Math.max(-12, Math.min(12, -vel * .5)) + 'deg)';
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  // 4. Spotlight on impact cells.
+  document.querySelectorAll('.imp').forEach(function (c) {
+    c.addEventListener('pointermove', function (e) { var r = c.getBoundingClientRect(); c.style.setProperty('--x', e.clientX - r.left + 'px'); c.style.setProperty('--y', e.clientY - r.top + 'px'); });
+  });
+
+  // 5. Name box: the tag reports the live size of the layer, like Figma does.
+  var sel = document.querySelector('.sel'), tag = sel && sel.querySelector('.tag');
+  if (sel && tag) {
+    var base = tag.textContent;
+    sel.addEventListener('mouseenter', function () { setTimeout(function () { var r = sel.getBoundingClientRect(); tag.textContent = 'Name · ' + Math.round(r.width) + ' × ' + Math.round(r.height); }, 120); });
+    sel.addEventListener('mouseleave', function () { tag.textContent = base; });
+  }
+
+  // 6. Click bursts: Figma shape primitives pop out wherever you click.
+  var layer = document.createElement('div'); layer.className = 'burst'; layer.setAttribute('aria-hidden', 'true'); document.body.appendChild(layer);
+  var shapes = ['<rect x="2" y="2" width="12" height="12" rx="2"/>', '<circle cx="8" cy="8" r="6.5"/>', '<path d="M8 1.5 14.5 14h-13Z"/>', '<path d="M8 1l2 4.6 5 .5-3.8 3.3 1.1 4.9L8 11.8 3.7 14.3l1.1-4.9L1 6.1l5-.5Z"/>', '<path d="M2 8h12M8 2v12" stroke-width="3" stroke-linecap="round"/>'];
+  addEventListener('pointerdown', function (e) {
+    if (e.button !== 0 || e.target.closest('input, textarea, select')) return;
+    var cols = [css('--accent'), css('--select'), '#2fbf71', '#ffc53d', '#a855f7'];
+    for (var k = 0; k < 9; k++) {
+      var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      var c = cols[k % cols.length], sh = shapes[(Math.random() * shapes.length) | 0];
+      s.setAttribute('viewBox', '0 0 16 16'); s.setAttribute('width', 10 + Math.random() * 8); s.setAttribute('height', s.getAttribute('width'));
+      s.innerHTML = sh.indexOf('stroke-width') > -1 ? sh.replace('<path', '<path stroke="' + c + '" fill="none"') : sh.replace(/^<(\w+)/, '<$1 fill="' + c + '"');
+      s.style.position = 'absolute'; s.style.left = e.clientX - 8 + 'px'; s.style.top = e.clientY - 8 + 'px';
+      layer.appendChild(s);
+      var a = Math.random() * 6.283, dist = 40 + Math.random() * 70, rot = (Math.random() - .5) * 540;
+      s.animate([
+        { transform: 'translate(0,0) scale(.2) rotate(0deg)', opacity: 1 },
+        { transform: 'translate(' + Math.cos(a) * dist + 'px,' + (Math.sin(a) * dist - 20) + 'px) scale(1) rotate(' + rot + 'deg)', opacity: 1, offset: .6 },
+        { transform: 'translate(' + Math.cos(a) * dist * 1.15 + 'px,' + (Math.sin(a) * dist + 30) + 'px) scale(.6) rotate(' + rot * 1.3 + 'deg)', opacity: 0 }
+      ], { duration: 800 + Math.random() * 300, easing: 'cubic-bezier(.2,.7,.3,1)' }).onfinish = (function (n) { return function () { n.remove(); }; })(s);
+    }
+  });
+
+  if (!fine) return;
+  // 7. Custom cursor: a dot plus a lagging ring that morphs over links, cards and text.
+  var dot = document.createElement('div'), ring = document.createElement('div');
+  dot.className = 'cur'; ring.className = 'cur-ring';
+  dot.setAttribute('aria-hidden', 'true'); ring.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(dot); document.body.appendChild(ring);
+  var rx = 0, ry = 0, started = false;
+  addEventListener('pointermove', function (e) {
+    if (!started) { started = true; rx = e.clientX; ry = e.clientY; document.documentElement.classList.add('has-cur'); }
+    dot.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)';
+    var t = e.target.closest ? e.target : null;
+    ring.classList.toggle('card', !!(t && t.closest('.pc-img')));
+    ring.classList.toggle('link', !!(t && !t.closest('.pc-img') && t.closest('a, button')));
+    ring.classList.toggle('text', !!(t && !t.closest('a, button') && t.closest('p, li, h1, h2, h3, h4, dd')));
+  }, { passive: true });
+  document.addEventListener('mouseleave', function () { document.documentElement.classList.remove('has-cur'); started = false; });
+  (function follow() {
+    rx += (mouse.x - rx) * .18; ry += (mouse.y - ry) * .18;
+    ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+    requestAnimationFrame(follow);
+  })();
+
+  // 8. Project cards get Figma selection handles and a live W × H badge.
+  document.querySelectorAll('.projects .pc-img').forEach(function (box) {
+    var img = box.querySelector('img'), clip = document.createElement('div');
+    clip.className = 'pc-clip'; box.insertBefore(clip, img); clip.appendChild(img);
+    for (var k = 0; k < 4; k++) { var h = document.createElement('i'); h.className = 'hd'; box.appendChild(h); }
+    var b = document.createElement('span'); b.className = 'pc-size'; box.appendChild(b);
+    box.addEventListener('mouseenter', function () { b.textContent = Math.round(box.offsetWidth) + ' × ' + Math.round(box.offsetHeight); });
+  });
+})();
+
+// Contact: Dhaka clock, cursor-tracked card borders and a glow that follows the pointer.
+(function () {
+  var t = document.getElementById('dhaka-time');
+  if (t && window.Intl) {
+    var f = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Dhaka', hour: 'numeric', minute: '2-digit' });
+    var tick = function () { t.textContent = f.format(new Date()); };
+    tick(); setInterval(tick, 15000);
+  }
+  document.querySelectorAll('.cc').forEach(function (c) {
+    c.addEventListener('pointermove', function (e) { var r = c.getBoundingClientRect(); c.style.setProperty('--x', e.clientX - r.left + 'px'); c.style.setProperty('--y', e.clientY - r.top + 'px'); });
+  });
+  var foot = document.querySelector('.contact'), glow = document.querySelector('.c-glow');
+  if (foot && glow) foot.addEventListener('pointermove', function (e) {
+    var r = foot.getBoundingClientRect();
+    glow.style.setProperty('--gx', (e.clientX - r.left) / r.width * 100 + '%');
+    glow.style.setProperty('--gy', (e.clientY - r.top) / r.height * 100 + '%');
+  });
+})();
+</script>
+
+</body>
+</html>

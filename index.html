@@ -567,9 +567,9 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
 .job .now { display: inline-flex; align-items: center; gap: .35rem; margin-left: .5rem; vertical-align: middle; font-family: var(--mono); font-size: .66rem; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; color: #16a34a; background: color-mix(in srgb, #22c55e 14%, transparent); padding: .2rem .5rem; border-radius: 99px; }
 .exp.tl .roles { position: relative; }
 .exp.tl .roles:has(.role + .role) .role { position: relative; padding-left: 1.6rem; }
-.exp.tl .roles:has(.role + .role) .role::before { content: ""; position: absolute; left: 0; top: .45em; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); transition: border-color .3s, background .3s; }
-.exp.tl .roles:has(.role + .role) .role + .role::after { content: ""; position: absolute; left: 4.5px; top: calc(-1 * var(--s3) + .45em + 13px); height: calc(var(--s3) - 6px); width: 1px; background: var(--line); transform: translateX(-50%); }
-.exp.tl .roles:has(.role + .role) .role:first-child::after { content: ""; position: absolute; left: 4.5px; top: calc(.45em + 13px); bottom: -2px; width: 1px; background: var(--line); transform: translateX(-50%); }
+.exp.tl .roles:has(.role + .role) .role::before { content: ""; box-sizing: border-box; position: absolute; left: 0; top: .45em; width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); transition: border-color .3s, background .3s; }
+.exp.tl .roles:has(.role + .role) .role:not(:last-child)::after { content: ""; position: absolute; left: 6px; top: calc(.45em + 17px); bottom: calc(4px - var(--s3) - .45em); width: 2px; border-radius: 2px; background: var(--line); transform: translateX(-50%); transition: background .3s; }
+.exp.tl .job.lit .roles .role:not(:last-child)::after { background: linear-gradient(var(--accent), var(--line)); }
 .exp.tl .job.lit .roles:has(.role + .role) .role::before { border-color: var(--accent); }
 .exp.tl .job.lit .roles:has(.role + .role) .role:first-child::before { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent); }
 .exp.tl .job .co h3 { transition: color .3s; }

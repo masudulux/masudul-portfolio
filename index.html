@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+// Theme: dark by default; a visitor's toggle choice is remembered. Runs before paint to avoid a flash.
+(function () { var t = 'dark'; try { t = localStorage.getItem('theme') || 'dark'; } catch (e) {} document.documentElement.setAttribute('data-theme', t); })();
+</script>
 <title>Masudul Haque</title>
 <link rel="canonical" href="https://hellomasudul.com/">
 <meta property="og:type" content="website">
@@ -529,6 +533,17 @@ img, video, canvas { max-width: 100%; }
 .cc.wa:hover { background: color-mix(in srgb, #25d366 8%, transparent); }
 .hello { background: transparent; border: 1.5px solid color-mix(in srgb, var(--bg) 30%, var(--fg)); }
 .hello:hover { border-color: var(--accent); }
+
+/* Theme toggle */
+.nav .wrap { gap: clamp(.9rem, 3vw, 2rem); }
+.nav ul { margin-left: auto; }
+.theme-tg { flex: none; position: relative; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; display: grid; place-items: center; overflow: hidden; transition: border-color .2s, transform .3s cubic-bezier(.2,.8,.2,1.4); }
+.theme-tg:hover { border-color: var(--accent); transform: rotate(-12deg) scale(1.06); }
+.theme-tg svg { position: absolute; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .5s cubic-bezier(.2,.8,.2,1.2), opacity .3s; }
+.theme-tg .i-moon { fill: currentColor; stroke: none; }
+:root[data-theme="dark"] .theme-tg .i-moon, :root[data-theme="light"] .theme-tg .i-sun { opacity: 0; transform: translateY(120%) rotate(90deg); }
+:root[data-theme="dark"] .theme-tg .i-sun { color: #ffc53d; }
+html.theming, html.theming *, html.theming *::before, html.theming *::after { transition: background-color .45s ease, color .45s ease, border-color .45s ease !important; }
 </style>
 </head>
 <body>
@@ -544,6 +559,10 @@ img, video, canvas { max-width: 100%; }
       <li><a href="assets/Masudul-Haque-Resume.pdf" data-resume target="_blank" rel="noopener">Résumé</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="theme-tg" type="button" aria-label="Switch to light mode" title="Toggle light / dark">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.3 8.3 0 0 1 9.4 4a8.3 8.3 0 1 0 10.6 10.6Z"/></svg>
+    </button>
   </div>
   <div class="progress" aria-hidden="true"></div>
 </header>
@@ -2122,6 +2141,23 @@ document.querySelectorAll('.copy').forEach(function (btn) {
     var r = foot.getBoundingClientRect();
     glow.style.setProperty('--gx', (e.clientX - r.left) / r.width * 100 + '%');
     glow.style.setProperty('--gy', (e.clientY - r.top) / r.height * 100 + '%');
+  });
+})();
+
+// Theme toggle: flips data-theme, remembers it, and lets the canvas re-read colors.
+(function () {
+  var btn = document.querySelector('.theme-tg'), root = document.documentElement;
+  if (!btn) return;
+  var label = function () { btn.setAttribute('aria-label', root.getAttribute('data-theme') === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'); };
+  label();
+  btn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.classList.add('theming');
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    label();
+    dispatchEvent(new Event('resize'));
+    setTimeout(function () { root.classList.remove('theming'); }, 500);
   });
 })();
 </script>

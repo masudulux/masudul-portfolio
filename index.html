@@ -552,6 +552,31 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
 .to-top svg { width: 18px; height: 18px; }
 .to-top .ring { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); transform: rotate(-90deg); pointer-events: none; }
 .to-top .ring circle { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: calc(100 - var(--tp, 0) * 100); transition: stroke-dashoffset .12s linear; }
+
+/* Experience timeline: a rail that fills as you scroll, company badges as nodes, nested role dots */
+.exp.tl { --rail: 72px; --node: 48px; position: relative; border-top: 0; padding-left: var(--rail); }
+.exp.tl::before, .exp.tl::after { content: ""; position: absolute; left: calc(var(--node) / 2 - 1px); top: var(--s4); bottom: var(--s4); width: 2px; border-radius: 2px; background: var(--line); }
+.exp.tl::after { background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 60%, #ffb347)); transform-origin: 0 0; transform: scaleY(var(--fill, 0)); transition: transform .15s linear; box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 50%, transparent); }
+.exp.tl .job { position: relative; border-bottom: 0; padding-block: var(--s4); }
+.exp.tl .job + .job::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); }
+.job .logo { position: absolute; z-index: 1; left: calc(-1 * var(--rail)); top: var(--s4); width: var(--node); height: var(--node); border-radius: 14px; display: grid; place-items: center; font-family: var(--display); font-weight: 600; font-size: 1.05rem; letter-spacing: -.02em; color: var(--muted); background: var(--surface); border: 1px solid var(--line); transition: color .35s, border-color .35s, box-shadow .35s, transform .45s cubic-bezier(.2,.8,.2,1.4); }
+.job.lit .logo { color: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 14%, transparent); transform: rotate(-4deg); }
+.job .logo i { position: absolute; right: -6px; top: -6px; width: 14px; height: 14px; border-radius: 50%; background: #22c55e; border: 3px solid var(--bg); }
+.job .logo i::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid #22c55e; animation: tlPulse 1.8s ease-out infinite; }
+@keyframes tlPulse { from { transform: scale(.6); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
+.job .now { display: inline-flex; align-items: center; gap: .35rem; margin-left: .5rem; vertical-align: middle; font-family: var(--mono); font-size: .66rem; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; color: #16a34a; background: color-mix(in srgb, #22c55e 14%, transparent); padding: .2rem .5rem; border-radius: 99px; }
+.exp.tl .roles { position: relative; }
+.exp.tl .roles:has(.role + .role) .role { position: relative; padding-left: 1.6rem; }
+.exp.tl .roles:has(.role + .role) .role::before { content: ""; position: absolute; left: 0; top: .45em; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); transition: border-color .3s, background .3s; }
+.exp.tl .roles:has(.role + .role) .role + .role::after { content: ""; position: absolute; left: 4.5px; top: calc(-1 * var(--s3) + .45em + 13px); height: calc(var(--s3) - 6px); width: 1px; background: var(--line); transform: translateX(-50%); }
+.exp.tl .roles:has(.role + .role) .role:first-child::after { content: ""; position: absolute; left: 4.5px; top: calc(.45em + 13px); bottom: -2px; width: 1px; background: var(--line); transform: translateX(-50%); }
+.exp.tl .job.lit .roles:has(.role + .role) .role::before { border-color: var(--accent); }
+.exp.tl .job.lit .roles:has(.role + .role) .role:first-child::before { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent); }
+.exp.tl .job .co h3 { transition: color .3s; }
+@media (max-width: 860px) {
+  .exp.tl { --rail: 54px; --node: 38px; }
+  .job .logo { border-radius: 11px; font-size: .88rem; }
+}
 </style>
 </head>
 <body>
@@ -691,10 +716,11 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
         <h2>Experience</h2>
         <p>Leading design from research to handoff, side by side with product, tech, growth and leadership.</p>
       </div>
-      <div class="exp">
+      <div class="exp tl">
         <article class="job">
           <div class="co">
-            <h3><a href="https://intelmachines.ai" target="_blank" rel="noopener">Intelligent Machines</a></h3>
+            <span class="logo" aria-hidden="true">IM<i></i></span>
+            <h3><a href="https://intelmachines.ai" target="_blank" rel="noopener">Intelligent Machines</a><span class="now">Now</span></h3>
             <p>Banani, Dhaka · On-site<br>Sep 2026 – Present</p>
           </div>
           <div class="roles">
@@ -708,6 +734,7 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
         </article>
         <article class="job">
           <div class="co">
+            <span class="logo" aria-hidden="true">TL</span>
             <h3><a href="https://trucklagbe.com/en/home/" target="_blank" rel="noopener">Truck Lagbe Ltd.</a></h3>
             <p>Mohakhali DOHS, Dhaka<br>Jun 2022 – Sep 2026 · 4 yrs 4 mos</p>
           </div>
@@ -736,6 +763,7 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
         </article>
         <article class="job">
           <div class="co">
+            <span class="logo" aria-hidden="true">Sa</span>
             <h3>Safurah</h3>
             <p>UI/UX design agency · US, remote<br>Oct 2022 – May 2026</p>
           </div>
@@ -754,6 +782,7 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
         </article>
         <article class="job">
           <div class="co">
+            <span class="logo" aria-hidden="true">Pl</span>
             <h3>Platoon</h3>
             <p>Design community · Remote<br>Jan 2023 – Mar 2023</p>
           </div>
@@ -768,6 +797,7 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
         </article>
         <article class="job">
           <div class="co">
+            <span class="logo" aria-hidden="true">Te</span>
             <h3><a href="https://techtsy.com/" target="_blank" rel="noopener">Techtsy SDN. BHD</a></h3>
             <p>Cyberjaya, Malaysia (remote)<br>Dec 2020 – May 2022</p>
           </div>
@@ -790,6 +820,7 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
         </article>
         <article class="job">
           <div class="co">
+            <span class="logo" aria-hidden="true">Fi</span>
             <h3>Fiverr</h3>
             <p>Freelance, remote<br>May 2020 – Nov 2020</p>
           </div>
@@ -2184,6 +2215,21 @@ document.querySelectorAll('.copy').forEach(function (btn) {
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
+})();
+
+// Experience timeline: fill the rail with scroll and light each company as the line reaches it.
+(function () {
+  var exp = document.querySelector('.exp.tl');
+  if (!exp) return;
+  var jobs = exp.querySelectorAll('.job');
+  function onScroll() {
+    var r = exp.getBoundingClientRect(), mark = innerHeight * .55;
+    exp.style.setProperty('--fill', Math.max(0, Math.min(1, (mark - r.top) / r.height)));
+    jobs.forEach(function (j) { j.classList.toggle('lit', j.getBoundingClientRect().top + 24 < mark); });
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  onScroll();
 })();
 </script>
 

@@ -544,6 +544,12 @@ img, video, canvas { max-width: 100%; }
 :root[data-theme="dark"] .theme-tg .i-moon, :root[data-theme="light"] .theme-tg .i-sun { opacity: 0; transform: translateY(120%) rotate(90deg); }
 :root[data-theme="dark"] .theme-tg .i-sun { color: #ffc53d; }
 html.theming, html.theming *, html.theming *::before, html.theming *::after { transition: background-color .45s ease, color .45s ease, border-color .45s ease !important; }
+
+/* Floating back-to-top: appears after the first screen of scrolling */
+.to-top { position: fixed; right: clamp(16px, 3vw, 28px); bottom: calc(clamp(16px, 3vw, 28px) + env(safe-area-inset-bottom)); z-index: 40; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 72%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); color: var(--fg); cursor: pointer; display: grid; place-items: center; opacity: 0; visibility: hidden; transform: translateY(12px) scale(.9); transition: opacity .25s, visibility .25s, transform .3s cubic-bezier(.2,.8,.2,1.4), border-color .2s, color .2s; }
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+.to-top svg { width: 18px; height: 18px; }
 </style>
 </head>
 <body>
@@ -1845,6 +1851,7 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
   <div class="c-glow" aria-hidden="true"></div>
 </footer>
 
+<button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <script>
 document.querySelectorAll('.copy').forEach(function (btn) {
   btn.addEventListener('click', function () {
@@ -2158,6 +2165,18 @@ document.querySelectorAll('.copy').forEach(function (btn) {
     label();
     dispatchEvent(new Event('resize'));
     setTimeout(function () { root.classList.remove('theming'); }, 500);
+  });
+})();
+
+// Floating back-to-top button.
+(function () {
+  var b = document.querySelector('.to-top');
+  function onScroll() { b.classList.toggle('show', scrollY > innerHeight * .8); }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  b.addEventListener('click', function () {
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
 })();
 </script>

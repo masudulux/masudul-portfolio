@@ -781,9 +781,11 @@ section.kw-block { padding-block: var(--s5) 0; }
 .kw-q figcaption small { font-family: var(--mono); font-size: .66rem; letter-spacing: .04em; text-transform: uppercase; color: color-mix(in srgb, var(--c) 65%, var(--fg)); }
 .kw-bar { grid-area: bar; position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px dashed var(--line); }
 .kw-pins { display: flex; flex-wrap: wrap; gap: .3rem; }
-.kw-pin { flex: none; width: 30px; height: 30px; padding: 0; border: 0; border-radius: 50% 50% 50% 4px; display: grid; place-items: center; font-family: var(--mono); font-size: .62rem; font-weight: 500; color: #fff; background: var(--c); cursor: pointer; opacity: .42; filter: saturate(.6); transition: opacity .25s, filter .25s, transform .35s cubic-bezier(.2,.8,.2,1.5), box-shadow .25s; }
-.kw-pin:hover, .kw-pin:focus-visible { opacity: .85; filter: none; transform: translateY(-2px); }
-.kw-pin[aria-pressed="true"] { opacity: 1; filter: none; transform: translateY(-3px) scale(1.12); box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--c), 0 8px 18px -8px var(--c); }
+.kw-pin { flex: none; position: relative; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 50% 50% 50% 4px; overflow: hidden; background: var(--c); cursor: pointer; transition: transform .35s cubic-bezier(.2,.8,.2,1.5), box-shadow .25s; }
+.kw-pin img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1); opacity: .5; transition: filter .3s, opacity .3s; }
+.kw-pin:hover img, .kw-pin:focus-visible img, .kw-pin[aria-pressed="true"] img { filter: none; opacity: 1; }
+.kw-pin:hover, .kw-pin:focus-visible { transform: translateY(-2px); }
+.kw-pin[aria-pressed="true"] { transform: translateY(-3px) scale(1.12); box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--c), 0 8px 18px -8px var(--c); }
 .kw-pin:focus-visible { outline: 2px solid var(--select); outline-offset: 3px; }
 .kw-ctl { display: flex; align-items: center; gap: .35rem; }
 .kw-n { font-family: var(--mono); font-size: .72rem; color: var(--muted); margin-right: .4rem; font-variant-numeric: tabular-nums; }
@@ -811,7 +813,7 @@ section.kw-block { padding-block: var(--s5) 0; }
   .kw-li { margin-left: 0; flex-basis: 100%; }
   .kw-bar { flex-direction: column; align-items: stretch; }
   .kw-pins { flex-wrap: nowrap; justify-content: space-between; gap: .15rem; }
-  .kw-pin { width: 24px; height: 24px; font-size: .54rem; }
+  .kw-pin { width: 25px; height: 25px; }
   .kw-q p { font-size: 1rem; }
   .kw-ctl { justify-content: flex-end; }
 }
@@ -1020,17 +1022,17 @@ section.kw-block { padding-block: var(--s5) 0; }
         </div>
         <div class="kw-bar">
           <div class="kw-pins" role="group" aria-label="Choose a recommendation">
-          <button class="kw-pin" type="button" style="--c:#DC2626" aria-controls="kw-0" aria-pressed="true" aria-label="Shoaib Mahmud" title="Shoaib Mahmud">SM</button>
-          <button class="kw-pin" type="button" style="--c:#7C3AED" aria-controls="kw-1" aria-pressed="false" aria-label="Fahrina Ameen" title="Fahrina Ameen">FA</button>
-          <button class="kw-pin" type="button" style="--c:#2563EB" aria-controls="kw-2" aria-pressed="false" aria-label="Minhazur Rahman" title="Minhazur Rahman">MR</button>
-          <button class="kw-pin" type="button" style="--c:#C2410C" aria-controls="kw-3" aria-pressed="false" aria-label="Yeasin Ahammed" title="Yeasin Ahammed">YA</button>
-          <button class="kw-pin" type="button" style="--c:#059669" aria-controls="kw-4" aria-pressed="false" aria-label="Enamul Haque Shamim" title="Enamul Haque Shamim">ES</button>
-          <button class="kw-pin" type="button" style="--c:#DB2777" aria-controls="kw-5" aria-pressed="false" aria-label="Onez Chowdhury" title="Onez Chowdhury">OC</button>
-          <button class="kw-pin" type="button" style="--c:#0369A1" aria-controls="kw-6" aria-pressed="false" aria-label="Md. Sakhawath Hossain" title="Md. Sakhawath Hossain">SH</button>
-          <button class="kw-pin" type="button" style="--c:#B45309" aria-controls="kw-7" aria-pressed="false" aria-label="Nusrat Haque Supti" title="Nusrat Haque Supti">NS</button>
-          <button class="kw-pin" type="button" style="--c:#0F766E" aria-controls="kw-8" aria-pressed="false" aria-label="Umair Bashir" title="Umair Bashir">UB</button>
-          <button class="kw-pin" type="button" style="--c:#6D28D9" aria-controls="kw-9" aria-pressed="false" aria-label="Samir Ahmane" title="Samir Ahmane">SA</button>
-          <button class="kw-pin" type="button" style="--c:#475569" aria-controls="kw-10" aria-pressed="false" aria-label="AL Shahriar" title="AL Shahriar">AS</button>
+          <button class="kw-pin" type="button" style="--c:#DC2626" aria-controls="kw-0" aria-pressed="true" aria-label="Shoaib Mahmud" title="Shoaib Mahmud"><img src="assets/recs/shoaib.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#7C3AED" aria-controls="kw-1" aria-pressed="false" aria-label="Fahrina Ameen" title="Fahrina Ameen"><img src="assets/recs/fahrina.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#2563EB" aria-controls="kw-2" aria-pressed="false" aria-label="Minhazur Rahman" title="Minhazur Rahman"><img src="assets/recs/minhazur.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#C2410C" aria-controls="kw-3" aria-pressed="false" aria-label="Yeasin Ahammed" title="Yeasin Ahammed"><img src="assets/recs/yeasin.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#059669" aria-controls="kw-4" aria-pressed="false" aria-label="Enamul Haque Shamim" title="Enamul Haque Shamim"><img src="assets/recs/enamul.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#DB2777" aria-controls="kw-5" aria-pressed="false" aria-label="Onez Chowdhury" title="Onez Chowdhury"><img src="assets/recs/onez.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#0369A1" aria-controls="kw-6" aria-pressed="false" aria-label="Md. Sakhawath Hossain" title="Md. Sakhawath Hossain"><img src="assets/recs/sakhawath.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#B45309" aria-controls="kw-7" aria-pressed="false" aria-label="Nusrat Haque Supti" title="Nusrat Haque Supti"><img src="assets/recs/nusrat.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#0F766E" aria-controls="kw-8" aria-pressed="false" aria-label="Umair Bashir" title="Umair Bashir"><img src="assets/recs/umair.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#6D28D9" aria-controls="kw-9" aria-pressed="false" aria-label="Samir Ahmane" title="Samir Ahmane"><img src="assets/recs/samir.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
+          <button class="kw-pin" type="button" style="--c:#475569" aria-controls="kw-10" aria-pressed="false" aria-label="AL Shahriar" title="AL Shahriar"><img src="assets/recs/al.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"></button>
           </div>
           <div class="kw-ctl">
             <span class="kw-n" aria-hidden="true"><b>01</b> / 11</span>

@@ -760,6 +760,62 @@ section.lp-block { padding-block: var(--s5) 0; }
   .lp-caps li:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 @media (prefers-reduced-motion: reduce) { .lp-strip::before { animation: none; } }
+/* Kind words: LinkedIn recommendations as Figma-style comment pins driving one quote at a time */
+section.kw-block { padding-block: var(--s5) 0; }
+.kw-strip { position: relative; display: grid; grid-template-columns: 12rem minmax(0, 1fr); grid-template-areas: "head stage" "head bar"; column-gap: var(--s4); row-gap: 1.1rem; padding: 1.3rem 1.4rem 1.1rem; border: 1px solid var(--line); border-radius: 20px; background: color-mix(in srgb, var(--surface) 55%, transparent); overflow: hidden; }
+.kw-head { grid-area: head; display: flex; flex-direction: column; gap: .6rem; }
+.kw-mark { font-family: var(--display); font-size: 3.4rem; line-height: .7; height: 1.6rem; color: var(--accent); }
+.kw-head h2 { font-size: 1.25rem; letter-spacing: -.02em; }
+.kw-head p { margin-top: .15rem; font-family: var(--mono); font-size: .68rem; color: var(--muted); line-height: 1.5; }
+.kw-li { margin-top: auto; font-family: var(--mono); font-size: .7rem; color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--accent); align-self: flex-start; padding-bottom: 1px; transition: color .2s; }
+.kw-li:hover { color: var(--accent); }
+.kw-stage { grid-area: stage; display: grid; min-width: 0; }
+.kw-q { grid-area: 1 / 1; margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: .9rem; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .45s, transform .55s cubic-bezier(.2,.8,.2,1), visibility 0s .55s; }
+.kw-q.on { opacity: 1; visibility: visible; transform: none; transition: opacity .45s .08s, transform .55s .08s cubic-bezier(.2,.8,.2,1), visibility 0s; }
+.kw-q blockquote { margin: 0; }
+.kw-q p { margin: 0; font-family: var(--display); font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.42; letter-spacing: -.012em; text-wrap: pretty; }
+.kw-q em { font-style: normal; background: linear-gradient(color-mix(in srgb, var(--c) 22%, transparent), color-mix(in srgb, var(--c) 22%, transparent)) no-repeat 0 85% / 100% .42em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.kw-q figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .6rem; font-size: .88rem; }
+.kw-q figcaption b { font-weight: 600; }
+.kw-q figcaption span { color: var(--muted); }
+.kw-q figcaption small { font-family: var(--mono); font-size: .66rem; letter-spacing: .04em; text-transform: uppercase; color: color-mix(in srgb, var(--c) 65%, var(--fg)); }
+.kw-bar { grid-area: bar; position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px dashed var(--line); }
+.kw-pins { display: flex; flex-wrap: wrap; gap: .3rem; }
+.kw-pin { flex: none; width: 30px; height: 30px; padding: 0; border: 0; border-radius: 50% 50% 50% 4px; display: grid; place-items: center; font-family: var(--mono); font-size: .62rem; font-weight: 500; color: #fff; background: var(--c); cursor: pointer; opacity: .42; filter: saturate(.6); transition: opacity .25s, filter .25s, transform .35s cubic-bezier(.2,.8,.2,1.5), box-shadow .25s; }
+.kw-pin:hover, .kw-pin:focus-visible { opacity: .85; filter: none; transform: translateY(-2px); }
+.kw-pin[aria-pressed="true"] { opacity: 1; filter: none; transform: translateY(-3px) scale(1.12); box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--c), 0 8px 18px -8px var(--c); }
+.kw-pin:focus-visible { outline: 2px solid var(--select); outline-offset: 3px; }
+.kw-ctl { display: flex; align-items: center; gap: .35rem; }
+.kw-n { font-family: var(--mono); font-size: .72rem; color: var(--muted); margin-right: .4rem; font-variant-numeric: tabular-nums; }
+.kw-n b { color: var(--fg); font-weight: 500; }
+.kw-btn { width: 32px; height: 32px; padding: 0; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); color: var(--fg); font-size: .85rem; cursor: pointer; display: grid; place-items: center; transition: border-color .2s, background .2s; }
+.kw-btn:hover { border-color: var(--fg); }
+.kw-btn:focus-visible { outline: 2px solid var(--select); outline-offset: 2px; }
+.kw-btn svg { width: 14px; height: 14px; }
+.kw-btn .i-pause { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.kw-btn .i-play { fill: currentColor; display: none; }
+.kw-strip.paused .kw-btn .i-pause { display: none; }
+.kw-strip.paused .kw-btn .i-play { display: block; }
+.kw-prog { position: absolute; left: 0; top: -1px; height: 1px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+.kw-strip.run .kw-prog { animation: kwProg var(--kw-t, 7s) linear forwards; }
+.kw-strip.hold .kw-prog { animation-play-state: paused; }
+@keyframes kwProg { to { transform: scaleX(1); } }
+@media (max-width: 960px) {
+  .kw-strip { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "stage" "bar"; }
+  .kw-head { flex-direction: row; align-items: center; flex-wrap: wrap; gap: .4rem .8rem; }
+  .kw-mark { font-size: 2.6rem; height: 1.2rem; }
+  .kw-li { margin: 0 0 0 auto; align-self: center; }
+}
+@media (max-width: 600px) {
+  .kw-strip { padding: 1.1rem 1rem 1rem; }
+  .kw-li { margin-left: 0; flex-basis: 100%; }
+  .kw-bar { flex-direction: column; align-items: stretch; }
+  .kw-pins { flex-wrap: nowrap; justify-content: space-between; gap: .15rem; }
+  .kw-pin { width: 24px; height: 24px; font-size: .54rem; }
+  .kw-q p { font-size: 1rem; }
+  .kw-ctl { justify-content: flex-end; }
+}
+@media (prefers-reduced-motion: reduce) { .kw-q, .kw-q.on { transition: none; transform: none; } .kw-strip.run .kw-prog { animation: none; } }
 </style>
 </head>
 <body>
@@ -904,6 +960,86 @@ section.lp-block { padding-block: var(--s5) 0; }
         <div class="imp"><span class="k">72%</span><h3>Ratings &amp; feedback</h3><p>A rating and feedback experience that reached 72% user adoption.</p></div>
         <div class="imp"><span class="k">500+</span><h3>BRTC trucks digitized</h3><p>A truck category and automated payment journey that brought public BRTC trucks online.</p></div>
         <div class="imp"><span class="k">45h</span><h3>Design systems</h3><p>Built and maintained scalable design systems that save 45+ hours of design-to-dev work every week.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block kw-block" id="kind-words" aria-labelledby="kw-title">
+    <div class="wrap">
+      <div class="kw-strip" aria-roledescription="carousel">
+        <div class="kw-head">
+          <span class="kw-mark" aria-hidden="true">&ldquo;</span>
+          <div><h2 id="kw-title">Kind words</h2><p>11 recommendations from managers, PMs and engineers.</p></div>
+          <a class="kw-li" href="https://www.linkedin.com/in/masudulnsu/details/recommendations/" target="_blank" rel="noopener">Read all on LinkedIn ↗</a>
+        </div>
+        <div class="kw-stage" aria-live="off">
+          <figure class="kw-q on" id="kw-0" style="--c:#DC2626">
+            <blockquote><p>I hired him for Truck Lagbe after seeing his design &amp; leadership skills. &hellip; After assigning a task to him, I was rarely involved because I was confident he would <em>deliver more than I expected.</em></p></blockquote>
+            <figcaption><b>Shoaib Mahmud</b><span>UX Lead @ Freightmate</span><small>Managed me directly · 2022</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-1" style="--c:#7C3AED" aria-hidden="true">
+            <blockquote><p>He is a highly diligent and detail-oriented person, with a quiet yet focused approach. Masud&rsquo;s work consistently demonstrated <em>exceptional thoroughness</em> and keen observational skills, making him a valuable asset to our team.</p></blockquote>
+            <figcaption><b>Fahrina Ameen</b><span>Head of Product &amp; Delivery at Vivasoft</span><small>Managed me directly · 2024</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-2" style="--c:#2563EB" aria-hidden="true">
+            <blockquote><p>He went from just designing screens to actually <em>thinking like a product owner</em> and asking the right questions, caring about users, and taking real ownership of what he builds.</p></blockquote>
+            <figcaption><b>Minhazur Rahman</b><span>CTO · Solution Architect</span><small>Senior to me · 2026</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-3" style="--c:#C2410C" aria-hidden="true">
+            <blockquote><p>I&rsquo;ve always called Masud bhai our <em>&ldquo;Superman Designer&rdquo;</em> and there&rsquo;s a good reason for that. &hellip; his ability to take a complicated product problem, understand the user and business needs, and turn it into a design that feels simple and practical.</p></blockquote>
+            <figcaption><b>Yeasin Ahammed</b><span>Product Manager at Truck Lagbe</span><small>Same team · 2026</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-4" style="--c:#059669" aria-hidden="true">
+            <blockquote><p>&hellip; he consistently impressed me with his design skills and dedication to creating intuitive user experiences. Not only incredibly skilled, but also he is <em>humble, cooperative,</em> and always willing to offer support to the team and individuals.</p></blockquote>
+            <figcaption><b>Enamul Haque Shamim</b><span>Software Engineer</span><small>Different team · 2024</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-5" style="--c:#DB2777" aria-hidden="true">
+            <blockquote><p>I saw how great he is at <em>solving problems and making detailed designs.</em> &hellip; Masud Bhaiya is a great individual for any team.</p></blockquote>
+            <figcaption><b>Onez Chowdhury</b><span>Product Manager</span><small>Same team · 2024</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-6" style="--c:#0369A1" aria-hidden="true">
+            <blockquote><p>His <em>meticulous attention to detail</em> and innovative thought process have significantly contributed to the success of numerous projects.</p></blockquote>
+            <figcaption><b>Md. Sakhawath Hossain</b><span>Senior Software Engineer @ US-Bangla Group</span><small>Different team · 2023</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-7" style="--c:#B45309" aria-hidden="true">
+            <blockquote><p>Masudul Haque <em>leads by example</em> and many people at Truck Lagbe find his enthusiasm and dedication both inspiring and motivating.</p></blockquote>
+            <figcaption><b>Nusrat Haque Supti</b><span>Product Manager</span><small>Senior to me · 2023</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-8" style="--c:#0F766E" aria-hidden="true">
+            <blockquote><p>He is undoubtedly a remarkable UI/UX Designer. He designs with <em>great creativity and passion.</em> I found him 110% cooperative with his fellows during work.</p></blockquote>
+            <figcaption><b>Umair Bashir</b><span>Senior Software Engineer</span><small>Same team · 2022</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-9" style="--c:#6D28D9" aria-hidden="true">
+            <blockquote><p>&hellip; he demonstrated <em>great dedication</em> by helping me understanding business logic with UI at my position as a back-end developer.</p></blockquote>
+            <figcaption><b>Samir Ahmane</b><span>Senior Backend &amp; DevOps Engineer</span><small>Different team · 2022</small></figcaption>
+          </figure>
+          <figure class="kw-q" id="kw-10" style="--c:#475569" aria-hidden="true">
+            <blockquote><p><em>Masudul is a gem.</em> He is a super talented Ui/Ux Designer, and an innovative problem solver. &hellip; Any company would be lucky to have him.</p></blockquote>
+            <figcaption><b>AL Shahriar</b><span>Software Engineer</span><small>Same team · 2022</small></figcaption>
+          </figure>
+        </div>
+        <div class="kw-bar">
+          <div class="kw-pins" role="group" aria-label="Choose a recommendation">
+          <button class="kw-pin" type="button" style="--c:#DC2626" aria-controls="kw-0" aria-pressed="true" aria-label="Shoaib Mahmud" title="Shoaib Mahmud">SM</button>
+          <button class="kw-pin" type="button" style="--c:#7C3AED" aria-controls="kw-1" aria-pressed="false" aria-label="Fahrina Ameen" title="Fahrina Ameen">FA</button>
+          <button class="kw-pin" type="button" style="--c:#2563EB" aria-controls="kw-2" aria-pressed="false" aria-label="Minhazur Rahman" title="Minhazur Rahman">MR</button>
+          <button class="kw-pin" type="button" style="--c:#C2410C" aria-controls="kw-3" aria-pressed="false" aria-label="Yeasin Ahammed" title="Yeasin Ahammed">YA</button>
+          <button class="kw-pin" type="button" style="--c:#059669" aria-controls="kw-4" aria-pressed="false" aria-label="Enamul Haque Shamim" title="Enamul Haque Shamim">ES</button>
+          <button class="kw-pin" type="button" style="--c:#DB2777" aria-controls="kw-5" aria-pressed="false" aria-label="Onez Chowdhury" title="Onez Chowdhury">OC</button>
+          <button class="kw-pin" type="button" style="--c:#0369A1" aria-controls="kw-6" aria-pressed="false" aria-label="Md. Sakhawath Hossain" title="Md. Sakhawath Hossain">SH</button>
+          <button class="kw-pin" type="button" style="--c:#B45309" aria-controls="kw-7" aria-pressed="false" aria-label="Nusrat Haque Supti" title="Nusrat Haque Supti">NS</button>
+          <button class="kw-pin" type="button" style="--c:#0F766E" aria-controls="kw-8" aria-pressed="false" aria-label="Umair Bashir" title="Umair Bashir">UB</button>
+          <button class="kw-pin" type="button" style="--c:#6D28D9" aria-controls="kw-9" aria-pressed="false" aria-label="Samir Ahmane" title="Samir Ahmane">SA</button>
+          <button class="kw-pin" type="button" style="--c:#475569" aria-controls="kw-10" aria-pressed="false" aria-label="AL Shahriar" title="AL Shahriar">AS</button>
+          </div>
+          <div class="kw-ctl">
+            <span class="kw-n" aria-hidden="true"><b>01</b> / 11</span>
+            <button class="kw-btn kw-play" type="button" aria-label="Pause auto-play"><svg viewBox="0 0 16 16" aria-hidden="true"><path class="i-pause" d="M5 3.5v9M11 3.5v9"/><path class="i-play" d="M5 3.2v9.6L12.6 8Z"/></svg></button>
+            <button class="kw-btn kw-prev" type="button" aria-label="Previous recommendation">←</button>
+            <button class="kw-btn kw-next" type="button" aria-label="Next recommendation">→</button>
+          </div>
+          <span class="kw-prog" aria-hidden="true"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -2167,7 +2303,7 @@ document.querySelectorAll('.copy').forEach(function (btn) {
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
-  var groups = ['.sec-head', '.projects > li', '.imp', '.job', '.craft > div', '.creds > div', '.archive a', '.lp-strip', '.contact h2', '.c-avail', '.hello', '.cc', '.contact .socials a', '.c-body > figure', '.c-row', '.c-next'];
+  var groups = ['.sec-head', '.projects > li', '.imp', '.job', '.craft > div', '.creds > div', '.archive a', '.lp-strip', '.kw-strip', '.contact h2', '.c-avail', '.hello', '.cc', '.contact .socials a', '.c-body > figure', '.c-row', '.c-next'];
   groups.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el) {
       var sib = Array.prototype.indexOf.call(el.parentNode.children, el);
@@ -2452,6 +2588,59 @@ document.querySelectorAll('.kc').forEach(function (c) {
   });
 });
 
+// Kind words: pins pick a recommendation; auto-advances every 7s, pausing on hover, focus, off-screen or when paused.
+(function () {
+  var root = document.querySelector('.kw-strip');
+  if (!root) return;
+  var qs = root.querySelectorAll('.kw-q'), pins = root.querySelectorAll('.kw-pin');
+  var stage = root.querySelector('.kw-stage'), num = root.querySelector('.kw-n b'), play = root.querySelector('.kw-play');
+  var cur = 0, timer = null, T = 7000, userPaused = matchMedia('(prefers-reduced-motion: reduce)').matches, hover = false, visible = false;
+  function show(i, user) {
+    i = (i + qs.length) % qs.length;
+    qs[cur].classList.remove('on'); qs[cur].setAttribute('aria-hidden', 'true'); pins[cur].setAttribute('aria-pressed', 'false');
+    cur = i;
+    qs[cur].classList.add('on'); qs[cur].removeAttribute('aria-hidden'); pins[cur].setAttribute('aria-pressed', 'true');
+    num.textContent = String(cur + 1).padStart(2, '0');
+    if (user) stage.setAttribute('aria-live', 'polite');
+    restart();
+  }
+  function running() { return !userPaused && !hover && visible && !document.hidden; }
+  function restart() {
+    left = T; clearTimeout(timer); root.classList.remove('run'); void root.offsetWidth;
+    if (userPaused) return;
+    root.classList.add('run'); sync();
+  }
+  var left = T, started = 0;
+  function sync() {
+    clearTimeout(timer);
+    root.classList.toggle('hold', !running());
+    if (!root.classList.contains('run')) return;
+    if (running()) { started = Date.now(); timer = setTimeout(function () { left = T; show(cur + 1); }, left); }
+  }
+  function hold(v) { if (running() && root.classList.contains('run')) left -= Date.now() - started; hover = v; sync(); }
+  pins.forEach(function (p, i) { p.addEventListener('click', function () { show(i, true); }); });
+  root.querySelector('.kw-prev').addEventListener('click', function () { show(cur - 1, true); });
+  root.querySelector('.kw-next').addEventListener('click', function () { show(cur + 1, true); });
+  root.querySelector('.kw-pins').addEventListener('keydown', function (e) {
+    var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!d) return; e.preventDefault(); show(cur + d, true); pins[cur].focus();
+  });
+  function setPaused(v) {
+    userPaused = v; root.classList.toggle('paused', v);
+    play.setAttribute('aria-label', v ? 'Play auto-play' : 'Pause auto-play');
+    if (v) { clearTimeout(timer); root.classList.remove('run'); } else restart();
+  }
+  play.addEventListener('click', function () { setPaused(!userPaused); });
+  root.addEventListener('mouseenter', function () { hold(true); });
+  root.addEventListener('mouseleave', function () { hold(false); });
+  root.addEventListener('focusin', function () { hold(true); });
+  root.addEventListener('focusout', function (e) { if (!root.contains(e.relatedTarget)) hold(false); });
+  document.addEventListener('visibilitychange', function () { hold(hover); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { if (running()) left -= Date.now() - started; visible = es[0].isIntersecting; sync(); }, { threshold: .4 }).observe(root);
+  } else visible = true;
+  setPaused(userPaused);
+})();
 </script>
 
 </body>

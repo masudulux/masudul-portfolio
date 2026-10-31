@@ -30,7 +30,8 @@
 <meta name="twitter:description" content="Masudul Haque is a Senior Product &amp; UI/UX Designer in Dhaka, Bangladesh with 6 years across fintech, logistics and AI. Case studies, experience and resume.">
 <meta name="twitter:image" content="https://hellomasudul.com/assets/og.jpg?v=2">
 <meta name="twitter:image:alt" content="Hi, I'm Masudul Haque. Senior UI/UX Designer, hellomasudul.com">
-<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -176,8 +177,10 @@ p { margin: 0; }
   border-bottom: 1px solid var(--line);
 }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); padding-block: .9rem; }
-.mark { font-family: var(--display); font-weight: 700; font-size: 1.05rem; text-decoration: none; letter-spacing: -.02em; }
-.mark span { color: var(--accent); }
+.mark { font-family: var(--display); font-weight: 700; font-size: 1.05rem; text-decoration: none; display: inline-flex; align-items: center; gap: .5em; letter-spacing: -.02em; }
+.mark svg { width: 1.6em; height: 1.6em; flex: none; }
+.mark .mk-fg { stroke: var(--fg); } .mark .mk-ac { stroke: var(--accent); }
+.mark .mk-w span { color: var(--accent); }
 .nav ul { display: flex; gap: clamp(.9rem, 3vw, 2rem); list-style: none; margin: 0; padding: 0; font-size: .9rem; }
 .nav ul a { text-decoration: none; color: var(--muted); transition: color .15s; }
 .nav ul a:hover { color: var(--fg); }
@@ -764,7 +767,7 @@ section.lp-block { padding-block: var(--s5) 0; }
 
 <header class="nav">
   <div class="wrap">
-    <a class="mark" href="#top">masud<span>.</span>ux</a>
+    <a class="mark" href="#top" aria-label="Masudul Haque, home"><svg viewBox="0 0 64 64" aria-hidden="true"><path class="mk-fg" d="M9 48V16l12.5 18L34 16M34 32h21M55 16v32" fill="none" stroke-width="6" stroke-linejoin="round"/><path class="mk-ac" d="M34 13v35" fill="none" stroke-width="6"/></svg><span class="mk-w">masud<span>.</span>ux</span></a>
     <ul>
       <li><a href="#work">Work</a></li>
       <li><a href="#experience">Experience</a></li>

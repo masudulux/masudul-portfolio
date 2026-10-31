@@ -715,61 +715,46 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
 .ed-nsu img { width: 32px; height: 32px; object-fit: contain; display: block; }
 .creds li:hover .ed-logo { transform: rotate(-8deg) scale(1.08); }
 
-/* Live projects: browser-window cards with a generated screen, glass chips and a drifting glow */
-.lp-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--s3); }
-.lp { grid-column: span 2; min-width: 0; }
-.lp:nth-child(-n+2) { grid-column: span 3; }
-.lp a { display: flex; flex-direction: column; gap: 1rem; height: 100%; text-decoration: none; }
-.lp-win { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); transition: transform .5s cubic-bezier(.2,.8,.2,1.2), box-shadow .5s, border-color .3s; }
-.lp a:hover .lp-win { transform: translateY(-6px); border-color: color-mix(in srgb, var(--c) 60%, var(--line)); box-shadow: 0 30px 60px -28px color-mix(in srgb, var(--c) 70%, transparent); }
-.lp-bar { display: flex; align-items: center; gap: 6px; padding: .6rem .8rem; border-bottom: 1px solid var(--line); }
-.lp-bar > i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); transition: background .3s; }
-.lp a:hover .lp-bar > i:nth-child(1) { background: #ff5f57; } .lp a:hover .lp-bar > i:nth-child(2) { background: #febc2e; } .lp a:hover .lp-bar > i:nth-child(3) { background: #28c840; }
-.lp-addr { display: inline-flex; align-items: center; gap: .5rem; margin-left: .6rem; flex: 1; min-width: 0; font-family: var(--mono); font-size: .7rem; color: var(--muted); background: var(--bg); padding: .3rem .65rem; border-radius: 8px; white-space: nowrap; overflow: hidden; }
-.lp-addr b { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px color-mix(in srgb, #22c55e 25%, transparent); }
-.lp-screen { position: relative; height: 210px; overflow: hidden; color: #fff; background: linear-gradient(155deg, color-mix(in srgb, var(--c) 82%, #fff 18%), color-mix(in srgb, var(--c) 62%, #000 38%)); }
-.lp:nth-child(-n+2) .lp-screen { height: 270px; }
-.lp-screen::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgb(255 255 255 / .2) 1px, transparent 1px); background-size: 16px 16px; -webkit-mask-image: radial-gradient(circle at 70% 30%, #000, transparent 75%); mask-image: radial-gradient(circle at 70% 30%, #000, transparent 75%); }
-.lp-orb { position: absolute; width: 220px; height: 220px; right: -60px; top: -80px; border-radius: 50%; background: radial-gradient(circle, rgb(255 255 255 / .55), transparent 65%); filter: blur(10px); animation: lpDrift 9s ease-in-out infinite alternate; transition: transform .8s cubic-bezier(.2,.8,.2,1); }
-@keyframes lpDrift { to { translate: -50px 40px; } }
-.lp a:hover .lp-orb { transform: scale(1.35); }
-.lp-ui { position: absolute; left: 1.3rem; right: 1.3rem; bottom: 1.3rem; display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; transition: transform .6s cubic-bezier(.2,.8,.2,1.2); }
-.lp a:hover .lp-ui { transform: translateY(-6px); }
-.lp-nav { display: flex; gap: 6px; margin-bottom: auto; }
-.lp-nav i { width: 22px; height: 5px; border-radius: 3px; background: rgb(255 255 255 / .45); }
-.lp-ui strong { font-family: var(--display); font-weight: 600; font-size: clamp(1.6rem, 2.6vw, 2rem); letter-spacing: -.035em; line-height: 1; }
-.lp:nth-child(-n+2) .lp-ui strong { font-size: clamp(2rem, 3.6vw, 2.8rem); }
-.lp-line { width: 62%; height: 6px; border-radius: 4px; background: rgb(255 255 255 / .38); }
-.lp-line.s { width: 40%; background: rgb(255 255 255 / .24); }
-.lp-btn { margin-top: .35rem; font-family: var(--mono); font-size: .66rem; font-weight: 500; color: var(--c); background: #fff; padding: .35rem .7rem; border-radius: 99px; box-shadow: 0 6px 16px -6px rgb(0 0 0 / .35); }
-.lp-chip { position: absolute; display: inline-flex; align-items: center; gap: .4rem; font-family: var(--mono); font-size: .66rem; font-weight: 500; padding: .35rem .65rem; border-radius: 10px; background: rgb(255 255 255 / .18); border: 1px solid rgb(255 255 255 / .3); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); white-space: nowrap; animation: lpFloat 5s ease-in-out infinite; transition: transform .6s cubic-bezier(.2,.8,.2,1.3); }
-.lp-chip.c1 { right: 1.2rem; top: 1.2rem; }
-.lp-chip.c2 { right: 2.6rem; top: 3.6rem; animation-delay: -2.5s; }
-.lp-chip em { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
-@keyframes lpFloat { 50% { translate: 0 -6px; } }
-.lp a:hover .lp-chip.c1 { transform: translate(-8px, 4px) rotate(-4deg); }
-.lp a:hover .lp-chip.c2 { transform: translate(6px, 8px) rotate(3deg); }
-.lp-meta { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .9rem; align-items: start; }
-.lp-n { font-family: var(--mono); font-size: .75rem; color: var(--muted); padding-top: .4rem; }
-.lp-meta h3 { font-size: 1.35rem; letter-spacing: -.02em; transition: color .3s; }
-.lp-meta p { margin-top: .25rem; color: var(--muted); font-size: .92rem; }
-.lp a:hover .lp-meta h3 { color: var(--c); }
-.lp-go { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line); transition: background .3s, color .3s, border-color .3s, transform .45s cubic-bezier(.2,.8,.2,1.4); }
-.lp a:hover .lp-go { background: var(--c); border-color: var(--c); color: #fff; transform: rotate(45deg); }
-.lp-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-left: 2.1rem; }
-.lp-tags span { font-size: .78rem; padding: .28rem .65rem; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); }
+/* Live projects: one compact strip of capsules that expand on hover */
+section.lp-block { padding-block: var(--s5) 0; }
+.lp-strip { position: relative; display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: var(--s2); align-items: center; padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: 20px; background: color-mix(in srgb, var(--surface) 55%, transparent); }
+.lp-strip::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; background: conic-gradient(from var(--lp-a, 0deg), transparent 0 70%, var(--accent) 85%, transparent); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: lpSpin 6s linear infinite; pointer-events: none; }
+@property --lp-a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes lpSpin { to { --lp-a: 360deg; } }
+.lp-head { display: flex; align-items: center; gap: .8rem; }
+.lp-head h2 { font-size: 1.25rem; letter-spacing: -.02em; }
+.lp-head p { margin-top: .15rem; font-family: var(--mono); font-size: .68rem; color: var(--muted); line-height: 1.5; }
+.lp-pulse { position: relative; flex: none; width: 10px; height: 10px; border-radius: 50%; background: #22c55e; }
+.lp-pulse::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #22c55e; animation: tlPulse 1.8s ease-out infinite; }
+.lp-caps { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .45rem; justify-content: flex-end; }
+.lp-caps li { position: relative; }
+.lc { position: relative; display: flex; align-items: center; gap: .55rem; height: 48px; padding: 0 .9rem 0 .35rem; border-radius: 99px; border: 1px solid var(--line); background: var(--bg); text-decoration: none; transition: border-color .3s, background .3s, box-shadow .3s, transform .4s cubic-bezier(.2,.8,.2,1.4); }
+.lc-ic { flex: none; width: 36px; height: 36px; border-radius: 50%; overflow: hidden; display: grid; place-items: center; font-family: var(--display); font-weight: 600; font-size: .85rem; letter-spacing: -.02em; color: #fff; background: var(--c); transition: transform .5s cubic-bezier(.2,.8,.2,1.5); }
+.lc-ic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lc-t { display: grid; line-height: 1.15; }
+.lc-t b { font-size: .9rem; font-weight: 600; }
+.lc-t small { font-family: var(--mono); font-size: .64rem; color: var(--muted); }
+.lc-more { position: absolute; z-index: 3; left: 50%; bottom: calc(100% + 10px); white-space: nowrap; font-family: var(--mono); font-size: .68rem; color: #fff; background: var(--c); padding: .4rem .7rem; border-radius: 8px; box-shadow: 0 10px 24px -10px var(--c); pointer-events: none; opacity: 0; transform: translate(-50%, 6px) scale(.9); transition: opacity .25s, transform .35s cubic-bezier(.2,.8,.2,1.4); }
+.lc-more::after { content: ""; position: absolute; left: 50%; top: 100%; border: 5px solid transparent; border-top-color: var(--c); transform: translateX(-50%); }
+.lc-go { position: absolute; top: -6px; right: -6px; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: .7rem; color: #fff; background: var(--c); opacity: 0; transform: scale(.4); transition: opacity .25s, transform .4s cubic-bezier(.2,.8,.2,1.6); }
+.lc:hover, .lc:focus-visible { border-color: var(--c); background: color-mix(in srgb, var(--c) 10%, var(--bg)); box-shadow: 0 10px 26px -14px var(--c); transform: translateY(-2px); }
+.lc:hover .lc-ic, .lc:focus-visible .lc-ic { transform: rotate(-12deg) scale(1.06); }
+.lc:hover .lc-more, .lc:focus-visible .lc-more { opacity: 1; transform: translate(-50%, 0) scale(1); }
+.lc:hover .lc-go, .lc:focus-visible .lc-go { opacity: 1; transform: scale(1) rotate(0); }
 @media (max-width: 960px) {
-  .lp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .lp, .lp:nth-child(-n+2) { grid-column: span 1; }
-  .lp:first-child { grid-column: 1 / -1; }
-  .lp:nth-child(n+2) .lp-screen { height: 200px; }
+  .lp-strip { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .lp-caps { justify-content: flex-start; }
 }
 @media (max-width: 600px) {
-  .lp-grid { grid-template-columns: minmax(0, 1fr); }
-  .lp .lp-screen, .lp:nth-child(-n+2) .lp-screen { height: 200px; }
-  .lp-tags { padding-left: 0; }
+  .lp-caps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lc { min-width: 0; }
+  .lc-t { min-width: 0; } .lc-t b, .lc-t small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lc-go, .lc-more, .lc-t small { display: none; }
+  .lc { height: 44px; padding-right: .6rem; }
+  .lc-ic { width: 32px; height: 32px; font-size: .78rem; }
+  .lp-caps li:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
-@media (prefers-reduced-motion: reduce) { .lp-orb, .lp-chip { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .lp-strip::before { animation: none; } }
 </style>
 </head>
 <body>
@@ -883,69 +868,18 @@ html.theming, html.theming *, html.theming *::before, html.theming *::after { tr
     </div>
   </section>
 
-  <section class="block" id="live">
+  <section class="block lp-block" id="live">
     <div class="wrap">
-      <div class="sec-head">
-        <h2>Live projects</h2>
-        <p>Products I helped design that are out in the world. Open any of them and try it live.</p>
+      <div class="lp-strip">
+        <div class="lp-head"><span class="lp-pulse"></span><div><h2>Live projects</h2><p>05 products in production, one click away.</p></div></div>
+        <ul class="lp-caps">
+        <li><a class="lc" style="--c:#E8343B" href="https://trucklagbe.com/en/home/" target="_blank" rel="noopener" aria-label="Truck Lagbe (On-demand truck hiring), opens trucklagbe.com"><span class="lc-ic"><img src="assets/logos/truck-lagbe.png" alt="" width="34" height="34" loading="lazy"></span><span class="lc-t"><b>Truck Lagbe</b><small>trucklagbe.com</small></span><span class="lc-more">On-demand truck hiring</span><span class="lc-go" aria-hidden="true">↗</span></a></li>
+        <li><a class="lc" style="--c:#7C5CFF" href="https://www.voiceops.com/" target="_blank" rel="noopener" aria-label="VoiceOps (AI call intelligence), opens voiceops.com"><span class="lc-ic">Vo</span><span class="lc-t"><b>VoiceOps</b><small>voiceops.com</small></span><span class="lc-more">AI call intelligence</span><span class="lc-go" aria-hidden="true">↗</span></a></li>
+        <li><a class="lc" style="--c:#2E90FA" href="https://www.freightmate.ai/" target="_blank" rel="noopener" aria-label="FreightMate (AI freight management), opens freightmate.ai"><span class="lc-ic">Fm</span><span class="lc-t"><b>FreightMate</b><small>freightmate.ai</small></span><span class="lc-more">AI freight management</span><span class="lc-go" aria-hidden="true">↗</span></a></li>
+        <li><a class="lc" style="--c:#12B76A" href="https://www.doorprofit.com/" target="_blank" rel="noopener" aria-label="DoorProfit (Property investing), opens doorprofit.com"><span class="lc-ic">Dp</span><span class="lc-t"><b>DoorProfit</b><small>doorprofit.com</small></span><span class="lc-more">Property investing</span><span class="lc-go" aria-hidden="true">↗</span></a></li>
+        <li><a class="lc" style="--c:#F5A524" href="https://arabtools.com/" target="_blank" rel="noopener" aria-label="ArabTools (Gulf web platform), opens arabtools.com"><span class="lc-ic">At</span><span class="lc-t"><b>ArabTools</b><small>arabtools.com</small></span><span class="lc-more">Gulf web platform</span><span class="lc-go" aria-hidden="true">↗</span></a></li>
+        </ul>
       </div>
-      <ol class="lp-grid">
-        <li class="lp" style="--c:#E8343B"><a href="https://trucklagbe.com/en/home/" target="_blank" rel="noopener" aria-label="Truck Lagbe, opens trucklagbe.com">
-          <div class="lp-win">
-            <div class="lp-bar"><i></i><i></i><i></i><span class="lp-addr"><b></b>trucklagbe.com</span></div>
-            <div class="lp-screen" aria-hidden="true"><span class="lp-orb"></span>
-              <div class="lp-ui"><span class="lp-nav"><i></i><i></i><i></i></span><strong>Truck Lagbe</strong><span class="lp-line"></span><span class="lp-line s"></span><span class="lp-btn">Visit live ↗</span></div>
-              <span class="lp-chip c1">40K+ daily users</span><span class="lp-chip c2"><em></em>Live</span>
-            </div>
-          </div>
-          <div class="lp-meta"><span class="lp-n">01</span><div><h3>Truck Lagbe</h3><p>Bangladesh's on-demand truck hiring platform</p></div><span class="lp-go" aria-hidden="true">↗</span></div>
-          <div class="lp-tags"><span>Logistics</span><span>Web & app</span></div>
-        </a></li>
-        <li class="lp" style="--c:#7C5CFF"><a href="https://www.voiceops.com/" target="_blank" rel="noopener" aria-label="VoiceOps, opens voiceops.com">
-          <div class="lp-win">
-            <div class="lp-bar"><i></i><i></i><i></i><span class="lp-addr"><b></b>voiceops.com</span></div>
-            <div class="lp-screen" aria-hidden="true"><span class="lp-orb"></span>
-              <div class="lp-ui"><span class="lp-nav"><i></i><i></i><i></i></span><strong>VoiceOps</strong><span class="lp-line"></span><span class="lp-line s"></span><span class="lp-btn">Visit live ↗</span></div>
-              <span class="lp-chip c1">Call analytics</span><span class="lp-chip c2"><em></em>Live</span>
-            </div>
-          </div>
-          <div class="lp-meta"><span class="lp-n">02</span><div><h3>VoiceOps</h3><p>AI conversation intelligence for sales and support teams</p></div><span class="lp-go" aria-hidden="true">↗</span></div>
-          <div class="lp-tags"><span>B2B SaaS</span><span>AI</span></div>
-        </a></li>
-        <li class="lp" style="--c:#2E90FA"><a href="https://www.freightmate.ai/" target="_blank" rel="noopener" aria-label="FreightMate, opens freightmate.ai">
-          <div class="lp-win">
-            <div class="lp-bar"><i></i><i></i><i></i><span class="lp-addr"><b></b>freightmate.ai</span></div>
-            <div class="lp-screen" aria-hidden="true"><span class="lp-orb"></span>
-              <div class="lp-ui"><span class="lp-nav"><i></i><i></i><i></i></span><strong>FreightMate</strong><span class="lp-line"></span><span class="lp-line s"></span><span class="lp-btn">Visit live ↗</span></div>
-              <span class="lp-chip c1">AI freight</span><span class="lp-chip c2"><em></em>Live</span>
-            </div>
-          </div>
-          <div class="lp-meta"><span class="lp-n">03</span><div><h3>FreightMate</h3><p>AI freight management that simplifies global shipping</p></div><span class="lp-go" aria-hidden="true">↗</span></div>
-          <div class="lp-tags"><span>Logistics</span><span>AI</span></div>
-        </a></li>
-        <li class="lp" style="--c:#12B76A"><a href="https://www.doorprofit.com/" target="_blank" rel="noopener" aria-label="DoorProfit, opens doorprofit.com">
-          <div class="lp-win">
-            <div class="lp-bar"><i></i><i></i><i></i><span class="lp-addr"><b></b>doorprofit.com</span></div>
-            <div class="lp-screen" aria-hidden="true"><span class="lp-orb"></span>
-              <div class="lp-ui"><span class="lp-nav"><i></i><i></i><i></i></span><strong>DoorProfit</strong><span class="lp-line"></span><span class="lp-line s"></span><span class="lp-btn">Visit live ↗</span></div>
-              <span class="lp-chip c1">Proptech</span><span class="lp-chip c2"><em></em>Live</span>
-            </div>
-          </div>
-          <div class="lp-meta"><span class="lp-n">04</span><div><h3>DoorProfit</h3><p>Property investment made clear for first-time investors</p></div><span class="lp-go" aria-hidden="true">↗</span></div>
-          <div class="lp-tags"><span>Proptech</span><span>Web</span></div>
-        </a></li>
-        <li class="lp" style="--c:#F5A524"><a href="https://arabtools.com/" target="_blank" rel="noopener" aria-label="ArabTools, opens arabtools.com">
-          <div class="lp-win">
-            <div class="lp-bar"><i></i><i></i><i></i><span class="lp-addr"><b></b>arabtools.com</span></div>
-            <div class="lp-screen" aria-hidden="true"><span class="lp-orb"></span>
-              <div class="lp-ui"><span class="lp-nav"><i></i><i></i><i></i></span><strong>ArabTools</strong><span class="lp-line"></span><span class="lp-line s"></span><span class="lp-btn">Visit live ↗</span></div>
-              <span class="lp-chip c1">E-commerce</span><span class="lp-chip c2"><em></em>Live</span>
-            </div>
-          </div>
-          <div class="lp-meta"><span class="lp-n">05</span><div><h3>ArabTools</h3><p>A web platform built for the Gulf market</p></div><span class="lp-go" aria-hidden="true">↗</span></div>
-          <div class="lp-tags"><span>Web</span><span>E-commerce</span></div>
-        </a></li>
-      </ol>
     </div>
   </section>
 
@@ -2228,7 +2162,7 @@ document.querySelectorAll('.copy').forEach(function (btn) {
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
-  var groups = ['.sec-head', '.projects > li', '.imp', '.job', '.craft > div', '.creds > div', '.archive a', '.lp', '.contact h2', '.c-avail', '.hello', '.cc', '.contact .socials a', '.c-body > figure', '.c-row', '.c-next'];
+  var groups = ['.sec-head', '.projects > li', '.imp', '.job', '.craft > div', '.creds > div', '.archive a', '.lp-strip', '.contact h2', '.c-avail', '.hello', '.cc', '.contact .socials a', '.c-body > figure', '.c-row', '.c-next'];
   groups.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el) {
       var sib = Array.prototype.indexOf.call(el.parentNode.children, el);

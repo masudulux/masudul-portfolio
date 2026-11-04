@@ -187,7 +187,12 @@ p { margin: 0; }
 .nav ul a:hover { color: var(--fg); }
 
 @media (max-width: 430px) {
-  .nav ul li:nth-child(2) { display: none; }
+  .nav ul .n-sm { display: none; }
+}
+@media (max-width: 400px) {
+  .nav .wrap { gap: .6rem !important; }
+  .nav ul { gap: .7rem !important; font-size: .84rem; }
+  .mark { font-size: .98rem; }
 }
 
 /* Hero */
@@ -341,7 +346,7 @@ section.block { padding-block: var(--s6) 0; }
   .job { grid-template-columns: 1fr; gap: var(--s3); }
 }
 @media (max-width: 560px) {
-  .nav ul li:nth-child(n+3):not(:nth-child(4)) { display: none; }
+  .nav ul .n-md { display: none; }
   .nav .wrap { gap: .75rem; }
   .nav ul { gap: .9rem; }
   .impact, .craft, .archive, .creds, .lines { grid-template-columns: 1fr; }
@@ -448,6 +453,44 @@ section.block { padding-block: var(--s6) 0; }
 .c-next b { font-family: var(--display); font-weight: 500; font-size: clamp(1.1rem, 2.4vw, 1.6rem); letter-spacing: -.02em; transition: color .2s; }
 .c-next a:hover b { color: var(--accent); }
 body.on-case main { display: none; }
+/* Articles: a list on the home page and a reading view that reuses the case-study layout */
+.posts { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); }
+.post { position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--s4); align-items: center; padding: var(--s3); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); transition: border-color .2s; }
+.post:hover { border-color: color-mix(in srgb, var(--select) 55%, var(--line)); }
+.post-img { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); background: var(--bg) radial-gradient(var(--line) 1.2px, transparent 1.3px) 0 0 / 18px 18px; }
+.post-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.post:hover .post-img img { transform: scale(1.03); }
+.post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .9rem; }
+.post-src { display: inline-flex; align-items: center; gap: .4rem; color: var(--fg); }
+.post-src svg { width: 15px; height: 15px; }
+.post h3 { font-size: clamp(1.35rem, 2.4vw, 1.8rem); line-height: 1.15; letter-spacing: -.02em; margin-top: .8rem; transition: color .2s; }
+.post h3 a { text-decoration: none; }
+.post h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.post:hover h3 { color: var(--accent); }
+.post p { color: var(--muted); margin-top: .7rem; font-size: .98rem; }
+.post-act { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; margin-top: var(--s3); }
+.post-go { font: 500 .85rem var(--mono); color: var(--fg); }
+.post-ext { position: relative; z-index: 1; font: 500 .8rem var(--mono); color: var(--muted); text-decoration: none; }
+.post-ext:hover { color: var(--accent); }
+.post .chips { margin-left: auto; }
+.case.post-v .c-head { max-width: 48rem; margin-inline: auto; padding-bottom: var(--s3); }
+.case.post-v .c-head h1 { font-size: clamp(2rem, 4.6vw, 3.2rem); }
+.case.post-v .c-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.case.post-v .c-body { margin-top: var(--s3); }
+.case.post-v .c-body > figure:first-child { margin-top: 0; }
+.a-src { display: inline-flex; align-items: center; gap: .55rem; margin-top: var(--s3); padding: .6rem 1rem .6rem .75rem; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); font: 500 .85rem var(--mono); text-decoration: none; transition: border-color .15s, color .15s; }
+.a-src:hover { border-color: var(--accent); color: var(--accent); }
+.a-src svg { width: 18px; height: 18px; }
+.a-orig { max-width: 46rem; margin: var(--s5) auto 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s2); padding: var(--s3); border: 1px dashed color-mix(in srgb, var(--fg) 25%, var(--line)); border-radius: 14px; }
+.a-orig p { color: var(--muted); font-size: .95rem; }
+.a-orig b { color: var(--fg); font-weight: 600; }
+.a-orig .a-src { margin-top: 0; }
+@media (max-width: 760px) {
+  .post { grid-template-columns: 1fr; gap: var(--s2); padding: var(--s2); }
+  .post .chips { margin-left: 0; }
+  .case.post-v .c-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (max-width: 860px) {
   .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .c-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -873,10 +916,11 @@ section.kw-block { padding-block: var(--s5) 0; }
     <a class="mark" href="#top" aria-label="Masudul Haque, home"><svg viewBox="0 0 64 64" aria-hidden="true"><path class="mk-fg" d="M9 48V16l12.5 18L34 16M34 32h21M55 16v32" fill="none" stroke-width="6" stroke-linejoin="round"/><path class="mk-ac" d="M34 13v35" fill="none" stroke-width="6"/></svg><span class="mk-w">masud<span>.</span>ux</span></a>
     <ul>
       <li><a href="#work">Work</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#craft">Craft</a></li>
+      <li class="n-sm"><a href="#experience">Experience</a></li>
+      <li class="n-md"><a href="#craft">Craft</a></li>
+      <li><a href="#articles">Articles</a></li>
       <li><a href="assets/Masudul-Haque-Resume.pdf" data-resume target="_blank" rel="noopener">Resume</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li class="n-md"><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-tg" type="button" aria-label="Switch to light mode" title="Toggle light / dark">
       <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
@@ -1261,6 +1305,30 @@ section.kw-block { padding-block: var(--s5) 0; }
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="block" id="articles">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Articles</h2>
+        <p>Things I've written about design, on Medium and elsewhere. Read them here, or on the original platform.</p>
+      </div>
+      <!-- To add an article: copy one <li class="post"> below (newest first), then add a matching
+           <article class="case post-v" data-case="a-<slug>"> block before the footer and run
+           python3 tools/build_case_pages.py. For a post you only want to link to, point the h3 link
+           at the original URL with target="_blank" and skip the article block. -->
+      <ul class="posts">
+        <li class="post">
+          <div class="post-img"><img onerror="this.remove()" src="https://cdn-images-1.medium.com/max/1600/1*RS_y9hv8dYDJiCbIeGwCNg@2x.jpeg" width="1600" height="900" alt="" loading="lazy" decoding="async"></div>
+          <div>
+            <div class="post-meta"><span class="label post-src"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.8" cy="12" rx="6.8" ry="6.9"/><ellipse cx="17.6" cy="12" rx="3.4" ry="6.5"/><ellipse cx="22.6" cy="12" rx="1.2" ry="5.8"/></svg>Medium</span><span class="label"><time datetime="2026-11-03">Nov 3, 2026</time></span><span class="label">{{READ}} min read</span></div>
+            <h3><a href="/articles/white-space/">White Space Isn’t Empty Space. It’s Your Loudest Design Tool.</a></h3>
+            <p>{{LEDE}}</p>
+            <div class="post-act"><span class="post-go">Read article →</span><a class="post-ext" href="https://medium.com/@masudul.ux/white-space-isnt-empty-space-it-s-your-loudest-design-tool-7fa2ac535183" target="_blank" rel="noopener">On Medium ↗</a><div class="chips"><span class="chip">Product Design</span><span class="chip">UX Design</span></div></div>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -2240,6 +2308,31 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
   </div>
 </article>
 
+<article class="case post-v" data-case="a-white-space" data-src="Medium" hidden aria-labelledby="t-white-space">
+  <div class="wrap">
+    <a class="back" href="#articles">← All articles</a>
+    <header class="c-head">
+      <span class="label">Article · Medium</span>
+      <h1 id="t-white-space">White Space Isn’t Empty Space. It’s Your Loudest Design Tool.</h1>
+      <p class="c-lede">{{LEDE}}</p>
+      <dl class="c-facts">
+        <div><dt class="label">Published</dt><dd><time datetime="2026-11-03">Nov 3, 2026</time></dd></div>
+        <div><dt class="label">Reading time</dt><dd>{{READ}} min</dd></div>
+        <div><dt class="label">Topics</dt><dd>Product Design, UX Design</dd></div>
+      </dl>
+      <a class="a-src" href="https://medium.com/@masudul.ux/white-space-isnt-empty-space-it-s-your-loudest-design-tool-7fa2ac535183" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.8" cy="12" rx="6.8" ry="6.9"/><ellipse cx="17.6" cy="12" rx="3.4" ry="6.5"/><ellipse cx="22.6" cy="12" rx="1.2" ry="5.8"/></svg>Read on Medium ↗</a>
+    </header>
+    <div class="c-body">
+{{BODY}}
+    </div>
+    <aside class="a-orig" aria-label="Original post"><p>This article was first published on <b>Medium</b>.<br>Follow along there for new posts, claps and comments.</p><a class="a-src" href="https://medium.com/@masudul.ux/white-space-isnt-empty-space-it-s-your-loudest-design-tool-7fa2ac535183" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.8" cy="12" rx="6.8" ry="6.9"/><ellipse cx="17.6" cy="12" rx="3.4" ry="6.5"/><ellipse cx="22.6" cy="12" rx="1.2" ry="5.8"/></svg>Open on Medium ↗</a></aside>
+    <nav class="c-next" aria-label="More">
+      <a href="/#articles"><span class="label">Back to</span><b>All articles</b></a>
+      <a href="/#work"><span class="label">Next</span><b>Selected case studies</b></a>
+    </nav>
+  </div>
+</article>
+
 <footer class="contact" id="contact">
   <div class="cmarq" aria-hidden="true"><div class="cmarq-track"><span>Let's talk</span><span>Build something people love</span><span>Say hello</span><span>Let's talk</span><span>Build something people love</span><span>Say hello</span><span>Let's talk</span><span>Build something people love</span><span>Say hello</span><span>Let's talk</span><span>Build something people love</span><span>Say hello</span></div></div>
   <div class="wrap">
@@ -2307,10 +2400,11 @@ document.querySelectorAll('.copy').forEach(function (btn) {
   };
   function esc(t) { return t.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function info(c) {
-    var slug = c.dataset.case.slice(2);
+    var slug = c.dataset.case.slice(2), post = c.dataset.case.indexOf('a-') === 0;
     return {
-      url: 'https://hellomasudul.com/work/' + slug + '/',
-      img: '/assets/og/' + slug + '.jpg',
+      post: post,
+      url: 'https://hellomasudul.com/' + (post ? 'articles/' : 'work/') + slug + '/',
+      img: '/assets/og/' + (post ? 'a-' : '') + slug + '.jpg',
       title: c.querySelector('h1').textContent.trim(),
       desc: (c.querySelector('.c-lede') || { textContent: '' }).textContent.trim()
     };
@@ -2326,7 +2420,7 @@ document.querySelectorAll('.copy').forEach(function (btn) {
       '<a href="https://www.facebook.com/sharer/sharer.php?u=' + u + '" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Facebook">' + I.fb + '</a>' +
       '<a href="mailto:?subject=' + t + '&body=' + u + '" aria-label="Share by email" title="Email">' + I.mail + '</a>' +
       (navigator.share ? '<button type="button" data-native aria-label="More sharing options" title="More">' + I.more + '</button>' : '') +
-      '</div><div class="sh-link"><input type="text" readonly value="' + d.url + '" aria-label="Case study link"><button type="button" data-copy>Copy link</button></div>';
+      '</div><div class="sh-link"><input type="text" readonly value="' + d.url + '" aria-label="' + (d.post ? 'Article' : 'Case study') + ' link"><button type="button" data-copy>Copy link</button></div>';
   }
   function wire(root, d) {
     var cp = root.querySelector('[data-copy]'), nat = root.querySelector('[data-native]');
@@ -2352,29 +2446,29 @@ document.querySelectorAll('.copy').forEach(function (btn) {
     btn.type = 'button'; btn.className = 'sh-btn'; btn.innerHTML = I.share + '<span>Share</span>';
     top.appendChild(btn);
     btn.addEventListener('click', function () {
-      dlg.innerHTML = '<div class="in"><header><h2 id="sh-title">Share this case study</h2><button type="button" class="sh-x" aria-label="Close">×</button></header>' + body(d) + '</div>';
+      dlg.innerHTML = '<div class="in"><header><h2 id="sh-title">Share this ' + (d.post ? 'article' : 'case study') + '</h2><button type="button" class="sh-x" aria-label="Close">×</button></header>' + body(d) + '</div>';
       dlg.querySelector('.sh-x').addEventListener('click', function () { dlg.close(); });
       wire(dlg, d);
       dlg.showModal();
     });
     var card = document.createElement('section');
-    card.className = 'c-share'; card.setAttribute('aria-label', 'Share this case study');
+    card.className = 'c-share'; card.setAttribute('aria-label', d.post ? 'Share this article' : 'Share this case study');
     card.innerHTML = '<div><h2>Found this useful?<br>Pass it on.</h2>' + body(d).replace(/^<a class="lp"[\s\S]*?<\/a>/, '') + '</div>' + body(d).match(/^<a class="lp"[\s\S]*?<\/a>/)[0];
     c.querySelector('.c-next').before(card);
     wire(card, d);
   });
 })();
 
-// Router: /work/<slug>/ (or a legacy #p-<slug>) opens a case study; anything else is the home page.
+// Router: /work/<slug>/ (or a legacy #p-<slug>) opens a case study and /articles/<slug>/ an article; anything else is the home page.
 // Every case page is a full copy of the site, so links between home and cases swap views in place.
 (function () {
   var cases = document.querySelectorAll('.case');
   var last = null, homeTitle = 'Masudul Haque · Senior Product & UI/UX Designer, Dhaka';
   function caseId() {
-    var m = location.pathname.match(/\/work\/([\w-]+)\/?$/);
-    if (m) return 'p-' + m[1];
+    var m = location.pathname.match(/\/(work|articles)\/([\w-]+)\/?$/);
+    if (m) return (m[1] === 'work' ? 'p-' : 'a-') + m[2];
     var h = location.hash.slice(1);
-    return h.indexOf('p-') === 0 ? h : null;
+    return /^[pa]-/.test(h) ? h : null;
   }
   function route() {
     // Old #p-<slug> links still work and are moved to their real URL.
@@ -2392,8 +2486,8 @@ document.querySelectorAll('.copy').forEach(function (btn) {
     } else {
       document.title = homeTitle;
       var h = location.hash.slice(1), t = h ? document.getElementById(h) : null;
-      if (last && h === 'work') {
-        var card = document.querySelector('.projects a[href="/work/' + last.slice(2) + '/"]');
+      if (last && (h === 'work' || h === 'articles')) {
+        var card = document.querySelector('a[href="/' + (last[0] === 'a' ? 'articles/' : 'work/') + last.slice(2) + '/"]');
         (card || t).scrollIntoView({ block: card ? 'center' : 'start' });
       } else if (t) t.scrollIntoView();
       else if (last) window.scrollTo(0, 0);
@@ -2409,10 +2503,10 @@ document.querySelectorAll('.copy').forEach(function (btn) {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a || a.target === '_blank' || a.hasAttribute('download') || a.origin !== location.origin) return;
-    var toCase = /^\/work\/[\w-]+\/?$/.test(a.pathname), toHome = a.pathname === '/';
+    var toCase = /^\/(work|articles)\/[\w-]+\/?$/.test(a.pathname), toHome = a.pathname === '/';
     if (!toCase && !(toHome && (caseId() || location.pathname !== '/'))) return;
     if (go(a.pathname + a.hash)) e.preventDefault();
-    else if (toCase) { e.preventDefault(); location.hash = 'p-' + a.pathname.split('/')[2]; }
+    else if (toCase) { e.preventDefault(); location.hash = (a.pathname.indexOf('/work/') === 0 ? 'p-' : 'a-') + a.pathname.split('/')[2]; }
   });
   window.addEventListener('popstate', route);
   window.addEventListener('hashchange', route);
@@ -2450,7 +2544,7 @@ document.querySelectorAll('.copy').forEach(function (btn) {
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
-  var groups = ['.sec-head', '.projects > li', '.imp', '.job', '.craft > div', '.creds > div', '.archive a', '.lp-strip', '.kw-strip', '.contact h2', '.c-avail', '.hello', '.cc', '.contact .socials a', '.c-body > figure', '.c-row', '.c-next'];
+  var groups = ['.sec-head', '.projects > li', '.imp', '.job', '.craft > div', '.creds > div', '.archive a', '.posts > li', '.lp-strip', '.kw-strip', '.contact h2', '.c-avail', '.hello', '.cc', '.contact .socials a', '.c-body > figure', '.c-row', '.c-next'];
   groups.forEach(function (sel) {
     document.querySelectorAll(sel).forEach(function (el) {
       var sib = Array.prototype.indexOf.call(el.parentNode.children, el);

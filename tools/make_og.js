@@ -1,4 +1,4 @@
-// Renders share images: assets/og.jpg (home) and assets/og/<slug>.jpg (one per case study).
+// Renders share images: assets/og.jpg (home), assets/og/<slug>.jpg (one per case study) and assets/og/a-<slug>.jpg (one per article).
 // Usage: python3 -m http.server 8765 (in the repo root), then node tools/make_og.js
 const { chromium } = require('playwright');
 const fs = require('fs'), path = require('path');
@@ -47,6 +47,29 @@ body{background:#f5f6f4 radial-gradient(#c9ccc5 1.2px,transparent 1.3px) 0 0/22p
     await p.evaluate(() => document.fonts.ready);
     await p.screenshot({ path: path.join(ROOT, 'assets/og', slug + '.jpg'), type: 'jpeg', quality: 86 });
     console.log('assets/og/' + slug + '.jpg');
+  }
+
+  // Articles: type-only cards, the title sitting in a Figma selection on an empty canvas.
+  for (const m of html.matchAll(/<article class="case post-v" data-case="a-([\w-]+)" data-src="([^"]+)"[\s\S]*?<\/article>/g)) {
+    const slug = m[1], src = m[2], a = m[0];
+    const title = strip(a.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1]);
+    const date = strip(a.match(/<time[^>]*>([\s\S]*?)<\/time>/)[1]);
+    const read = strip((a.match(/Reading time<\/dt><dd>([\s\S]*?)<\/dd>/) || [, ''])[1]);
+    await p.setContent(`<!doctype html><html><head><base href="${BASE}">${FONTS}<style>${CSS}
+      .tag{position:absolute;left:72px;top:64px;font-size:17px;color:#62675f;display:flex;align-items:center;gap:10px}.tag:before{content:'';width:10px;height:10px;border-radius:50%;background:#f25a1d}
+      .box{position:absolute;left:72px;top:150px;width:1000px;padding:22px 30px 26px;border:2px solid #2f6bff}
+      .box i{position:absolute;width:12px;height:12px;background:#fff;border:2px solid #2f6bff}
+      .box em{position:absolute;left:-2px;top:-34px;background:#2f6bff;color:#fff;font:500 15px 'Geist Mono',monospace;font-style:normal;padding:5px 9px;border-radius:4px 4px 4px 0}
+      h1{font-family:'Bricolage Grotesque';font-weight:700;font-size:${title.length > 64 ? 58 : 66}px;line-height:1.02;letter-spacing:-.035em}
+      .foot{position:absolute;left:72px;right:72px;bottom:60px}
+      </style></head><body>
+      <div class="tag mono">Article · ${src} · ${date}${read ? ' · ' + read + ' read' : ''}</div>
+      <div class="box"><em>Article</em><h1>${title}</h1><i style="left:-7px;top:-7px"></i><i style="right:-7px;top:-7px"></i><i style="left:-7px;bottom:-7px"></i><i style="right:-7px;bottom:-7px"></i></div>
+      <div class="foot brand">${MARK}<span>masud<i>.</i>ux</span><span style="font:500 17px 'Geist Mono',monospace;color:#62675f;margin-left:auto">hellomasudul.com</span></div>
+      </body></html>`, { waitUntil: 'networkidle' });
+    await p.evaluate(() => document.fonts.ready);
+    await p.screenshot({ path: path.join(ROOT, 'assets/og', 'a-' + slug + '.jpg'), type: 'jpeg', quality: 86 });
+    console.log('assets/og/a-' + slug + '.jpg');
   }
 
   // Home card: keep the existing artwork and swap the old domain pill for one carrying the MH mark.

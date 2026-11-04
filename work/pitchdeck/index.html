@@ -2359,7 +2359,7 @@ document.querySelectorAll('.copy').forEach(function (btn) {
     });
     var card = document.createElement('section');
     card.className = 'c-share'; card.setAttribute('aria-label', 'Share this case study');
-    card.innerHTML = '<div><h2>Found this useful?<br>Pass it on.</h2><p>Know a team or hiring manager who should see this? Send it their way.</p>' + body(d).replace(/^<a class="lp"[\s\S]*?<\/a>/, '') + '</div>' + body(d).match(/^<a class="lp"[\s\S]*?<\/a>/)[0];
+    card.innerHTML = '<div><h2>Found this useful?<br>Pass it on.</h2>' + body(d).replace(/^<a class="lp"[\s\S]*?<\/a>/, '') + '</div>' + body(d).match(/^<a class="lp"[\s\S]*?<\/a>/)[0];
     c.querySelector('.c-next').before(card);
     wire(card, d);
   });

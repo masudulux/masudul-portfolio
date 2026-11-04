@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<base href="/">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>
 // Theme: dark by default; a visitor's toggle choice is remembered. Runs before paint to avoid a flash.
@@ -19,8 +20,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Masudul Haque · Senior Product &amp; UI/UX Designer">
 <meta property="og:description" content="Masudul Haque is a Senior Product &amp; UI/UX Designer in Dhaka, Bangladesh with 6 years across fintech, logistics and AI. Case studies, experience and resume.">
-<meta property="og:image" content="https://hellomasudul.com/assets/og.jpg?v=2">
-<meta property="og:image:secure_url" content="https://hellomasudul.com/assets/og.jpg?v=2">
+<meta property="og:image" content="https://hellomasudul.com/assets/og.jpg?v=3">
+<meta property="og:image:secure_url" content="https://hellomasudul.com/assets/og.jpg?v=3">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,7 +29,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Masudul Haque · Senior Product &amp; UI/UX Designer">
 <meta name="twitter:description" content="Masudul Haque is a Senior Product &amp; UI/UX Designer in Dhaka, Bangladesh with 6 years across fintech, logistics and AI. Case studies, experience and resume.">
-<meta name="twitter:image" content="https://hellomasudul.com/assets/og.jpg?v=2">
+<meta name="twitter:image" content="https://hellomasudul.com/assets/og.jpg?v=3">
 <meta name="twitter:image:alt" content="Hi, I'm Masudul Haque. Senior UI/UX Designer, hellomasudul.com">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -378,6 +379,16 @@ section.block { padding-block: var(--s6) 0; }
 .c-lede { margin-top: var(--s3); font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--muted); max-width: 44rem; }
 .c-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s2); margin: var(--s4) 0 0; padding-top: var(--s3); border-top: 1px solid var(--line); }
 .c-facts dd { margin: .3rem 0 0; font-size: .95rem; }
+.c-wins { list-style: none; margin: var(--s3) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: var(--s2); }
+.c-wins li { padding: var(--s2) var(--s2) calc(var(--s2) - .1rem); border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.c-wins b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -.03em; line-height: 1.1; color: var(--accent); }
+.c-wins span { display: block; margin-top: .3rem; font-size: .88rem; color: var(--muted); }
+@media (max-width: 560px) {
+  .c-wins { grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr)); gap: .6rem; }
+  .c-wins li { padding: .8rem .8rem .7rem; }
+  .c-wins b { font-size: 1.35rem; }
+  .c-wins span { font-size: .78rem; line-height: 1.35; }
+}
 .c-cover { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
 .c-cover img, .c-body img { width: 100%; height: auto; display: block; }
 .c-body { max-width: 46rem; margin: var(--s5) auto 0; font-size: 1.04rem; line-height: 1.7; }
@@ -888,47 +899,47 @@ section.kw-block { padding-block: var(--s5) 0; }
         <p>Nine case studies, from product strategy to shipped screens. Open any project for the full story.</p>
       </div>
       <ul class="projects">
-        <li><a href="#p-whitelabel">
+        <li><a href="/work/whitelabel/">
           <div class="pc-img"><img src="assets/p/whitelabel/057d4905.webp" srcset="assets/p/whitelabel/057d4905-800.webp 800w, assets/p/whitelabel/057d4905.webp 1600w" sizes="(max-width: 700px) 100vw, 560px" width="1600" height="800" alt="Designing a White Label Competitor for Ride Sharing Platforms" loading="lazy" decoding="async"></div>
           <div class="pc-meta"><span class="label">Techtsy · 2021</span><span class="pc-go" aria-hidden="true">↗</span></div>
           <h3>Designing a White Label Competitor for Ride Sharing Platforms</h3>
           <div class="chips"><span class="chip">Strategy</span><span class="chip">Web App Design</span><span class="chip">Website Design</span></div></a></li>
-        <li><a href="#p-website">
+        <li><a href="/work/website/">
           <div class="pc-img"><img src="assets/p/website/6ffacd8e.webp" srcset="assets/p/website/6ffacd8e-800.webp 800w, assets/p/website/6ffacd8e.webp 1600w" sizes="(max-width: 700px) 100vw, 560px" width="1600" height="910" alt="How I Revamp the Truck Lagbe Website" loading="lazy" decoding="async"></div>
           <div class="pc-meta"><span class="label">Truck Lagbe · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
           <h3>How I Revamp the Truck Lagbe Website</h3>
           <div class="chips"><span class="chip">Product Design</span><span class="chip">Website Design</span></div></a></li>
-        <li><a href="#p-pitchdeck">
+        <li><a href="/work/pitchdeck/">
           <div class="pc-img"><img src="assets/p/pitchdeck/5ea2729a.webp" srcset="assets/p/pitchdeck/5ea2729a-800.webp 800w, assets/p/pitchdeck/5ea2729a.webp 1600w" sizes="(max-width: 700px) 100vw, 560px" width="1600" height="900" alt="My Pitch Deck for Truck Lagbe’s Truck Hiring Web Platform" loading="lazy" decoding="async"></div>
           <div class="pc-meta"><span class="label">Truck Lagbe · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
           <h3>My Pitch Deck for Truck Lagbe’s Truck Hiring Web Platform</h3>
           <div class="chips"><span class="chip">Product Design</span><span class="chip">Web App Design</span></div></a></li>
-        <li><a href="#p-bidding">
+        <li><a href="/work/bidding/">
           <div class="pc-img"><img src="assets/p/bidding/7f90be4e.webp" srcset="assets/p/bidding/7f90be4e-800.webp 800w, assets/p/bidding/7f90be4e.webp 1600w" sizes="(max-width: 700px) 100vw, 560px" width="1600" height="850" alt="A Bidding Strategy and Tiny Tweaks Transformed Truck Hiring Prices" loading="lazy" decoding="async"></div>
           <div class="pc-meta"><span class="label">Truck Lagbe · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
           <h3>A Bidding Strategy and Tiny Tweaks Transformed Truck Hiring Prices</h3>
           <div class="chips"><span class="chip">Strategy</span></div></a></li>
-        <li><a href="#p-payment">
+        <li><a href="/work/payment/">
           <div class="pc-img"><img src="assets/p/payment/3a070b94.webp" srcset="assets/p/payment/3a070b94-800.webp 800w, assets/p/payment/3a070b94.webp 1600w" sizes="(max-width: 700px) 100vw, 560px" width="1600" height="900" alt="Transforming Self-Payment Distribution: Sending Money with Just Three Taps" loading="lazy" decoding="async"></div>
           <div class="pc-meta"><span class="label">Truck Lagbe · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
           <h3>Transforming Self-Payment Distribution: Sending Money with Just Three Taps</h3>
           <div class="chips"><span class="chip">Product Design</span><span class="chip">App Design</span></div></a></li>
-        <li><a href="#p-quotient">
+        <li><a href="/work/quotient/">
           <div class="pc-img"><img src="assets/p/quotient/6d57a141.webp" srcset="assets/p/quotient/6d57a141-800.webp 800w, assets/p/quotient/6d57a141.webp 1600w" sizes="(max-width: 700px) 100vw, 560px" width="1440" height="1080" alt="Stocks Trading Mobile App" loading="lazy" decoding="async"></div>
           <div class="pc-meta"><span class="label">Quotient · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
           <h3>Stocks Trading Mobile App</h3>
           <div class="chips"><span class="chip">App Design</span><span class="chip">UI + UX</span></div></a></li>
-        <li><a href="#p-rca">
+        <li><a href="/work/rca/">
           <div class="pc-img"><img src="assets/p/rca/ba8417c8.webp" srcset="assets/p/rca/ba8417c8-800.webp 800w, assets/p/rca/ba8417c8.webp 1600w" sizes="(max-width: 700px) 100vw, 560px" width="1600" height="900" alt="RCA UI Modernization Project" loading="lazy" decoding="async"></div>
           <div class="pc-meta"><span class="label">Enterprise tooling · 2023</span><span class="pc-go" aria-hidden="true">↗</span></div>
           <h3>RCA UI Modernization Project</h3>
           <div class="chips"><span class="chip">Product Design</span><span class="chip">Web App Design</span><span class="chip">Strategy</span></div></a></li>
-        <li><a href="#p-incident">
+        <li><a href="/work/incident/">
           <div class="pc-img"><img src="assets/p/incident/830fb276.webp" srcset="assets/p/incident/830fb276-800.webp 800w, assets/p/incident/830fb276.webp 1600w" sizes="(max-width: 700px) 100vw, 560px" width="1600" height="1078" alt="AI-Driven Incident Automation B2B SaaS Platform" loading="lazy" decoding="async"></div>
           <div class="pc-meta"><span class="label">Safurah · 2024</span><span class="pc-go" aria-hidden="true">↗</span></div>
           <h3>AI-Driven Incident Automation B2B SaaS Platform</h3>
           <div class="chips"><span class="chip">Web App Design</span><span class="chip">SaaS</span></div></a></li>
-        <li><a href="#p-doorprofit">
+        <li><a href="/work/doorprofit/">
           <div class="pc-img"><img src="assets/p/doorprofit/5506166b.webp" srcset="assets/p/doorprofit/5506166b-800.webp 800w, assets/p/doorprofit/5506166b.webp 1600w" sizes="(max-width: 700px) 100vw, 560px" width="1600" height="2512" alt="Revamp a Property Investment Website" loading="lazy" decoding="async"></div>
           <div class="pc-meta"><span class="label">DoorProfit · 2024</span><span class="pc-go" aria-hidden="true">↗</span></div>
           <h3>Revamp a Property Investment Website</h3>
@@ -1257,8 +1268,9 @@ section.kw-block { padding-block: var(--s5) 0; }
         <div><dt class="label">Client</dt><dd>Techtsy</dd></div>
         <div><dt class="label">Year</dt><dd>2021</dd></div>
         <div><dt class="label">Services</dt><dd>Strategy, Web App Design, Website Design</dd></div>
-        <div><dt class="label">Visuals</dt><dd>32 images</dd></div>
+        <div><dt class="label">Role</dt><dd>UX Researcher, Product Designer</dd></div>
       </dl>
+      <ul class="c-wins" aria-label="Key results"><li><b>~$35K</b><span>in sales, leading to 3 more projects</span></li><li><b>19</b><span>riders and drivers interviewed</span></li><li><b>23</b><span>design problems solved</span></li></ul>
     </header>
     <figure class="c-cover"><img src="assets/p/whitelabel/057d4905.webp" srcset="assets/p/whitelabel/057d4905-800.webp 800w, assets/p/whitelabel/057d4905.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="800" alt="Designing a White Label Competitor for Ride Sharing Platforms" loading="lazy" decoding="async"></figure>
     <div class="c-body">
@@ -1709,8 +1721,8 @@ The success of this project has paved the way for our company to secure 3 additi
 <p><b>Happy Designing 😊<br><br></b><a href="https://www.linkedin.com/in/masudulnsu/" target="_blank" rel="noopener"><b>Md Masudul Haque</b></a><b><br></b><i>Let’s connect!</i></p>
     </div>
     <nav class="c-next" aria-label="More projects">
-      <a href="#p-doorprofit"><span class="label">Previous</span><b>DoorProfit website revamp</b></a>
-      <a href="#p-website"><span class="label">Next</span><b>Truck Lagbe website revamp</b></a>
+      <a href="/work/doorprofit/"><span class="label">Previous</span><b>DoorProfit website revamp</b></a>
+      <a href="/work/website/"><span class="label">Next</span><b>Truck Lagbe website revamp</b></a>
     </nav>
   </div>
 </article>
@@ -1725,8 +1737,9 @@ The success of this project has paved the way for our company to secure 3 additi
         <div><dt class="label">Client</dt><dd>Truck Lagbe</dd></div>
         <div><dt class="label">Year</dt><dd>2023</dd></div>
         <div><dt class="label">Services</dt><dd>Product Design, Website Design</dd></div>
-        <div><dt class="label">Visuals</dt><dd>19 images</dd></div>
+        <div><dt class="label">Role</dt><dd>Product Designer</dd></div>
       </dl>
+      <ul class="c-wins" aria-label="Key results"><li><b>+55%</b><span>monthly website traffic</span></li><li><b>+70%</b><span>booking conversion</span></li></ul>
     </header>
     <figure class="c-cover"><img src="assets/p/website/6ffacd8e.webp" srcset="assets/p/website/6ffacd8e-800.webp 800w, assets/p/website/6ffacd8e.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="910" alt="How I Revamp the Truck Lagbe Website" loading="lazy" decoding="async"></figure>
     <div class="c-body c-gallery">
@@ -1750,8 +1763,8 @@ The success of this project has paved the way for our company to secure 3 additi
 <figure><img src="assets/p/website/8f501dd9.webp" srcset="assets/p/website/8f501dd9-800.webp 800w, assets/p/website/8f501dd9.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="554" alt="Truck Lagbe website revamp, screen 18" loading="lazy" decoding="async"></figure>
     </div>
     <nav class="c-next" aria-label="More projects">
-      <a href="#p-whitelabel"><span class="label">Previous</span><b>PoolCabs, a white-label ride-sharing app</b></a>
-      <a href="#p-pitchdeck"><span class="label">Next</span><b>Truck hiring web platform pitch</b></a>
+      <a href="/work/whitelabel/"><span class="label">Previous</span><b>PoolCabs, a white-label ride-sharing app</b></a>
+      <a href="/work/pitchdeck/"><span class="label">Next</span><b>Truck hiring web platform pitch</b></a>
     </nav>
   </div>
 </article>
@@ -1766,7 +1779,7 @@ The success of this project has paved the way for our company to secure 3 additi
         <div><dt class="label">Client</dt><dd>Truck Lagbe</dd></div>
         <div><dt class="label">Year</dt><dd>2023</dd></div>
         <div><dt class="label">Services</dt><dd>Product Design, Web App Design</dd></div>
-        <div><dt class="label">Visuals</dt><dd>45 images</dd></div>
+        <div><dt class="label">Role</dt><dd>Product Designer</dd></div>
       </dl>
     </header>
     <figure class="c-cover"><img src="assets/p/pitchdeck/5ea2729a.webp" srcset="assets/p/pitchdeck/5ea2729a-800.webp 800w, assets/p/pitchdeck/5ea2729a.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="900" alt="My Pitch Deck for Truck Lagbe’s Truck Hiring Web Platform" loading="lazy" decoding="async"></figure>
@@ -1817,8 +1830,8 @@ The success of this project has paved the way for our company to secure 3 additi
 <figure><img src="assets/p/pitchdeck/be170c68.webp" srcset="assets/p/pitchdeck/be170c68-800.webp 800w, assets/p/pitchdeck/be170c68.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="900" alt="Truck hiring web platform pitch, screen 44" loading="lazy" decoding="async"></figure>
     </div>
     <nav class="c-next" aria-label="More projects">
-      <a href="#p-website"><span class="label">Previous</span><b>Truck Lagbe website revamp</b></a>
-      <a href="#p-bidding"><span class="label">Next</span><b>Bidding position and edit limits</b></a>
+      <a href="/work/website/"><span class="label">Previous</span><b>Truck Lagbe website revamp</b></a>
+      <a href="/work/bidding/"><span class="label">Next</span><b>Bidding position and edit limits</b></a>
     </nav>
   </div>
 </article>
@@ -1833,8 +1846,9 @@ The success of this project has paved the way for our company to secure 3 additi
         <div><dt class="label">Client</dt><dd>Truck Lagbe</dd></div>
         <div><dt class="label">Year</dt><dd>2023</dd></div>
         <div><dt class="label">Services</dt><dd>Strategy</dd></div>
-        <div><dt class="label">Visuals</dt><dd>3 images</dd></div>
+        <div><dt class="label">Role</dt><dd>Product Designer</dd></div>
       </dl>
+      <ul class="c-wins" aria-label="Key results"><li><b>−47%</b><span>customer-care calls</span></li><li><b>+10%</b><span>truck hiring requests</span></li><li><b>5</b><span>edit cap per bid</span></li></ul>
     </header>
     <figure class="c-cover"><img src="assets/p/bidding/7f90be4e.webp" srcset="assets/p/bidding/7f90be4e-800.webp 800w, assets/p/bidding/7f90be4e.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="850" alt="A Bidding Strategy and Tiny Tweaks Transformed Truck Hiring Prices" loading="lazy" decoding="async"></figure>
     <div class="c-body">
@@ -1870,8 +1884,8 @@ A 10% increase in customer requests for truck hiring on our platform.
 <p>This case study demonstrates the power of strategic adjustments in digital platforms. By fine-tuning our bidding process, we not only enhanced operational efficiency but also fostered a more competitive and fair marketplace. It's a testament to how small changes can lead to significant impacts in the digital world of commerce.</p>
     </div>
     <nav class="c-next" aria-label="More projects">
-      <a href="#p-pitchdeck"><span class="label">Previous</span><b>Truck hiring web platform pitch</b></a>
-      <a href="#p-payment"><span class="label">Next</span><b>Owner app payment disbursement</b></a>
+      <a href="/work/pitchdeck/"><span class="label">Previous</span><b>Truck hiring web platform pitch</b></a>
+      <a href="/work/payment/"><span class="label">Next</span><b>Owner app payment disbursement</b></a>
     </nav>
   </div>
 </article>
@@ -1886,8 +1900,9 @@ A 10% increase in customer requests for truck hiring on our platform.
         <div><dt class="label">Client</dt><dd>Truck Lagbe</dd></div>
         <div><dt class="label">Year</dt><dd>2023</dd></div>
         <div><dt class="label">Services</dt><dd>Product Design, App Design</dd></div>
-        <div><dt class="label">Visuals</dt><dd>13 images</dd></div>
+        <div><dt class="label">Role</dt><dd>Product Designer</dd></div>
       </dl>
+      <ul class="c-wins" aria-label="Key results"><li><b>+45%</b><span>app engagement</span></li><li><b>3 taps</b><span>to withdraw, in under a minute</span></li><li><b>+12%</b><span>Owner App downloads</span></li></ul>
     </header>
     <figure class="c-cover"><img src="assets/p/payment/3a070b94.webp" srcset="assets/p/payment/3a070b94-800.webp 800w, assets/p/payment/3a070b94.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="900" alt="Transforming Self-Payment Distribution: Sending Money with Just Three Taps" loading="lazy" decoding="async"></figure>
     <div class="c-body">
@@ -2042,8 +2057,8 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
 </li></ul>
     </div>
     <nav class="c-next" aria-label="More projects">
-      <a href="#p-bidding"><span class="label">Previous</span><b>Bidding position and edit limits</b></a>
-      <a href="#p-quotient"><span class="label">Next</span><b>Stocks trading app</b></a>
+      <a href="/work/bidding/"><span class="label">Previous</span><b>Bidding position and edit limits</b></a>
+      <a href="/work/quotient/"><span class="label">Next</span><b>Stocks trading app</b></a>
     </nav>
   </div>
 </article>
@@ -2058,7 +2073,7 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
         <div><dt class="label">Client</dt><dd>Quotient</dd></div>
         <div><dt class="label">Year</dt><dd>2023</dd></div>
         <div><dt class="label">Services</dt><dd>App Design, UI + UX</dd></div>
-        <div><dt class="label">Visuals</dt><dd>19 images</dd></div>
+        <div><dt class="label">Role</dt><dd>UI/UX Designer</dd></div>
       </dl>
     </header>
     <figure class="c-cover"><img src="assets/p/quotient/6d57a141.webp" srcset="assets/p/quotient/6d57a141-800.webp 800w, assets/p/quotient/6d57a141.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1440" height="1080" alt="Stocks Trading Mobile App" loading="lazy" decoding="async"></figure>
@@ -2083,8 +2098,8 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
 <figure><img src="assets/p/quotient/99bd3fb3.webp" srcset="assets/p/quotient/99bd3fb3-800.webp 800w, assets/p/quotient/99bd3fb3.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1440" height="1316" alt="Stocks trading app, screen 18" loading="lazy" decoding="async"></figure>
     </div>
     <nav class="c-next" aria-label="More projects">
-      <a href="#p-payment"><span class="label">Previous</span><b>Owner app payment disbursement</b></a>
-      <a href="#p-rca"><span class="label">Next</span><b>RCA UI modernization</b></a>
+      <a href="/work/payment/"><span class="label">Previous</span><b>Owner app payment disbursement</b></a>
+      <a href="/work/rca/"><span class="label">Next</span><b>RCA UI modernization</b></a>
     </nav>
   </div>
 </article>
@@ -2099,7 +2114,7 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
         <div><dt class="label">Client</dt><dd>Enterprise tooling</dd></div>
         <div><dt class="label">Year</dt><dd>2023</dd></div>
         <div><dt class="label">Services</dt><dd>Product Design, Web App Design, Strategy</dd></div>
-        <div><dt class="label">Visuals</dt><dd>12 images</dd></div>
+        <div><dt class="label">Role</dt><dd>UI/UX Designer</dd></div>
       </dl>
     </header>
     <figure class="c-cover"><img src="assets/p/rca/ba8417c8.webp" srcset="assets/p/rca/ba8417c8-800.webp 800w, assets/p/rca/ba8417c8.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="900" alt="RCA UI Modernization Project" loading="lazy" decoding="async"></figure>
@@ -2117,8 +2132,8 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
 <figure><img src="assets/p/rca/24335671.webp" srcset="assets/p/rca/24335671-800.webp 800w, assets/p/rca/24335671.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="900" alt="RCA UI modernization, screen 11" loading="lazy" decoding="async"></figure>
     </div>
     <nav class="c-next" aria-label="More projects">
-      <a href="#p-quotient"><span class="label">Previous</span><b>Stocks trading app</b></a>
-      <a href="#p-incident"><span class="label">Next</span><b>AI incident automation</b></a>
+      <a href="/work/quotient/"><span class="label">Previous</span><b>Stocks trading app</b></a>
+      <a href="/work/incident/"><span class="label">Next</span><b>AI incident automation</b></a>
     </nav>
   </div>
 </article>
@@ -2133,7 +2148,7 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
         <div><dt class="label">Client</dt><dd>Safurah</dd></div>
         <div><dt class="label">Year</dt><dd>2024</dd></div>
         <div><dt class="label">Services</dt><dd>Web App Design, SaaS</dd></div>
-        <div><dt class="label">Visuals</dt><dd>19 images</dd></div>
+        <div><dt class="label">Role</dt><dd>Product Designer (Consultant)</dd></div>
       </dl>
     </header>
     <figure class="c-cover"><img src="assets/p/incident/830fb276.webp" srcset="assets/p/incident/830fb276-800.webp 800w, assets/p/incident/830fb276.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="1078" alt="AI-Driven Incident Automation B2B SaaS Platform" loading="lazy" decoding="async"></figure>
@@ -2158,8 +2173,8 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
 <figure><img src="assets/p/incident/d359ceec.webp" width="1" height="1" alt="AI incident automation, screen 18" loading="lazy" decoding="async"></figure>
     </div>
     <nav class="c-next" aria-label="More projects">
-      <a href="#p-rca"><span class="label">Previous</span><b>RCA UI modernization</b></a>
-      <a href="#p-doorprofit"><span class="label">Next</span><b>DoorProfit website revamp</b></a>
+      <a href="/work/rca/"><span class="label">Previous</span><b>RCA UI modernization</b></a>
+      <a href="/work/doorprofit/"><span class="label">Next</span><b>DoorProfit website revamp</b></a>
     </nav>
   </div>
 </article>
@@ -2174,7 +2189,7 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
         <div><dt class="label">Client</dt><dd>DoorProfit</dd></div>
         <div><dt class="label">Year</dt><dd>2024</dd></div>
         <div><dt class="label">Services</dt><dd>UI + UX, Website Design</dd></div>
-        <div><dt class="label">Visuals</dt><dd>11 images</dd></div>
+        <div><dt class="label">Role</dt><dd>UI/UX Designer</dd></div>
       </dl>
     </header>
     <figure class="c-cover"><img src="assets/p/doorprofit/5506166b.webp" srcset="assets/p/doorprofit/5506166b-800.webp 800w, assets/p/doorprofit/5506166b.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="2512" alt="Revamp a Property Investment Website" loading="lazy" decoding="async"></figure>
@@ -2191,8 +2206,8 @@ Disbursed using Bkash: 60%, Disbursed using Nagad: 40%
 <figure><img src="assets/p/doorprofit/1a250564.webp" srcset="assets/p/doorprofit/1a250564-800.webp 800w, assets/p/doorprofit/1a250564.webp 1600w" sizes="(max-width: 1100px) 100vw, 1088px" width="1600" height="1510" alt="DoorProfit website revamp, screen 10" loading="lazy" decoding="async"></figure>
     </div>
     <nav class="c-next" aria-label="More projects">
-      <a href="#p-incident"><span class="label">Previous</span><b>AI incident automation</b></a>
-      <a href="#p-whitelabel"><span class="label">Next</span><b>PoolCabs, a white-label ride-sharing app</b></a>
+      <a href="/work/incident/"><span class="label">Previous</span><b>AI incident automation</b></a>
+      <a href="/work/whitelabel/"><span class="label">Next</span><b>PoolCabs, a white-label ride-sharing app</b></a>
     </nav>
   </div>
 </article>
@@ -2251,31 +2266,56 @@ document.querySelectorAll('.copy').forEach(function (btn) {
   });
 });
 
-// Hash router: #p-<slug> opens a case study, any other hash returns to the home page.
+// Router: /work/<slug>/ (or a legacy #p-<slug>) opens a case study; anything else is the home page.
+// Every case page is a full copy of the site, so links between home and cases swap views in place.
 (function () {
   var cases = document.querySelectorAll('.case');
-  var last = null, homeTitle = document.title;
+  var last = null, homeTitle = 'Masudul Haque · Senior Product & UI/UX Designer, Dhaka';
+  function caseId() {
+    var m = location.pathname.match(/\/work\/([\w-]+)\/?$/);
+    if (m) return 'p-' + m[1];
+    var h = location.hash.slice(1);
+    return h.indexOf('p-') === 0 ? h : null;
+  }
   function route() {
-    var id = location.hash.slice(1);
-    var open = id.indexOf('p-') === 0 && document.querySelector('[data-case="' + id + '"]');
+    // Old #p-<slug> links still work and are moved to their real URL.
+    var legacy = location.hash.match(/^#p-([\w-]+)$/);
+    if (legacy) { try { history.replaceState(null, '', '/work/' + legacy[1] + '/'); } catch (e) {} }
+    var id = caseId();
+    var open = id && document.querySelector('[data-case="' + id + '"]');
     cases.forEach(function (c) { c.hidden = c !== open; });
     document.body.classList.toggle('on-case', !!open);
     if (open) {
       document.title = open.querySelector('h1').textContent + ' · Masudul Haque';
-      window.scrollTo(0, 0);
-      requestAnimationFrame(function () { window.scrollTo(0, 0); });
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      requestAnimationFrame(function () { window.scrollTo({ top: 0, behavior: 'instant' }); });
       last = id;
     } else {
       document.title = homeTitle;
-      var t = id ? document.getElementById(id) : null;
-      if (last && id === 'work') {
-        var card = document.querySelector('.projects a[href="#' + last + '"]');
+      var h = location.hash.slice(1), t = h ? document.getElementById(h) : null;
+      if (last && h === 'work') {
+        var card = document.querySelector('.projects a[href="/work/' + last.slice(2) + '/"]');
         (card || t).scrollIntoView({ block: card ? 'center' : 'start' });
       } else if (t) t.scrollIntoView();
       else if (last) window.scrollTo(0, 0);
       last = null;
     }
   }
+  function go(url) {
+    try { history.pushState(null, '', url); } catch (e) { return false; }
+    route();
+    return true;
+  }
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.target === '_blank' || a.hasAttribute('download') || a.origin !== location.origin) return;
+    var toCase = /^\/work\/[\w-]+\/?$/.test(a.pathname), toHome = a.pathname === '/';
+    if (!toCase && !(toHome && (caseId() || location.pathname !== '/'))) return;
+    if (go(a.pathname + a.hash)) e.preventDefault();
+    else if (toCase) { e.preventDefault(); location.hash = 'p-' + a.pathname.split('/')[2]; }
+  });
+  window.addEventListener('popstate', route);
   window.addEventListener('hashchange', route);
   route();
 })();

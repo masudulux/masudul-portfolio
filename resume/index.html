@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+// Theme: dark by default; a visitor's toggle choice is remembered. Runs before paint to avoid a flash.
+(function () { var t = 'dark'; try { t = localStorage.getItem('theme') || 'dark'; } catch (e) {} document.documentElement.setAttribute('data-theme', t); })();
+</script>
+<title>Resume · Masudul Haque, Senior UI/UX Designer</title>
+<meta name="description" content="Preview and download the resume of Masudul Haque, Senior UI/UX Designer in Dhaka with 6+ years designing B2B SaaS, fintech and logistics products.">
+<meta name="author" content="Masudul Haque">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0f110f">
+<link rel="canonical" href="https://hellomasudul.com/resume/">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://hellomasudul.com/resume/">
+<meta property="og:site_name" content="Masudul Haque">
+<meta property="og:title" content="Resume · Masudul Haque, Senior UI/UX Designer">
+<meta property="og:description" content="Preview and download my resume: 6+ years designing B2B SaaS, fintech and logistics products.">
+<meta property="og:image" content="https://hellomasudul.com/assets/og.jpg?v=3">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Resume · Masudul Haque, Senior UI/UX Designer">
+<meta name="twitter:description" content="Preview and download my resume: 6+ years designing B2B SaaS, fintech and logistics products.">
+<meta name="twitter:image" content="https://hellomasudul.com/assets/og.jpg?v=3">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/resume-preview.webp" as="image" type="image/webp">
+<link rel="preload" href="/assets/Masudul-Haque-Resume.pdf" as="fetch" type="application/pdf" crossorigin>
+<link rel="modulepreload" href="/assets/pdfjs/pdf.min.mjs">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #f5f6f4; --surface: #ffffff; --fg: #141613; --muted: #62675f; --line: #dfe2dc;
+  --accent: #f25a1d; --select: #2f6bff; --select-ink: #ffffff;
+  --canvas: #e9ebe7; --dot: #cfd3cb; --shadow: 0 1px 2px rgb(20 22 19 / .06), 0 12px 40px -12px rgb(20 22 19 / .22);
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f110f; --surface: #171a17; --fg: #ecefe9; --muted: #9aa096; --line: #2a2e29;
+    --accent: #ff7a45; --select: #5b8cff; --select-ink: #0f110f; color-scheme: dark;
+    --canvas: #0a0c0a; --dot: #222622; --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 24px 60px -20px rgb(0 0 0 / .8);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f110f; --surface: #171a17; --fg: #ecefe9; --muted: #9aa096; --line: #2a2e29;
+  --accent: #ff7a45; --select: #5b8cff; --select-ink: #0f110f; color-scheme: dark;
+  --canvas: #0a0c0a; --dot: #222622; --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 24px 60px -20px rgb(0 0 0 / .8);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column;
+}
+a { color: inherit; }
+::selection { background: var(--select); color: var(--select-ink); }
+:focus-visible { outline: 2px solid var(--select); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.label { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* Slim top bar: the resume is the hero */
+.nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: .75rem; height: 56px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.bar-l, .bar-r { display: flex; align-items: center; gap: .5rem; min-width: 0; }
+.bar-l { gap: .7rem; }
+.mark { display: inline-flex; text-decoration: none; flex: none; }
+.mark svg { width: 26px; height: 26px; }
+.mark .mk-fg { stroke: var(--fg); } .mark .mk-ac { stroke: var(--accent); }
+.doc { min-width: 0; padding-left: .8rem; border-left: 1px solid var(--line); line-height: 1.2; }
+.doc h1 { font-family: var(--display); font-weight: 500; font-size: 1rem; letter-spacing: -.01em; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.doc h1 span { color: var(--muted); }
+.dmeta { font-family: var(--mono); font-size: .66rem; color: var(--muted); letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+.ib { flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--fg); display: grid; place-items: center; cursor: pointer; text-decoration: none; transition: border-color .15s, transform .15s; -webkit-tap-highlight-color: transparent; }
+.ib:hover { border-color: var(--fg); }
+.ib svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.back svg { transition: transform .2s; }
+.back:hover svg { transform: translateX(-2px); }
+.theme-tg { flex: none; position: relative; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; display: grid; place-items: center; overflow: hidden; transition: border-color .2s, transform .3s cubic-bezier(.2,.8,.2,1.4); }
+.theme-tg:hover { border-color: var(--accent); transform: rotate(-12deg) scale(1.06); }
+.theme-tg svg { position: absolute; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .5s cubic-bezier(.2,.8,.2,1.2), opacity .3s; }
+.theme-tg .i-moon { fill: currentColor; stroke: none; }
+:root[data-theme="dark"] .theme-tg .i-moon, :root[data-theme="light"] .theme-tg .i-sun { opacity: 0; transform: translateY(120%) rotate(90deg); }
+:root[data-theme="dark"] .theme-tg .i-sun { color: #ffc53d; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; padding: .78rem 1.15rem; border-radius: 99px; font: 500 .92rem/1 var(--body); text-decoration: none; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; transition: transform .15s, border-color .15s, background .15s, filter .15s; white-space: nowrap; -webkit-tap-highlight-color: transparent; }
+.btn:hover { transform: translateY(-1px); border-color: var(--fg); }
+.btn:active { transform: translateY(0) scale(.98); }
+.btn svg { width: 17px; height: 17px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme="dark"] .btn.primary { color: #0f110f; }
+.btn.primary:hover { filter: brightness(1.06); border-color: var(--accent); }
+.btn.primary svg.dl-arrow { transition: transform .25s; }
+.btn.primary:hover svg.dl-arrow { transform: translateY(2px); }
+.btn.icon { padding: .78rem; }
+.btn.sm { padding: .58rem .95rem; font-size: .86rem; margin-left: .2rem; }
+.btn.sm svg { width: 16px; height: 16px; }
+
+/* Viewer canvas */
+.stage-wrap { flex: 1; display: flex; flex-direction: column; background-color: var(--canvas); background-image: radial-gradient(var(--dot) 1px, transparent 1px); background-size: 20px 20px; }
+.stage { flex: 1; overflow-x: auto; overflow-y: visible; padding: clamp(1rem, 2.5vw, 1.75rem) max(16px, env(safe-area-inset-right, 0px)) 6.5rem max(16px, env(safe-area-inset-left, 0px)); }
+.frame { position: relative; width: var(--w, min(100%, 820px)); margin-inline: auto; }
+.frame-label { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--mono); font-size: .7rem; color: var(--muted); margin-bottom: .55rem; letter-spacing: .02em; }
+.frame-label b { font-weight: 500; color: var(--fg); display: inline-flex; align-items: center; gap: .45rem; }
+.frame-label b svg { width: 12px; height: 12px; fill: none; stroke: var(--muted); stroke-width: 2; }
+.paper { position: relative; width: 100%; aspect-ratio: 579 / 919; background: #fff; border-radius: 6px; box-shadow: var(--shadow); overflow: hidden; outline: 1.5px solid transparent; outline-offset: 4px; transition: outline-color .2s; }
+.paper:hover { outline-color: color-mix(in srgb, var(--select) 70%, transparent); }
+.paper img, .paper canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.paper canvas { opacity: 0; transition: opacity .35s ease; }
+.paper.ready canvas { opacity: 1; }
+.paper.ready img { visibility: hidden; transition: visibility 0s .35s; }
+.paper .shimmer { position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgb(255 255 255 / .55) 50%, transparent 70%); background-size: 250% 100%; animation: sh 1.4s linear infinite; pointer-events: none; }
+.paper.ready .shimmer, .paper.failed .shimmer { display: none; }
+@keyframes sh { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+.links a { position: absolute; z-index: 3; border-radius: 3px; }
+.links a:hover { background: rgb(47 107 255 / .12); outline: 1px solid rgb(47 107 255 / .5); }
+
+/* pdf.js text layer (from pdf_viewer.css), so text can be selected and copied */
+.textLayer { position: absolute; text-align: initial; inset: 0; overflow: clip; opacity: 1; line-height: 1; -webkit-text-size-adjust: none; text-size-adjust: none; forced-color-adjust: none; transform-origin: 0 0; caret-color: CanvasText; z-index: 2; }
+.textLayer :is(span, br) { color: transparent; position: absolute; white-space: pre; cursor: text; transform-origin: 0% 0%; }
+.textLayer > :not(.markedContent), .textLayer .markedContent span:not(.markedContent) { z-index: 1; }
+.textLayer span.markedContent { top: 0; height: 0; }
+.textLayer ::selection { background: rgb(47 107 255 / .28); }
+.textLayer br::selection { background: transparent; }
+.textLayer .endOfContent { display: block; position: absolute; inset: 100% 0 0; z-index: 0; cursor: default; -webkit-user-select: none; user-select: none; }
+.textLayer.selecting .endOfContent { top: 0; }
+
+/* Floating dock */
+.dock { position: fixed; left: 50%; bottom: max(18px, env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 15; display: flex; align-items: center; gap: .35rem; padding: .4rem; border-radius: 99px; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--line); box-shadow: 0 10px 30px -10px rgb(0 0 0 / .35); }
+.dock .z { width: 38px; height: 38px; border-radius: 50%; border: 0; background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center; transition: background .15s; }
+.dock .z:hover { background: color-mix(in srgb, var(--fg) 8%, transparent); }
+.dock .z:disabled { opacity: .35; cursor: default; background: transparent; }
+.dock .z svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.dock .pct { min-width: 4.2rem; height: 38px; border: 0; background: transparent; color: var(--fg); font: 500 .8rem var(--mono); cursor: pointer; border-radius: 99px; }
+.dock .pct:hover { background: color-mix(in srgb, var(--fg) 8%, transparent); }
+.dock .sep { width: 1px; height: 22px; background: var(--line); margin-inline: .2rem; }
+.dock .btn { padding: .7rem 1.05rem; }
+
+/* Toast */
+.toast { position: fixed; left: 50%; bottom: calc(max(18px, env(safe-area-inset-bottom, 0px)) + 66px); transform: translate(-50%, 10px); z-index: 16; background: var(--fg); color: var(--bg); font-size: .85rem; padding: .55rem .95rem; border-radius: 99px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .25s; white-space: nowrap; display: inline-flex; gap: .5rem; align-items: center; }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+.toast i { font-style: normal; color: #2fbf71; }
+
+noscript .btn { margin-top: 1rem; }
+
+@media (max-width: 640px) {
+  .hide-sm { display: none !important; }
+  .mark { display: none; }
+  .doc { padding-left: 0; border-left: 0; }
+  .dock { left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); transform: none; justify-content: space-between; }
+  .dock .zoom { display: none; }
+  .dock .btn.primary { flex: 1; padding-block: .85rem; font-size: .95rem; }
+  .frame-label { display: none; }
+  .stage { padding-top: 12px; padding-left: 12px; padding-right: 12px; }
+}
+@media (min-width: 641px) { .dock .share { display: none; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+@media print { .nav, .dock, .toast, .frame-label { display: none !important; } .stage-wrap { background: none; border: 0; } .paper { box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="bar">
+    <div class="bar-l">
+      <a class="ib back" href="/" aria-label="Back to portfolio" title="Back to portfolio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+      <a class="mark" href="/" aria-label="Masudul Haque, home"><svg viewBox="0 0 64 64" aria-hidden="true"><path class="mk-fg" d="M9 48V16l12.5 18L34 16M34 32h21M55 16v32" fill="none" stroke-width="6" stroke-linejoin="round"/><path class="mk-ac" d="M34 13v35" fill="none" stroke-width="6"/></svg></a>
+      <div class="doc">
+        <h1>Masudul Haque <span>· Resume</span></h1>
+        <div class="dmeta">PDF · 1 page</div>
+      </div>
+    </div>
+    <div class="bar-r">
+      <button class="ib hide-sm" type="button" data-copy aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg></button>
+      <a class="ib hide-sm" href="/assets/Masudul-Haque-Resume.pdf" target="_blank" rel="noopener" aria-label="Open PDF in a new tab" title="Open PDF in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+      <a class="btn primary sm hide-sm" href="/assets/Masudul-Haque-Resume.pdf" download="Masudul-Haque-Resume.pdf" data-dl><svg class="dl-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>Download</a>
+      <button class="theme-tg" type="button" aria-label="Switch to light mode" title="Toggle light / dark">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.3 8.3 0 0 1 9.4 4a8.3 8.3 0 1 0 10.6 10.6Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main style="display:contents">
+  <section class="stage-wrap" aria-label="Resume preview">
+    <div class="stage" id="stage">
+      <div class="frame" id="frame">
+        <div class="paper" id="paper">
+          <img src="/assets/resume-preview.webp" width="1207" height="1915" alt="Resume of Md Masudul Haque, Senior UI/UX Designer: experience at Intelligent Machines, Truck Lagbe and Techtsy, education at North South University, skills and tools." decoding="async" fetchpriority="high">
+          <div class="shimmer" aria-hidden="true"></div>
+        </div>
+      </div>
+      <noscript><a class="btn primary" href="/assets/Masudul-Haque-Resume.pdf" download>Download PDF</a></noscript>
+    </div>
+  </section>
+</main>
+
+<div class="dock" role="toolbar" aria-label="Resume controls">
+  <div class="zoom" style="display:contents">
+    <button class="z zoom" type="button" data-zoom="-1" aria-label="Zoom out" title="Zoom out (−)"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+    <button class="pct zoom" type="button" data-fit title="Fit to screen (0)" aria-label="Fit to screen">100%</button>
+    <button class="z zoom" type="button" data-zoom="1" aria-label="Zoom in" title="Zoom in (+)"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+    <span class="sep zoom" aria-hidden="true"></span>
+  </div>
+  <button class="z share" type="button" data-share aria-label="Share resume link"><svg viewBox="0 0 24 24"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg></button>
+  <a class="btn primary" href="/assets/Masudul-Haque-Resume.pdf" download="Masudul-Haque-Resume.pdf" data-dl>
+    <svg class="dl-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>Download PDF
+  </a>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// Theme toggle (same behaviour as the portfolio)
+(function () {
+  var btn = document.querySelector('.theme-tg'), root = document.documentElement;
+  var label = function () { btn.setAttribute('aria-label', root.getAttribute('data-theme') === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'); };
+  label();
+  btn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    label();
+  });
+})();
+
+// Toast, download feedback, copy and share
+var toast = (function () {
+  var el = document.getElementById('toast'), t;
+  return function (msg) { el.innerHTML = '<i>✓</i>' + msg; el.classList.add('on'); clearTimeout(t); t = setTimeout(function () { el.classList.remove('on'); }, 2200); };
+})();
+var URL_SELF = 'https://hellomasudul.com/resume/';
+document.querySelectorAll('[data-dl]').forEach(function (a) {
+  a.addEventListener('click', function () { toast('Download started'); });
+});
+function copyLink() {
+  var done = function () { toast('Link copied'); };
+  if (navigator.clipboard) navigator.clipboard.writeText(URL_SELF).then(done, function () {});
+}
+document.querySelector('[data-copy]').addEventListener('click', copyLink);
+document.querySelector('[data-share]').addEventListener('click', function () {
+  if (navigator.share) navigator.share({ title: 'Masudul Haque · Resume', url: URL_SELF }).catch(function () {});
+  else copyLink();
+});
+</script>
+
+<script type="module">
+// Crisp, selectable render of the PDF with pdf.js. The WebP poster stays as the fallback.
+const PDF = '/assets/Masudul-Haque-Resume.pdf';
+const stage = document.getElementById('stage');
+const frame = document.getElementById('frame');
+const paper = document.getElementById('paper');
+const pctBtn = document.querySelector('[data-fit]');
+const zoomBtns = document.querySelectorAll('[data-zoom]');
+const STEPS = [0.5, 0.67, 0.8, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2, 2.5, 3];
+let page, base, scale = null, renderTask = null, timer = null;
+
+function fitScale() {
+  // Fit the page to the stage width, never wider than ~820px on large screens
+  const cs = getComputedStyle(stage);
+  const avail = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  return Math.min(avail, 820) / base.width;
+}
+function updateUi() {
+  pctBtn.textContent = fitMode ? 'Fit' : Math.round(scale * 100) + '%';
+  zoomBtns[0].disabled = scale <= STEPS[0] + 1e-3;
+  zoomBtns[1].disabled = scale >= STEPS[STEPS.length - 1] - 1e-3;
+}
+function layout() {
+  frame.style.setProperty('--w', (base.width * scale) + 'px');
+  updateUi();
+  clearTimeout(timer);
+  timer = setTimeout(draw, 120);
+}
+function setScale(s, keepFit) {
+  scale = Math.max(STEPS[0], Math.min(STEPS[STEPS.length - 1], s));
+  fitMode = !!keepFit;
+  layout();
+}
+let fitMode = true;
+
+async function draw() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 3);
+  const vp = page.getViewport({ scale });
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.floor(vp.width * dpr);
+  canvas.height = Math.floor(vp.height * dpr);
+  canvas.setAttribute('aria-hidden', 'true');
+  if (renderTask) renderTask.cancel();
+  renderTask = page.render({ canvasContext: canvas.getContext('2d'), viewport: vp, transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null });
+  try { await renderTask.promise; } catch (e) { return; }
+  const old = paper.querySelector('canvas');
+  if (old) old.replaceWith(canvas); else paper.appendChild(canvas);
+  paper.classList.add('ready');
+  await drawText(vp);
+}
+
+let textDiv, linksDiv, textContent, annots;
+async function drawText(vp) {
+  const { TextLayer } = window.pdfjsLib;
+  if (textDiv) textDiv.remove();
+  textDiv = document.createElement('div');
+  textDiv.className = 'textLayer';
+  paper.style.setProperty('--scale-factor', vp.scale);
+  paper.appendChild(textDiv);
+  try {
+    const tl = new TextLayer({ textContentSource: textContent, container: textDiv, viewport: vp });
+    await tl.render();
+    textDiv.style.width = '100%'; textDiv.style.height = '100%';
+  } catch (e) {}
+  // Clickable links (email, LinkedIn, portfolio, Behance, Medium)
+  if (linksDiv) linksDiv.remove();
+  linksDiv = document.createElement('div');
+  linksDiv.className = 'links';
+  for (const a of annots) {
+    if (a.subtype !== 'Link' || !(a.url || a.unsafeUrl)) continue;
+    const [x1, y1, x2, y2] = vp.convertToViewportRectangle(a.rect);
+    const el = document.createElement('a');
+    el.href = a.url || a.unsafeUrl;
+    el.target = '_blank'; el.rel = 'noopener';
+    el.setAttribute('aria-label', el.href.replace(/^mailto:/, 'Email ').replace(/^https?:\/\//, ''));
+    Object.assign(el.style, {
+      left: (Math.min(x1, x2) / vp.width * 100) + '%', top: (Math.min(y1, y2) / vp.height * 100) + '%',
+      width: (Math.abs(x2 - x1) / vp.width * 100) + '%', height: (Math.abs(y2 - y1) / vp.height * 100) + '%'
+    });
+    linksDiv.appendChild(el);
+  }
+  paper.appendChild(linksDiv);
+}
+
+try {
+  const lib = await import('/assets/pdfjs/pdf.min.mjs');
+  window.pdfjsLib = lib;
+  lib.GlobalWorkerOptions.workerSrc = '/assets/pdfjs/pdf.worker.min.mjs';
+  const doc = await lib.getDocument({ url: PDF, isEvalSupported: false }).promise;
+  page = await doc.getPage(1);
+  base = page.getViewport({ scale: 1 });
+  [textContent, annots] = await Promise.all([page.getTextContent(), page.getAnnotations()]);
+  setScale(fitScale(), true);
+
+  zoomBtns.forEach(b => b.addEventListener('click', () => {
+    const dir = +b.dataset.zoom;
+    const next = dir > 0 ? STEPS.find(s => s > scale + 1e-3) : [...STEPS].reverse().find(s => s < scale - 1e-3);
+    if (next) setScale(next);
+  }));
+  pctBtn.addEventListener('click', () => setScale(fitScale(), true));
+  addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey || /input|textarea/i.test(e.target.tagName)) return;
+    if (e.key === '+' || e.key === '=') zoomBtns[1].click();
+    else if (e.key === '-' || e.key === '_') zoomBtns[0].click();
+    else if (e.key === '0') pctBtn.click();
+  });
+  let lastW = innerWidth;
+  addEventListener('resize', () => { if (fitMode && innerWidth !== lastW) { lastW = innerWidth; setScale(fitScale(), true); } });
+  matchMedia('(resolution: 1dppx)').addEventListener?.('change', () => draw());
+} catch (e) {
+  paper.classList.add('failed'); // the poster image stays visible
+  pctBtn.textContent = '100%';
+  document.querySelectorAll('.dock .zoom').forEach(el => el.style.display = 'none');
+}
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0447a61b98084810a47863bfde513e9b"}'></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+# Cloudflare Pages response headers for hellomasudul.com
+
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests
+
+# Keep the pages.dev copy out of Google so only hellomasudul.com ranks
+https://hellomasudul.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+# Case-study images have unique hashed names, so they can be cached for a year
+/assets/p/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Logos, testimonial photos, awards, share cards, article covers: cache 30 days
+/assets/og/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/assets/logos/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/assets/recs/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/assets/awards/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/assets/a/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/assets/pdfjs/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# Top-level files (photo, logo, icons, resume PDF) change now and then: cache 1 day
+/assets/:file
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/favicon.ico
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+/robots.txt
+  Cache-Control: public, max-age=3600

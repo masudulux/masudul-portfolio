@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://hellomasudul.com/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/masudul.jpg</image:loc></image:image>
     <image:image><image:loc>https://hellomasudul.com/assets/p/whitelabel/057d4905.webp</image:loc></image:image>
     <image:image><image:loc>https://hellomasudul.com/assets/p/website/6ffacd8e.webp</image:loc></image:image>
@@ -17,52 +17,53 @@
     <image:image><image:loc>https://hellomasudul.com/assets/awards/eoq-q3-2022.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://hellomasudul.com/assets/Masudul-Haque-Resume.pdf</loc>
-    <lastmod>2026-10-29</lastmod>
+    <loc>https://hellomasudul.com/resume/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <image:image><image:loc>https://hellomasudul.com/assets/resume-preview.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://hellomasudul.com/work/whitelabel/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/p/whitelabel/057d4905.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://hellomasudul.com/work/website/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/p/website/6ffacd8e.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://hellomasudul.com/work/pitchdeck/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/p/pitchdeck/5ea2729a.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://hellomasudul.com/work/bidding/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/p/bidding/7f90be4e.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://hellomasudul.com/work/payment/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/p/payment/3a070b94.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://hellomasudul.com/work/quotient/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/p/quotient/6d57a141.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://hellomasudul.com/work/rca/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/p/rca/ba8417c8.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://hellomasudul.com/work/incident/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/p/incident/830fb276.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://hellomasudul.com/work/doorprofit/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <image:image><image:loc>https://hellomasudul.com/assets/p/doorprofit/5506166b.webp</image:loc></image:image>
   </url>
 </urlset>
